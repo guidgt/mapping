@@ -1,0 +1,63 @@
+/* 
+    Document   : defaultPrint
+    Created on : Jul 12, 2010, 11:37:56 AM
+    Author     : daniloviana
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* 
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+
+table{
+    font-family:arial;
+    font-size:7pt;
+    text-align:left;
+    width:97%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+a{
+    color: black;
+}
+
+table thead tr th, table tfoot tr th{
+    font-size:7pt;
+    padding:4px;
+    width: auto;
+    border: 1px solid #000000;
+}
+
+tr{
+    font-size:6pt;
+    padding:4px;
+    width: auto;
+    border: 1px solid #000000;
+}
+
+ui-accordion-header ui-helper-reset ui-state-default ui-corner-all{
+    display: none;
+}
+
+table tbody td {
+    padding:1.8px;
+    font-size:6pt;
+    vertical-align:top;
+    border: 1px solid #1B3A6D;
+    color: #1B3A6D;
+}
+
+table tbody td.total{
+    color: #1DC116;
+    border: 1px solid #008200;
+    vertical-align: middle;
+}
+
+.labelRelatorio{
+    font-size: 12px;
+    font-weight: bold;
+    margin-left: 5px;
+}

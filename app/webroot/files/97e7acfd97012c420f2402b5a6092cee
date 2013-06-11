@@ -1,0 +1,18 @@
+ SELECT r.id AS recurso_id, r.nome, a.id AS atividade_id, a.nome AS atividade_nome, sum("at".carga_horaria::interval) AS hora_alocada, date_part('month'::text, "at".data) AS mes, date_part('year'::text, "at".data) AS ano, s.id AS setor_id, s.nome AS setor_nome, p.id AS projeto_id, p.projeto_id AS projeto_parent, r.ativo AS recurso_ativo, p.ativo AS projeto_ativo, p.nome AS projeto_nome, serv.id AS servico_id, serv.servico_id AS servico_parent, serv.nome AS servico_nome, serv.projeto_id AS servico_projeto, t.id AS tarefa_id, t.nome AS tarefa_nome, 
+        CASE
+            WHEN e.horas_mes <> '00:00:00'::interval THEN e.horas_mes
+            ELSE diasuteis("at".data - date_part('day'::text, "at".data)::integer + '1 day'::interval, (("at".data + '1 mon'::interval)::date - date_part('day'::text, "at".data)::integer)::timestamp without time zone)
+        END AS horas_mes, c.valor AS custo, r.carga_horaria
+   FROM alocacao_tempos "at"
+   JOIN recursos r ON r.id = "at".recurso_id
+   JOIN empresas_recursos er ON er.recurso_id = r.id
+   JOIN recursos_setores rs ON r.id = rs.recurso_id AND (rs.data_alocacao <= "at".data AND rs.data_desligamento >= "at".data OR rs.ativo = true)
+   JOIN setores s ON s.id = rs.setor_id
+   JOIN custos c ON c.empresas_recurso_id = er.id AND ("at".data >= c.data_ajuste AND "at".data <= 'now'::text::date AND c.ativo OR "at".data >= c.data_ajuste AND "at".data <= c.data_validade)
+   JOIN empresas e ON e.id = er.empresa_id
+   LEFT JOIN projetos p ON "at".projeto_id = p.id
+   LEFT JOIN atividades a ON a.id = "at".atividade_id
+   LEFT JOIN servicos serv ON serv.id = "at".servico_id
+   LEFT JOIN tarefas t ON t.id = "at".tarefa_id
+  GROUP BY s.nome, r.nome, p.nome, a.nome, r.id, s.id, date_part('month'::text, "at".data), e.horas_mes, c.valor, r.carga_horaria, "at".data, p.id, r.ativo, p.ativo, a.id, p.projeto_id, serv.id, serv.servico_id, serv.nome, serv.projeto_id, t.id, t.nome
+  ORDER BY s.nome, r.nome, p.nome, a.nome;

@@ -1,0 +1,1 @@
+created: 2011-07-29 15:52:21 - {"Log":{"nome_modelo":"Setor","acao":"INSERT","usuario_id":"1","ip_cliente":"127.0.0.1","modelo_id":"52","created":"2011-07-29 15:52:21"}}

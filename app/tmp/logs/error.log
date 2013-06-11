@@ -1,0 +1,801 @@
+2011-06-04 23:33:54 Warning: Warning (512): O model "Colaborador" não está associado ao model "AlocacaoColaborador" in [CORE/cake/libs/model/behaviors/containable.php, line 340]
+2011-06-04 23:33:54 Warning: Warning (2): Invalid argument supplied for foreach() in [APP/controllers/alocacao_colaboradores_controller.php, line 18]
+2011-06-04 23:33:54 Warning: Warning (512): O model "Colaborador" não está associado ao model "AlocacaoColaborador" in [CORE/cake/libs/model/behaviors/containable.php, line 340]
+2011-06-04 23:33:54 Warning: Warning (2): Invalid argument supplied for foreach() in [APP/controllers/alocacao_colaboradores_controller.php, line 18]
+2011-06-06 19:18:02 Warning: Warning (2): array_combine() [http://php.net/function.array-combine]: Both parameters should have an equal number of elements in [APP/models/behaviors/date_formatter.php, line 75]
+2011-06-06 19:18:02 Warning: Warning (2): array_combine() [http://php.net/function.array-combine]: Both parameters should have an equal number of elements in [APP/models/behaviors/date_formatter.php, line 76]
+2011-06-06 19:18:02 Warning: Warning (2): Invalid argument supplied for foreach() in [APP/models/behaviors/date_formatter.php, line 77]
+2011-06-06 19:18:02 Warning: Warning (2): implode() [http://php.net/function.implode]: Invalid arguments passed in [APP/models/behaviors/date_formatter.php, line 84]
+2011-06-06 19:18:02 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> 1048: Column 'data_fim' cannot be null</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 557]
+2011-06-06 21:04:28 Warning: Warning (2): Illegal offset type in [APP/models/behaviors/additional_validate.php, line 17]
+2011-06-06 21:06:52 Warning: Warning (2): Illegal offset type in [APP/models/behaviors/additional_validate.php, line 18]
+2011-06-06 21:07:17 Warning: Warning (2): Illegal offset type in [APP/models/behaviors/additional_validate.php, line 19]
+2011-06-06 21:09:57 Warning: Warning (2): Illegal offset type in [APP/models/behaviors/additional_validate.php, line 19]
+2011-06-06 21:10:43 Warning: Warning (2): Illegal offset type in [APP/models/behaviors/additional_validate.php, line 18]
+2011-06-06 21:10:43 Warning: Warning (2): Illegal offset type in [APP/models/behaviors/additional_validate.php, line 20]
+2011-06-06 21:11:05 Warning: Warning (2): Illegal offset type in [APP/models/behaviors/additional_validate.php, line 20]
+2011-06-06 21:11:37 Warning: Warning (2): Illegal offset type in [APP/models/behaviors/additional_validate.php, line 21]
+2011-06-06 21:12:56 Warning: Warning (2): Illegal offset type in [APP/models/behaviors/additional_validate.php, line 21]
+2011-06-06 21:13:27 Warning: Warning (2): Illegal offset type in [APP/models/behaviors/additional_validate.php, line 22]
+2011-06-06 21:14:12 Warning: Warning (2): Illegal offset type in [APP/models/behaviors/additional_validate.php, line 22]
+2011-06-06 22:33:35 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> 1062: Duplicate entry '0' for key 'PRIMARY'</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 557]
+2011-06-06 22:33:35 Warning: Warning (2): Cannot modify header information - headers already sent by (output started at /var/www/mps-extreme/cake/basics.php:307) in [CORE/cake/libs/controller/controller.php, line 646]
+2011-06-06 22:34:10 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> 1062: Duplicate entry '0' for key 'PRIMARY'</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 557]
+2011-06-06 22:34:10 Warning: Warning (2): Cannot modify header information - headers already sent by (output started at /var/www/mps-extreme/cake/basics.php:307) in [CORE/cake/libs/controller/controller.php, line 646]
+2011-06-06 22:40:34 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'DISTINCT `Acao`.` url` FROM `acoes` AS `Acao` INNER JOIN acoes_funcoes AS `AcaoF' at line 1</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 557]
+2011-06-20 22:31:44 Warning: Warning (2): Invalid argument supplied for foreach() in [APP/views/layouts/default.ctp, line 45]
+2011-06-20 22:32:52 Warning: Warning (2): Invalid argument supplied for foreach() in [APP/views/layouts/default.ctp, line 45]
+2011-06-20 22:35:01 Warning: Warning (2): Invalid argument supplied for foreach() in [APP/views/layouts/default.ctp, line 45]
+2011-06-20 22:35:03 Warning: Warning (2): Invalid argument supplied for foreach() in [APP/views/layouts/default.ctp, line 45]
+2011-06-20 22:38:33 Warning: Warning (2): Cannot modify header information - headers already sent by (output started at /var/www/mps-extreme/cake/basics.php:115) in [CORE/cake/libs/controller/controller.php, line 646]
+2011-08-11 01:35:21 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> 1146: Table 'mps_extreme.acoes_funcoes' doesn't exist</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 557]
+2011-08-11 01:35:21 Warning: Warning (2): Cannot modify header information - headers already sent by (output started at /var/www/mps-extreme/cake/libs/debugger.php:517) in [CORE/cake/libs/controller/controller.php, line 646]
+2011-08-11 02:03:44 Warning: Warning (2): Invalid argument supplied for foreach() in [APP/views/perfis/index.ctp, line 117]
+2011-08-11 11:03:20 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> 1054: Unknown column 'Dependencia.dependencia_id' in 'field list'</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 557]
+2011-08-11 11:03:20 Warning: Warning (2): Cannot modify header information - headers already sent by (output started at /var/www/mps-extreme/cake/basics.php:109) in [CORE/cake/libs/controller/controller.php, line 646]
+2011-08-11 11:22:21 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> 1054: Unknown column 'Dependencia.dependencia_id' in 'field list'</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 557]
+2011-08-11 11:22:21 Warning: Warning (2): Cannot modify header information - headers already sent by (output started at /var/www/mps-extreme/cake/basics.php:109) in [CORE/cake/libs/controller/controller.php, line 646]
+2011-08-11 11:28:15 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> 1054: Unknown column 'Dependencia.dependencia_id' in 'field list'</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 557]
+2011-08-11 11:28:15 Warning: Warning (2): Cannot modify header information - headers already sent by (output started at /var/www/mps-extreme/cake/basics.php:109) in [CORE/cake/libs/controller/controller.php, line 646]
+2011-08-11 11:33:23 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> 1054: Unknown column 'Dependencia.dependencia_id' in 'field list'</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 557]
+2011-08-11 11:40:20 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> 1054: Unknown column 'Dependencia.dependencia_id' in 'field list'</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 557]
+2011-08-11 14:34:19 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> 1054: Unknown column 'Array' in 'field list'</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 557]
+2011-08-11 14:34:19 Warning: Warning (2): Cannot modify header information - headers already sent by (output started at /var/www/mps-extreme/cake/basics.php:109) in [CORE/cake/libs/controller/controller.php, line 646]
+2011-08-11 15:54:03 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> 1054: Unknown column 'Revisao.nome' in 'field list'</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 557]
+2011-08-11 15:54:03 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> 1054: Unknown column 'Revisao.nome' in 'field list'</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 557]
+2011-08-11 16:07:09 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> 1054: Unknown column 'Revisao.nome' in 'field list'</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 557]
+2011-08-11 16:57:46 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> 1054: Unknown column 'Estoria.defeito_id' in 'on clause'</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 557]
+2011-08-11 17:17:34 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> 1054: Unknown column 'Estoria.estoria_id' in 'on clause'</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 557]
+2011-08-11 17:17:34 Warning: Warning (2): Invalid argument supplied for foreach() in [APP/views/estorias/index.ctp, line 125]
+2011-08-12 15:30:18 Warning: Warning (2): Invalid argument supplied for foreach() in [APP/views/requisitos/view.ctp, line 116]
+2011-08-13 07:51:08 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> 1066: Not unique table/alias: 'Fase'</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 557]
+2011-08-13 07:52:05 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> 1054: Unknown column 'Estoria.defeito_id' in 'where clause'</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 557]
+2011-08-13 07:54:00 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '.horas FROM `atividades` AS `Atividade` INNER JOIN fases AS `Fase` ON (`Atividad' at line 1</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 557]
+2011-08-13 08:02:20 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> 1146: Table 'mps_extreme.regitro_tarefas' doesn't exist</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 557]
+2011-08-13 09:38:56 Warning: Warning (512): O model "Estoria" não está associado ao model "Revisão" in [CORE/cake/libs/model/behaviors/containable.php, line 340]
+2011-08-13 09:38:57 Warning: Warning (2): Invalid argument supplied for foreach() in [APP/views/requisitos/relatorio_andamento.ctp, line 28]
+2011-08-13 09:38:57 Warning: Warning (512): O model "Estoria" não está associado ao model "Revisão" in [CORE/cake/libs/model/behaviors/containable.php, line 340]
+2011-08-13 09:38:57 Warning: Warning (2): Invalid argument supplied for foreach() in [APP/views/requisitos/relatorio_andamento.ctp, line 28]
+2011-08-13 09:39:36 Warning: Warning (2): Invalid argument supplied for foreach() in [APP/views/requisitos/relatorio_andamento.ctp, line 28]
+2011-08-13 10:00:43 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> 1052: Column 'id' in where clause is ambiguous</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 557]
+2011-08-13 10:00:43 Warning: Warning (2): Invalid argument supplied for foreach() in [APP/views/requisitos/relatorio_andamento.ctp, line 28]
+2011-08-13 10:00:44 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> 1052: Column 'id' in where clause is ambiguous</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 557]
+2011-08-13 10:00:44 Warning: Warning (2): Invalid argument supplied for foreach() in [APP/views/requisitos/relatorio_andamento.ctp, line 28]
+2011-08-13 10:56:07 Warning: Warning (2): Invalid argument supplied for foreach() in [APP/views/requisitos/relatorio_andamento.ctp, line 124]
+2011-08-13 11:19:25 Warning: Warning (2): Invalid argument supplied for foreach() in [APP/views/requisitos/relatorio_andamento.ctp, line 103]
+2011-11-26 22:37:40 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> 1054: Unknown column 'colaborador_id' in 'where clause'</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 557]
+2011-11-26 22:38:27 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> 1054: Unknown column 'AlocacaoColaborador.colaborador_id' in 'where clause'</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 557]
+2011-11-27 00:22:29 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> 1052: Column 'id' in where clause is ambiguous</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 557]
+2011-11-27 00:24:06 Warning: Warning (512): O model "Tarefa" não está associado ao model "AlocacaoEquipamento" in [CORE/cake/libs/model/behaviors/containable.php, line 340]
+2011-11-27 00:24:06 Warning: Warning (512): O model "Tarefa" não está associado ao model "Projeto" in [CORE/cake/libs/model/behaviors/containable.php, line 340]
+2011-11-27 00:24:44 Warning: Warning (512): O model "Tarefa" não está associado ao model "Projeto" in [CORE/cake/libs/model/behaviors/containable.php, line 340]
+2011-11-27 01:00:38 Warning: Warning (512): O model "Colaborador" não está associado ao model "Funcao" in [CORE/cake/libs/model/behaviors/containable.php, line 340]
+2011-11-27 12:34:05 Warning: Warning (2): Invalid argument supplied for foreach() in [APP/views/projetos/plano_projeto.ctp, line 56]
+2011-11-27 12:34:05 Warning: Warning (2): Invalid argument supplied for foreach() in [APP/views/projetos/plano_projeto.ctp, line 98]
+2011-11-27 12:35:02 Warning: Warning (2): Invalid argument supplied for foreach() in [APP/views/projetos/plano_projeto.ctp, line 56]
+2011-11-27 12:35:02 Warning: Warning (2): Invalid argument supplied for foreach() in [APP/views/projetos/plano_projeto.ctp, line 98]
+2011-11-27 12:35:31 Warning: Warning (2): Invalid argument supplied for foreach() in [APP/views/projetos/plano_projeto.ctp, line 56]
+2011-11-27 12:35:31 Warning: Warning (2): Invalid argument supplied for foreach() in [APP/views/projetos/plano_projeto.ctp, line 98]
+2011-11-27 12:36:05 Warning: Warning (2): Invalid argument supplied for foreach() in [APP/views/projetos/plano_projeto.ctp, line 56]
+2011-11-27 12:36:05 Warning: Warning (2): Invalid argument supplied for foreach() in [APP/views/projetos/plano_projeto.ctp, line 98]
+2011-11-27 12:36:31 Warning: Warning (2): Invalid argument supplied for foreach() in [APP/views/projetos/plano_projeto.ctp, line 56]
+2011-11-27 12:36:31 Warning: Warning (2): Invalid argument supplied for foreach() in [APP/views/projetos/plano_projeto.ctp, line 98]
+2011-11-27 12:40:39 Warning: Warning (2): Invalid argument supplied for foreach() in [APP/views/projetos/plano_projeto.ctp, line 41]
+2011-11-27 12:40:39 Warning: Warning (2): Invalid argument supplied for foreach() in [APP/views/projetos/plano_projeto.ctp, line 83]
+2011-11-27 12:41:09 Warning: Warning (2): Invalid argument supplied for foreach() in [APP/views/projetos/plano_projeto.ctp, line 41]
+2011-11-27 12:41:09 Warning: Warning (2): Invalid argument supplied for foreach() in [APP/views/projetos/plano_projeto.ctp, line 83]
+2011-11-27 12:42:13 Warning: Warning (2): Invalid argument supplied for foreach() in [APP/views/projetos/plano_projeto.ctp, line 41]
+2011-11-27 12:42:14 Warning: Warning (2): Invalid argument supplied for foreach() in [APP/views/projetos/plano_projeto.ctp, line 83]
+2011-11-27 12:42:41 Warning: Warning (2): Invalid argument supplied for foreach() in [APP/views/projetos/plano_projeto.ctp, line 41]
+2011-11-27 12:42:41 Warning: Warning (2): Invalid argument supplied for foreach() in [APP/views/projetos/plano_projeto.ctp, line 83]
+2011-11-27 12:44:05 Warning: Warning (2): Invalid argument supplied for foreach() in [APP/views/projetos/plano_projeto.ctp, line 41]
+2011-11-27 12:44:05 Warning: Warning (2): Invalid argument supplied for foreach() in [APP/views/projetos/plano_projeto.ctp, line 83]
+2011-11-27 12:47:54 Warning: Warning (2): Invalid argument supplied for foreach() in [APP/views/projetos/plano_projeto.ctp, line 41]
+2011-11-27 12:47:54 Warning: Warning (2): Invalid argument supplied for foreach() in [APP/views/projetos/plano_projeto.ctp, line 83]
+2011-11-27 12:48:13 Warning: Warning (2): Invalid argument supplied for foreach() in [APP/views/projetos/plano_projeto.ctp, line 41]
+2011-11-27 12:48:13 Warning: Warning (2): Invalid argument supplied for foreach() in [APP/views/projetos/plano_projeto.ctp, line 83]
+2011-11-27 12:56:20 Warning: Warning (2): Invalid argument supplied for foreach() in [APP/views/projetos/plano_projeto.ctp, line 43]
+2011-11-27 12:56:20 Warning: Warning (2): Invalid argument supplied for foreach() in [APP/views/projetos/plano_projeto.ctp, line 85]
+2011-11-27 12:56:41 Warning: Warning (2): Invalid argument supplied for foreach() in [APP/views/projetos/plano_projeto.ctp, line 43]
+2011-11-27 12:56:42 Warning: Warning (2): Invalid argument supplied for foreach() in [APP/views/projetos/plano_projeto.ctp, line 85]
+2011-11-27 12:58:04 Warning: Warning (2): Invalid argument supplied for foreach() in [APP/views/projetos/plano_projeto.ctp, line 43]
+2011-11-27 12:58:04 Warning: Warning (2): Invalid argument supplied for foreach() in [APP/views/projetos/plano_projeto.ctp, line 85]
+2011-11-27 12:59:22 Warning: Warning (2): Invalid argument supplied for foreach() in [APP/views/projetos/plano_projeto.ctp, line 45]
+2011-11-27 12:59:22 Warning: Warning (2): Invalid argument supplied for foreach() in [APP/views/projetos/plano_projeto.ctp, line 87]
+2011-11-27 13:00:37 Warning: Warning (2): Invalid argument supplied for foreach() in [APP/views/projetos/plano_projeto.ctp, line 45]
+2011-11-27 13:00:37 Warning: Warning (2): Invalid argument supplied for foreach() in [APP/views/projetos/plano_projeto.ctp, line 87]
+2011-11-27 13:00:45 Warning: Warning (2): Invalid argument supplied for foreach() in [APP/views/projetos/plano_projeto.ctp, line 46]
+2011-11-27 13:00:45 Warning: Warning (2): Invalid argument supplied for foreach() in [APP/views/projetos/plano_projeto.ctp, line 88]
+2011-11-27 13:01:41 Warning: Warning (2): Invalid argument supplied for foreach() in [APP/views/projetos/plano_projeto.ctp, line 46]
+2011-11-27 13:01:41 Warning: Warning (2): Invalid argument supplied for foreach() in [APP/views/projetos/plano_projeto.ctp, line 88]
+2011-11-27 13:02:52 Warning: Warning (2): Invalid argument supplied for foreach() in [APP/views/projetos/plano_projeto.ctp, line 46]
+2011-11-27 13:02:52 Warning: Warning (2): Invalid argument supplied for foreach() in [APP/views/projetos/plano_projeto.ctp, line 88]
+2011-11-27 13:03:17 Warning: Warning (2): Invalid argument supplied for foreach() in [APP/views/projetos/plano_projeto.ctp, line 46]
+2011-11-27 13:03:17 Warning: Warning (2): Invalid argument supplied for foreach() in [APP/views/projetos/plano_projeto.ctp, line 88]
+2011-11-27 13:11:24 Warning: Warning (2): Invalid argument supplied for foreach() in [APP/views/projetos/plano_projeto.ctp, line 55]
+2011-11-27 13:11:24 Warning: Warning (2): Invalid argument supplied for foreach() in [APP/views/projetos/plano_projeto.ctp, line 97]
+2011-11-27 13:16:27 Warning: Warning (2): Invalid argument supplied for foreach() in [APP/views/projetos/plano_projeto.ctp, line 75]
+2011-11-27 13:16:27 Warning: Warning (2): Invalid argument supplied for foreach() in [APP/views/projetos/plano_projeto.ctp, line 117]
+2011-11-27 13:16:42 Warning: Warning (2): Invalid argument supplied for foreach() in [APP/views/projetos/plano_projeto.ctp, line 75]
+2011-11-27 13:16:42 Warning: Warning (2): Invalid argument supplied for foreach() in [APP/views/projetos/plano_projeto.ctp, line 117]
+2011-11-27 13:23:21 Warning: Warning (2): Invalid argument supplied for foreach() in [APP/views/projetos/plano_projeto.ctp, line 76]
+2011-11-27 13:23:21 Warning: Warning (2): Invalid argument supplied for foreach() in [APP/views/projetos/plano_projeto.ctp, line 118]
+2011-11-27 13:24:02 Warning: Warning (2): Invalid argument supplied for foreach() in [APP/views/projetos/plano_projeto.ctp, line 76]
+2011-11-27 13:24:02 Warning: Warning (2): Invalid argument supplied for foreach() in [APP/views/projetos/plano_projeto.ctp, line 118]
+2011-11-27 13:30:50 Warning: Warning (2): Invalid argument supplied for foreach() in [APP/views/projetos/plano_projeto.ctp, line 78]
+2011-11-27 13:30:50 Warning: Warning (2): Invalid argument supplied for foreach() in [APP/views/projetos/plano_projeto.ctp, line 120]
+2011-11-27 13:32:04 Warning: Warning (2): Invalid argument supplied for foreach() in [APP/views/projetos/plano_projeto.ctp, line 78]
+2011-11-27 13:32:04 Warning: Warning (2): Invalid argument supplied for foreach() in [APP/views/projetos/plano_projeto.ctp, line 120]
+2011-11-27 13:32:19 Warning: Warning (2): Invalid argument supplied for foreach() in [APP/views/projetos/plano_projeto.ctp, line 78]
+2011-11-27 13:32:19 Warning: Warning (2): Invalid argument supplied for foreach() in [APP/views/projetos/plano_projeto.ctp, line 120]
+2011-11-27 13:34:39 Warning: Warning (2): Invalid argument supplied for foreach() in [APP/views/projetos/plano_projeto.ctp, line 80]
+2011-11-27 13:34:39 Warning: Warning (2): Invalid argument supplied for foreach() in [APP/views/projetos/plano_projeto.ctp, line 122]
+2011-11-27 13:38:00 Warning: Warning (2): Invalid argument supplied for foreach() in [APP/views/projetos/plano_projeto.ctp, line 31]
+2011-11-27 13:38:00 Warning: Warning (2): Invalid argument supplied for foreach() in [APP/views/projetos/plano_projeto.ctp, line 86]
+2011-11-27 13:38:00 Warning: Warning (2): Invalid argument supplied for foreach() in [APP/views/projetos/plano_projeto.ctp, line 128]
+2011-11-27 13:38:29 Warning: Warning (2): Invalid argument supplied for foreach() in [APP/views/projetos/plano_projeto.ctp, line 86]
+2011-11-27 13:38:29 Warning: Warning (2): Invalid argument supplied for foreach() in [APP/views/projetos/plano_projeto.ctp, line 128]
+2011-11-27 13:39:35 Warning: Warning (2): Invalid argument supplied for foreach() in [APP/views/projetos/plano_projeto.ctp, line 87]
+2011-11-27 13:39:35 Warning: Warning (2): Invalid argument supplied for foreach() in [APP/views/projetos/plano_projeto.ctp, line 129]
+2011-11-27 13:40:21 Warning: Warning (2): Invalid argument supplied for foreach() in [APP/views/projetos/plano_projeto.ctp, line 87]
+2011-11-27 13:40:21 Warning: Warning (2): Invalid argument supplied for foreach() in [APP/views/projetos/plano_projeto.ctp, line 129]
+2011-11-27 13:40:54 Warning: Warning (2): Invalid argument supplied for foreach() in [APP/views/projetos/plano_projeto.ctp, line 89]
+2011-11-27 13:40:54 Warning: Warning (2): Invalid argument supplied for foreach() in [APP/views/projetos/plano_projeto.ctp, line 131]
+2011-11-27 13:42:05 Warning: Warning (2): Invalid argument supplied for foreach() in [APP/views/projetos/plano_projeto.ctp, line 89]
+2011-11-27 13:42:05 Warning: Warning (2): Invalid argument supplied for foreach() in [APP/views/projetos/plano_projeto.ctp, line 131]
+2011-11-27 13:44:45 Warning: Warning (2): Invalid argument supplied for foreach() in [APP/views/projetos/plano_projeto.ctp, line 94]
+2011-11-27 13:44:45 Warning: Warning (2): Invalid argument supplied for foreach() in [APP/views/projetos/plano_projeto.ctp, line 136]
+2011-11-27 13:45:51 Warning: Warning (2): Invalid argument supplied for foreach() in [APP/views/projetos/plano_projeto.ctp, line 94]
+2011-11-27 13:45:51 Warning: Warning (2): Invalid argument supplied for foreach() in [APP/views/projetos/plano_projeto.ctp, line 136]
+2011-11-27 13:49:17 Warning: Warning (2): Invalid argument supplied for foreach() in [APP/views/projetos/plano_projeto.ctp, line 110]
+2011-11-27 13:49:17 Warning: Warning (2): Invalid argument supplied for foreach() in [APP/views/projetos/plano_projeto.ctp, line 152]
+2011-11-27 14:51:49 Warning: Warning (512): O model "Validacao" não está associado ao model "Coladorador" in [CORE/cake/libs/model/behaviors/containable.php, line 340]
+2011-11-27 14:52:21 Warning: Warning (512): O model "Validacao" não está associado ao model "Coladorador" in [CORE/cake/libs/model/behaviors/containable.php, line 340]
+2011-11-27 14:52:23 Warning: Warning (512): O model "Validacao" não está associado ao model "Coladorador" in [CORE/cake/libs/model/behaviors/containable.php, line 340]
+2011-11-27 15:00:04 Warning: Warning (512): O model "Requisito" não está associado ao model "Dependencia" in [CORE/cake/libs/model/behaviors/containable.php, line 340]
+2013-05-20 15:40:08 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  column Motivo.nome does not exist
+LINE 1: SELECT "Motivo"."id" AS "Motivo__id", "Motivo"."nome" AS "Mo...
+                                              ^ in [CORE/cake/libs/model/datasources/dbo/dbo_postgres.php, line 148]
+2013-05-20 15:40:08 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> ERROR:  column Motivo.nome does not exist
+LINE 1: SELECT "Motivo"."id" AS "Motivo__id", "Motivo"."nome" AS "Mo...
+                                              ^</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 557]
+2013-05-20 15:40:08 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  column Artigo.nome does not exist
+LINE 1: SELECT "Artigo"."id" AS "Artigo__id", "Artigo"."nome" AS "Ar...
+                                              ^ in [CORE/cake/libs/model/datasources/dbo/dbo_postgres.php, line 148]
+2013-05-20 15:40:08 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> ERROR:  column Artigo.nome does not exist
+LINE 1: SELECT "Artigo"."id" AS "Artigo__id", "Artigo"."nome" AS "Ar...
+                                              ^</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 557]
+2013-05-20 15:40:08 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  column Situacao.nome does not exist
+LINE 1: SELECT "Situacao"."id" AS "Situacao__id", "Situacao"."nome" ...
+                                                  ^ in [CORE/cake/libs/model/datasources/dbo/dbo_postgres.php, line 148]
+2013-05-20 15:40:08 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> ERROR:  column Situacao.nome does not exist
+LINE 1: SELECT "Situacao"."id" AS "Situacao__id", "Situacao"."nome" ...
+                                                  ^</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 557]
+2013-05-20 15:40:08 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  column Tipo.nome does not exist
+LINE 1: SELECT "Tipo"."id" AS "Tipo__id", "Tipo"."nome" AS "Tipo__no...
+                                          ^ in [CORE/cake/libs/model/datasources/dbo/dbo_postgres.php, line 148]
+2013-05-20 15:40:08 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> ERROR:  column Tipo.nome does not exist
+LINE 1: SELECT "Tipo"."id" AS "Tipo__id", "Tipo"."nome" AS "Tipo__no...
+                                          ^</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 557]
+2013-05-20 15:40:08 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  column Mapeamento.nome does not exist
+LINE 1: SELECT "Mapeamento"."id" AS "Mapeamento__id", "Mapeamento"."...
+                                                      ^ in [CORE/cake/libs/model/datasources/dbo/dbo_postgres.php, line 148]
+2013-05-20 15:40:08 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> ERROR:  column Mapeamento.nome does not exist
+LINE 1: SELECT "Mapeamento"."id" AS "Mapeamento__id", "Mapeamento"."...
+                                                      ^</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 557]
+2013-05-20 15:42:45 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  column Motivo.nome does not exist
+LINE 1: SELECT "Motivo"."id" AS "Motivo__id", "Motivo"."nome" AS "Mo...
+                                              ^ in [CORE/cake/libs/model/datasources/dbo/dbo_postgres.php, line 148]
+2013-05-20 15:42:45 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> ERROR:  column Motivo.nome does not exist
+LINE 1: SELECT "Motivo"."id" AS "Motivo__id", "Motivo"."nome" AS "Mo...
+                                              ^</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 557]
+2013-05-20 15:42:45 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  column Artigo.nome does not exist
+LINE 1: SELECT "Artigo"."id" AS "Artigo__id", "Artigo"."nome" AS "Ar...
+                                              ^ in [CORE/cake/libs/model/datasources/dbo/dbo_postgres.php, line 148]
+2013-05-20 15:42:45 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> ERROR:  column Artigo.nome does not exist
+LINE 1: SELECT "Artigo"."id" AS "Artigo__id", "Artigo"."nome" AS "Ar...
+                                              ^</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 557]
+2013-05-20 15:42:45 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  column Situacao.nome does not exist
+LINE 1: SELECT "Situacao"."id" AS "Situacao__id", "Situacao"."nome" ...
+                                                  ^ in [CORE/cake/libs/model/datasources/dbo/dbo_postgres.php, line 148]
+2013-05-20 15:42:45 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> ERROR:  column Situacao.nome does not exist
+LINE 1: SELECT "Situacao"."id" AS "Situacao__id", "Situacao"."nome" ...
+                                                  ^</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 557]
+2013-05-20 15:42:45 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  column Tipo.nome does not exist
+LINE 1: SELECT "Tipo"."id" AS "Tipo__id", "Tipo"."nome" AS "Tipo__no...
+                                          ^ in [CORE/cake/libs/model/datasources/dbo/dbo_postgres.php, line 148]
+2013-05-20 15:42:45 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> ERROR:  column Tipo.nome does not exist
+LINE 1: SELECT "Tipo"."id" AS "Tipo__id", "Tipo"."nome" AS "Tipo__no...
+                                          ^</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 557]
+2013-05-20 15:42:45 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  column Mapeamento.nome does not exist
+LINE 1: SELECT "Mapeamento"."id" AS "Mapeamento__id", "Mapeamento"."...
+                                                      ^ in [CORE/cake/libs/model/datasources/dbo/dbo_postgres.php, line 148]
+2013-05-20 15:42:45 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> ERROR:  column Mapeamento.nome does not exist
+LINE 1: SELECT "Mapeamento"."id" AS "Mapeamento__id", "Mapeamento"."...
+                                                      ^</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 557]
+2013-05-20 15:42:49 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  column Motivo.nome does not exist
+LINE 1: SELECT "Motivo"."id" AS "Motivo__id", "Motivo"."nome" AS "Mo...
+                                              ^ in [CORE/cake/libs/model/datasources/dbo/dbo_postgres.php, line 148]
+2013-05-20 15:42:49 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> ERROR:  column Motivo.nome does not exist
+LINE 1: SELECT "Motivo"."id" AS "Motivo__id", "Motivo"."nome" AS "Mo...
+                                              ^</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 557]
+2013-05-20 15:42:49 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  column Artigo.nome does not exist
+LINE 1: SELECT "Artigo"."id" AS "Artigo__id", "Artigo"."nome" AS "Ar...
+                                              ^ in [CORE/cake/libs/model/datasources/dbo/dbo_postgres.php, line 148]
+2013-05-20 15:42:49 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> ERROR:  column Artigo.nome does not exist
+LINE 1: SELECT "Artigo"."id" AS "Artigo__id", "Artigo"."nome" AS "Ar...
+                                              ^</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 557]
+2013-05-20 15:42:49 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  column Situacao.nome does not exist
+LINE 1: SELECT "Situacao"."id" AS "Situacao__id", "Situacao"."nome" ...
+                                                  ^ in [CORE/cake/libs/model/datasources/dbo/dbo_postgres.php, line 148]
+2013-05-20 15:42:49 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> ERROR:  column Situacao.nome does not exist
+LINE 1: SELECT "Situacao"."id" AS "Situacao__id", "Situacao"."nome" ...
+                                                  ^</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 557]
+2013-05-20 15:42:49 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  column Tipo.nome does not exist
+LINE 1: SELECT "Tipo"."id" AS "Tipo__id", "Tipo"."nome" AS "Tipo__no...
+                                          ^ in [CORE/cake/libs/model/datasources/dbo/dbo_postgres.php, line 148]
+2013-05-20 15:42:49 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> ERROR:  column Tipo.nome does not exist
+LINE 1: SELECT "Tipo"."id" AS "Tipo__id", "Tipo"."nome" AS "Tipo__no...
+                                          ^</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 557]
+2013-05-20 15:42:49 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  column Mapeamento.nome does not exist
+LINE 1: SELECT "Mapeamento"."id" AS "Mapeamento__id", "Mapeamento"."...
+                                                      ^ in [CORE/cake/libs/model/datasources/dbo/dbo_postgres.php, line 148]
+2013-05-20 15:42:49 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> ERROR:  column Mapeamento.nome does not exist
+LINE 1: SELECT "Mapeamento"."id" AS "Mapeamento__id", "Mapeamento"."...
+                                                      ^</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 557]
+2013-05-20 15:42:50 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  column Motivo.nome does not exist
+LINE 1: SELECT "Motivo"."id" AS "Motivo__id", "Motivo"."nome" AS "Mo...
+                                              ^ in [CORE/cake/libs/model/datasources/dbo/dbo_postgres.php, line 148]
+2013-05-20 15:42:50 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> ERROR:  column Motivo.nome does not exist
+LINE 1: SELECT "Motivo"."id" AS "Motivo__id", "Motivo"."nome" AS "Mo...
+                                              ^</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 557]
+2013-05-20 15:42:50 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  column Artigo.nome does not exist
+LINE 1: SELECT "Artigo"."id" AS "Artigo__id", "Artigo"."nome" AS "Ar...
+                                              ^ in [CORE/cake/libs/model/datasources/dbo/dbo_postgres.php, line 148]
+2013-05-20 15:42:50 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> ERROR:  column Artigo.nome does not exist
+LINE 1: SELECT "Artigo"."id" AS "Artigo__id", "Artigo"."nome" AS "Ar...
+                                              ^</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 557]
+2013-05-20 15:42:50 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  column Situacao.nome does not exist
+LINE 1: SELECT "Situacao"."id" AS "Situacao__id", "Situacao"."nome" ...
+                                                  ^ in [CORE/cake/libs/model/datasources/dbo/dbo_postgres.php, line 148]
+2013-05-20 15:42:50 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> ERROR:  column Situacao.nome does not exist
+LINE 1: SELECT "Situacao"."id" AS "Situacao__id", "Situacao"."nome" ...
+                                                  ^</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 557]
+2013-05-20 15:42:50 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  column Tipo.nome does not exist
+LINE 1: SELECT "Tipo"."id" AS "Tipo__id", "Tipo"."nome" AS "Tipo__no...
+                                          ^ in [CORE/cake/libs/model/datasources/dbo/dbo_postgres.php, line 148]
+2013-05-20 15:42:50 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> ERROR:  column Tipo.nome does not exist
+LINE 1: SELECT "Tipo"."id" AS "Tipo__id", "Tipo"."nome" AS "Tipo__no...
+                                          ^</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 557]
+2013-05-20 15:42:50 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  column Mapeamento.nome does not exist
+LINE 1: SELECT "Mapeamento"."id" AS "Mapeamento__id", "Mapeamento"."...
+                                                      ^ in [CORE/cake/libs/model/datasources/dbo/dbo_postgres.php, line 148]
+2013-05-20 15:42:50 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> ERROR:  column Mapeamento.nome does not exist
+LINE 1: SELECT "Mapeamento"."id" AS "Mapeamento__id", "Mapeamento"."...
+                                                      ^</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 557]
+2013-05-20 15:44:31 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  invalid input syntax for integer: "\x31"
+LINE 1: ...M "usuarios" AS "Usuario"   WHERE "Usuario"."id" = '\x31'   
+                                                              ^ in [CORE/cake/libs/model/datasources/dbo/dbo_postgres.php, line 148]
+2013-05-20 15:44:31 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> ERROR:  invalid input syntax for integer: "\x31"
+LINE 1: ...M "usuarios" AS "Usuario"   WHERE "Usuario"."id" = '\x31'   
+                                                              ^</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 557]
+2013-05-20 15:44:31 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  invalid input syntax for integer: "\x31"
+LINE 1: ...FROM "artigos" AS "Artigo"   WHERE "Artigo"."id" = '\x31'   
+                                                              ^ in [CORE/cake/libs/model/datasources/dbo/dbo_postgres.php, line 148]
+2013-05-20 15:44:31 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> ERROR:  invalid input syntax for integer: "\x31"
+LINE 1: ...FROM "artigos" AS "Artigo"   WHERE "Artigo"."id" = '\x31'   
+                                                              ^</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 557]
+2013-05-20 15:44:31 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  invalid input syntax for integer: "\x31"
+LINE 1: ...situacoes" AS "Situacao"   WHERE "Situacao"."id" = '\x31'   
+                                                              ^ in [CORE/cake/libs/model/datasources/dbo/dbo_postgres.php, line 148]
+2013-05-20 15:44:31 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> ERROR:  invalid input syntax for integer: "\x31"
+LINE 1: ...situacoes" AS "Situacao"   WHERE "Situacao"."id" = '\x31'   
+                                                              ^</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 557]
+2013-05-20 15:44:31 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  invalid input syntax for integer: "\x31"
+LINE 1: ...icao" FROM "tipos" AS "Tipo"   WHERE "Tipo"."id" = '\x31'   
+                                                              ^ in [CORE/cake/libs/model/datasources/dbo/dbo_postgres.php, line 148]
+2013-05-20 15:44:31 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> ERROR:  invalid input syntax for integer: "\x31"
+LINE 1: ...icao" FROM "tipos" AS "Tipo"   WHERE "Tipo"."id" = '\x31'   
+                                                              ^</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 557]
+2013-05-20 15:44:31 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  invalid input syntax for integer: "\x31"
+LINE 1: ...entos" AS "Mapeamento"   WHERE "Mapeamento"."id" = '\x31'   
+                                                              ^ in [CORE/cake/libs/model/datasources/dbo/dbo_postgres.php, line 148]
+2013-05-20 15:44:31 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> ERROR:  invalid input syntax for integer: "\x31"
+LINE 1: ...entos" AS "Mapeamento"   WHERE "Mapeamento"."id" = '\x31'   
+                                                              ^</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 557]
+2013-05-20 16:06:54 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  invalid input syntax for integer: "\x31"
+LINE 1: ...M "usuarios" AS "Usuario"   WHERE "Usuario"."id" = '\x31'   
+                                                              ^ in [CORE/cake/libs/model/datasources/dbo/dbo_postgres.php, line 148]
+2013-05-20 16:06:54 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> ERROR:  invalid input syntax for integer: "\x31"
+LINE 1: ...M "usuarios" AS "Usuario"   WHERE "Usuario"."id" = '\x31'   
+                                                              ^</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 557]
+2013-05-20 16:06:54 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  invalid input syntax for integer: "\x31"
+LINE 1: ...FROM "artigos" AS "Artigo"   WHERE "Artigo"."id" = '\x31'   
+                                                              ^ in [CORE/cake/libs/model/datasources/dbo/dbo_postgres.php, line 148]
+2013-05-20 16:06:54 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> ERROR:  invalid input syntax for integer: "\x31"
+LINE 1: ...FROM "artigos" AS "Artigo"   WHERE "Artigo"."id" = '\x31'   
+                                                              ^</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 557]
+2013-05-20 16:06:54 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  invalid input syntax for integer: "\x31"
+LINE 1: ...situacoes" AS "Situacao"   WHERE "Situacao"."id" = '\x31'   
+                                                              ^ in [CORE/cake/libs/model/datasources/dbo/dbo_postgres.php, line 148]
+2013-05-20 16:06:54 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> ERROR:  invalid input syntax for integer: "\x31"
+LINE 1: ...situacoes" AS "Situacao"   WHERE "Situacao"."id" = '\x31'   
+                                                              ^</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 557]
+2013-05-20 16:06:54 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  invalid input syntax for integer: "\x31"
+LINE 1: ...icao" FROM "tipos" AS "Tipo"   WHERE "Tipo"."id" = '\x31'   
+                                                              ^ in [CORE/cake/libs/model/datasources/dbo/dbo_postgres.php, line 148]
+2013-05-20 16:06:54 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> ERROR:  invalid input syntax for integer: "\x31"
+LINE 1: ...icao" FROM "tipos" AS "Tipo"   WHERE "Tipo"."id" = '\x31'   
+                                                              ^</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 557]
+2013-05-20 16:06:54 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  invalid input syntax for integer: "\x31"
+LINE 1: ...entos" AS "Mapeamento"   WHERE "Mapeamento"."id" = '\x31'   
+                                                              ^ in [CORE/cake/libs/model/datasources/dbo/dbo_postgres.php, line 148]
+2013-05-20 16:06:54 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> ERROR:  invalid input syntax for integer: "\x31"
+LINE 1: ...entos" AS "Mapeamento"   WHERE "Mapeamento"."id" = '\x31'   
+                                                              ^</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 557]
+2013-05-20 16:11:27 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  invalid input syntax for integer: "\x31"
+LINE 1: ...M "usuarios" AS "Usuario"   WHERE "Usuario"."id" = '\x31'   
+                                                              ^ in [CORE/cake/libs/model/datasources/dbo/dbo_postgres.php, line 148]
+2013-05-20 16:11:27 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> ERROR:  invalid input syntax for integer: "\x31"
+LINE 1: ...M "usuarios" AS "Usuario"   WHERE "Usuario"."id" = '\x31'   
+                                                              ^</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 557]
+2013-05-20 16:11:27 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  invalid input syntax for integer: "\x31"
+LINE 1: ...FROM "artigos" AS "Artigo"   WHERE "Artigo"."id" = '\x31'   
+                                                              ^ in [CORE/cake/libs/model/datasources/dbo/dbo_postgres.php, line 148]
+2013-05-20 16:11:27 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> ERROR:  invalid input syntax for integer: "\x31"
+LINE 1: ...FROM "artigos" AS "Artigo"   WHERE "Artigo"."id" = '\x31'   
+                                                              ^</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 557]
+2013-05-20 16:11:27 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  invalid input syntax for integer: "\x31"
+LINE 1: ...situacoes" AS "Situacao"   WHERE "Situacao"."id" = '\x31'   
+                                                              ^ in [CORE/cake/libs/model/datasources/dbo/dbo_postgres.php, line 148]
+2013-05-20 16:11:27 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> ERROR:  invalid input syntax for integer: "\x31"
+LINE 1: ...situacoes" AS "Situacao"   WHERE "Situacao"."id" = '\x31'   
+                                                              ^</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 557]
+2013-05-20 16:11:27 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  invalid input syntax for integer: "\x31"
+LINE 1: ...icao" FROM "tipos" AS "Tipo"   WHERE "Tipo"."id" = '\x31'   
+                                                              ^ in [CORE/cake/libs/model/datasources/dbo/dbo_postgres.php, line 148]
+2013-05-20 16:11:27 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> ERROR:  invalid input syntax for integer: "\x31"
+LINE 1: ...icao" FROM "tipos" AS "Tipo"   WHERE "Tipo"."id" = '\x31'   
+                                                              ^</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 557]
+2013-05-20 16:11:27 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  invalid input syntax for integer: "\x31"
+LINE 1: ...entos" AS "Mapeamento"   WHERE "Mapeamento"."id" = '\x31'   
+                                                              ^ in [CORE/cake/libs/model/datasources/dbo/dbo_postgres.php, line 148]
+2013-05-20 16:11:27 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> ERROR:  invalid input syntax for integer: "\x31"
+LINE 1: ...entos" AS "Mapeamento"   WHERE "Mapeamento"."id" = '\x31'   
+                                                              ^</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 557]
+2013-05-20 16:12:21 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  invalid input syntax for integer: "\x31"
+LINE 1: ...M "usuarios" AS "Usuario"   WHERE "Usuario"."id" = '\x31'   
+                                                              ^ in [CORE/cake/libs/model/datasources/dbo/dbo_postgres.php, line 148]
+2013-05-20 16:12:21 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> ERROR:  invalid input syntax for integer: "\x31"
+LINE 1: ...M "usuarios" AS "Usuario"   WHERE "Usuario"."id" = '\x31'   
+                                                              ^</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 557]
+2013-05-20 16:12:21 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  invalid input syntax for integer: "\x31"
+LINE 1: ...FROM "artigos" AS "Artigo"   WHERE "Artigo"."id" = '\x31'   
+                                                              ^ in [CORE/cake/libs/model/datasources/dbo/dbo_postgres.php, line 148]
+2013-05-20 16:12:21 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> ERROR:  invalid input syntax for integer: "\x31"
+LINE 1: ...FROM "artigos" AS "Artigo"   WHERE "Artigo"."id" = '\x31'   
+                                                              ^</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 557]
+2013-05-20 16:12:21 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  invalid input syntax for integer: "\x31"
+LINE 1: ...situacoes" AS "Situacao"   WHERE "Situacao"."id" = '\x31'   
+                                                              ^ in [CORE/cake/libs/model/datasources/dbo/dbo_postgres.php, line 148]
+2013-05-20 16:12:21 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> ERROR:  invalid input syntax for integer: "\x31"
+LINE 1: ...situacoes" AS "Situacao"   WHERE "Situacao"."id" = '\x31'   
+                                                              ^</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 557]
+2013-05-20 16:12:21 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  invalid input syntax for integer: "\x31"
+LINE 1: ...icao" FROM "tipos" AS "Tipo"   WHERE "Tipo"."id" = '\x31'   
+                                                              ^ in [CORE/cake/libs/model/datasources/dbo/dbo_postgres.php, line 148]
+2013-05-20 16:12:21 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> ERROR:  invalid input syntax for integer: "\x31"
+LINE 1: ...icao" FROM "tipos" AS "Tipo"   WHERE "Tipo"."id" = '\x31'   
+                                                              ^</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 557]
+2013-05-20 16:12:21 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  invalid input syntax for integer: "\x31"
+LINE 1: ...entos" AS "Mapeamento"   WHERE "Mapeamento"."id" = '\x31'   
+                                                              ^ in [CORE/cake/libs/model/datasources/dbo/dbo_postgres.php, line 148]
+2013-05-20 16:12:21 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> ERROR:  invalid input syntax for integer: "\x31"
+LINE 1: ...entos" AS "Mapeamento"   WHERE "Mapeamento"."id" = '\x31'   
+                                                              ^</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 557]
+2013-05-20 16:20:05 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  invalid input syntax for integer: "\x31"
+LINE 1: ...M "usuarios" AS "Usuario"   WHERE "Usuario"."id" = '\x31'   
+                                                              ^ in [CORE/cake/libs/model/datasources/dbo/dbo_postgres.php, line 148]
+2013-05-20 16:20:05 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> ERROR:  invalid input syntax for integer: "\x31"
+LINE 1: ...M "usuarios" AS "Usuario"   WHERE "Usuario"."id" = '\x31'   
+                                                              ^</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 557]
+2013-05-20 16:20:05 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  invalid input syntax for integer: "\x31"
+LINE 1: ...FROM "artigos" AS "Artigo"   WHERE "Artigo"."id" = '\x31'   
+                                                              ^ in [CORE/cake/libs/model/datasources/dbo/dbo_postgres.php, line 148]
+2013-05-20 16:20:05 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> ERROR:  invalid input syntax for integer: "\x31"
+LINE 1: ...FROM "artigos" AS "Artigo"   WHERE "Artigo"."id" = '\x31'   
+                                                              ^</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 557]
+2013-05-20 16:20:05 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  invalid input syntax for integer: "\x31"
+LINE 1: ...situacoes" AS "Situacao"   WHERE "Situacao"."id" = '\x31'   
+                                                              ^ in [CORE/cake/libs/model/datasources/dbo/dbo_postgres.php, line 148]
+2013-05-20 16:20:05 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> ERROR:  invalid input syntax for integer: "\x31"
+LINE 1: ...situacoes" AS "Situacao"   WHERE "Situacao"."id" = '\x31'   
+                                                              ^</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 557]
+2013-05-20 16:20:05 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  invalid input syntax for integer: "\x31"
+LINE 1: ...icao" FROM "tipos" AS "Tipo"   WHERE "Tipo"."id" = '\x31'   
+                                                              ^ in [CORE/cake/libs/model/datasources/dbo/dbo_postgres.php, line 148]
+2013-05-20 16:20:05 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> ERROR:  invalid input syntax for integer: "\x31"
+LINE 1: ...icao" FROM "tipos" AS "Tipo"   WHERE "Tipo"."id" = '\x31'   
+                                                              ^</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 557]
+2013-05-20 16:20:05 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  invalid input syntax for integer: "\x31"
+LINE 1: ...entos" AS "Mapeamento"   WHERE "Mapeamento"."id" = '\x31'   
+                                                              ^ in [CORE/cake/libs/model/datasources/dbo/dbo_postgres.php, line 148]
+2013-05-20 16:20:05 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> ERROR:  invalid input syntax for integer: "\x31"
+LINE 1: ...entos" AS "Mapeamento"   WHERE "Mapeamento"."id" = '\x31'   
+                                                              ^</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 557]
+2013-05-20 16:20:07 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  invalid input syntax for integer: "\x31"
+LINE 1: ...M "usuarios" AS "Usuario"   WHERE "Usuario"."id" = '\x31'   
+                                                              ^ in [CORE/cake/libs/model/datasources/dbo/dbo_postgres.php, line 148]
+2013-05-20 16:20:07 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> ERROR:  invalid input syntax for integer: "\x31"
+LINE 1: ...M "usuarios" AS "Usuario"   WHERE "Usuario"."id" = '\x31'   
+                                                              ^</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 557]
+2013-05-20 16:20:07 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  invalid input syntax for integer: "\x31"
+LINE 1: ...FROM "artigos" AS "Artigo"   WHERE "Artigo"."id" = '\x31'   
+                                                              ^ in [CORE/cake/libs/model/datasources/dbo/dbo_postgres.php, line 148]
+2013-05-20 16:20:07 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> ERROR:  invalid input syntax for integer: "\x31"
+LINE 1: ...FROM "artigos" AS "Artigo"   WHERE "Artigo"."id" = '\x31'   
+                                                              ^</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 557]
+2013-05-20 16:20:07 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  invalid input syntax for integer: "\x31"
+LINE 1: ...situacoes" AS "Situacao"   WHERE "Situacao"."id" = '\x31'   
+                                                              ^ in [CORE/cake/libs/model/datasources/dbo/dbo_postgres.php, line 148]
+2013-05-20 16:20:07 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> ERROR:  invalid input syntax for integer: "\x31"
+LINE 1: ...situacoes" AS "Situacao"   WHERE "Situacao"."id" = '\x31'   
+                                                              ^</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 557]
+2013-05-20 16:20:07 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  invalid input syntax for integer: "\x31"
+LINE 1: ...icao" FROM "tipos" AS "Tipo"   WHERE "Tipo"."id" = '\x31'   
+                                                              ^ in [CORE/cake/libs/model/datasources/dbo/dbo_postgres.php, line 148]
+2013-05-20 16:20:07 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> ERROR:  invalid input syntax for integer: "\x31"
+LINE 1: ...icao" FROM "tipos" AS "Tipo"   WHERE "Tipo"."id" = '\x31'   
+                                                              ^</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 557]
+2013-05-20 16:20:07 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  invalid input syntax for integer: "\x31"
+LINE 1: ...entos" AS "Mapeamento"   WHERE "Mapeamento"."id" = '\x31'   
+                                                              ^ in [CORE/cake/libs/model/datasources/dbo/dbo_postgres.php, line 148]
+2013-05-20 16:20:07 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> ERROR:  invalid input syntax for integer: "\x31"
+LINE 1: ...entos" AS "Mapeamento"   WHERE "Mapeamento"."id" = '\x31'   
+                                                              ^</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 557]
+2013-05-20 16:21:30 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  invalid input syntax for integer: "\x31"
+LINE 1: ...M "usuarios" AS "Usuario"   WHERE "Usuario"."id" = '\x31'   
+                                                              ^ in [CORE/cake/libs/model/datasources/dbo/dbo_postgres.php, line 148]
+2013-05-20 16:21:30 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> ERROR:  invalid input syntax for integer: "\x31"
+LINE 1: ...M "usuarios" AS "Usuario"   WHERE "Usuario"."id" = '\x31'   
+                                                              ^</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 557]
+2013-05-20 16:21:30 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  invalid input syntax for integer: "\x31"
+LINE 1: ...FROM "artigos" AS "Artigo"   WHERE "Artigo"."id" = '\x31'   
+                                                              ^ in [CORE/cake/libs/model/datasources/dbo/dbo_postgres.php, line 148]
+2013-05-20 16:21:30 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> ERROR:  invalid input syntax for integer: "\x31"
+LINE 1: ...FROM "artigos" AS "Artigo"   WHERE "Artigo"."id" = '\x31'   
+                                                              ^</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 557]
+2013-05-20 16:21:30 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  invalid input syntax for integer: "\x31"
+LINE 1: ...situacoes" AS "Situacao"   WHERE "Situacao"."id" = '\x31'   
+                                                              ^ in [CORE/cake/libs/model/datasources/dbo/dbo_postgres.php, line 148]
+2013-05-20 16:21:30 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> ERROR:  invalid input syntax for integer: "\x31"
+LINE 1: ...situacoes" AS "Situacao"   WHERE "Situacao"."id" = '\x31'   
+                                                              ^</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 557]
+2013-05-20 16:21:30 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  invalid input syntax for integer: "\x31"
+LINE 1: ...icao" FROM "tipos" AS "Tipo"   WHERE "Tipo"."id" = '\x31'   
+                                                              ^ in [CORE/cake/libs/model/datasources/dbo/dbo_postgres.php, line 148]
+2013-05-20 16:21:30 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> ERROR:  invalid input syntax for integer: "\x31"
+LINE 1: ...icao" FROM "tipos" AS "Tipo"   WHERE "Tipo"."id" = '\x31'   
+                                                              ^</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 557]
+2013-05-20 16:21:30 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  invalid input syntax for integer: "\x31"
+LINE 1: ...entos" AS "Mapeamento"   WHERE "Mapeamento"."id" = '\x31'   
+                                                              ^ in [CORE/cake/libs/model/datasources/dbo/dbo_postgres.php, line 148]
+2013-05-20 16:21:30 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> ERROR:  invalid input syntax for integer: "\x31"
+LINE 1: ...entos" AS "Mapeamento"   WHERE "Mapeamento"."id" = '\x31'   
+                                                              ^</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 557]
+2013-05-20 16:22:13 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  invalid input syntax for integer: "\x31"
+LINE 1: ...M "usuarios" AS "Usuario"   WHERE "Usuario"."id" = '\x31'   
+                                                              ^ in [CORE/cake/libs/model/datasources/dbo/dbo_postgres.php, line 148]
+2013-05-20 16:22:13 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> ERROR:  invalid input syntax for integer: "\x31"
+LINE 1: ...M "usuarios" AS "Usuario"   WHERE "Usuario"."id" = '\x31'   
+                                                              ^</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 557]
+2013-05-20 16:22:13 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  invalid input syntax for integer: "\x31"
+LINE 1: ...FROM "artigos" AS "Artigo"   WHERE "Artigo"."id" = '\x31'   
+                                                              ^ in [CORE/cake/libs/model/datasources/dbo/dbo_postgres.php, line 148]
+2013-05-20 16:22:13 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> ERROR:  invalid input syntax for integer: "\x31"
+LINE 1: ...FROM "artigos" AS "Artigo"   WHERE "Artigo"."id" = '\x31'   
+                                                              ^</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 557]
+2013-05-20 16:22:13 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  invalid input syntax for integer: "\x31"
+LINE 1: ...situacoes" AS "Situacao"   WHERE "Situacao"."id" = '\x31'   
+                                                              ^ in [CORE/cake/libs/model/datasources/dbo/dbo_postgres.php, line 148]
+2013-05-20 16:22:13 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> ERROR:  invalid input syntax for integer: "\x31"
+LINE 1: ...situacoes" AS "Situacao"   WHERE "Situacao"."id" = '\x31'   
+                                                              ^</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 557]
+2013-05-20 16:22:13 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  invalid input syntax for integer: "\x31"
+LINE 1: ...icao" FROM "tipos" AS "Tipo"   WHERE "Tipo"."id" = '\x31'   
+                                                              ^ in [CORE/cake/libs/model/datasources/dbo/dbo_postgres.php, line 148]
+2013-05-20 16:22:13 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> ERROR:  invalid input syntax for integer: "\x31"
+LINE 1: ...icao" FROM "tipos" AS "Tipo"   WHERE "Tipo"."id" = '\x31'   
+                                                              ^</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 557]
+2013-05-20 16:22:13 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  invalid input syntax for integer: "\x31"
+LINE 1: ...entos" AS "Mapeamento"   WHERE "Mapeamento"."id" = '\x31'   
+                                                              ^ in [CORE/cake/libs/model/datasources/dbo/dbo_postgres.php, line 148]
+2013-05-20 16:22:13 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> ERROR:  invalid input syntax for integer: "\x31"
+LINE 1: ...entos" AS "Mapeamento"   WHERE "Mapeamento"."id" = '\x31'   
+                                                              ^</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 557]
+2013-05-20 16:22:16 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  invalid input syntax for integer: "\x31"
+LINE 1: ...M "usuarios" AS "Usuario"   WHERE "Usuario"."id" = '\x31'   
+                                                              ^ in [CORE/cake/libs/model/datasources/dbo/dbo_postgres.php, line 148]
+2013-05-20 16:22:16 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> ERROR:  invalid input syntax for integer: "\x31"
+LINE 1: ...M "usuarios" AS "Usuario"   WHERE "Usuario"."id" = '\x31'   
+                                                              ^</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 557]
+2013-05-20 16:22:16 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  invalid input syntax for integer: "\x31"
+LINE 1: ...FROM "artigos" AS "Artigo"   WHERE "Artigo"."id" = '\x31'   
+                                                              ^ in [CORE/cake/libs/model/datasources/dbo/dbo_postgres.php, line 148]
+2013-05-20 16:22:16 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> ERROR:  invalid input syntax for integer: "\x31"
+LINE 1: ...FROM "artigos" AS "Artigo"   WHERE "Artigo"."id" = '\x31'   
+                                                              ^</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 557]
+2013-05-20 16:22:16 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  invalid input syntax for integer: "\x31"
+LINE 1: ...situacoes" AS "Situacao"   WHERE "Situacao"."id" = '\x31'   
+                                                              ^ in [CORE/cake/libs/model/datasources/dbo/dbo_postgres.php, line 148]
+2013-05-20 16:22:16 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> ERROR:  invalid input syntax for integer: "\x31"
+LINE 1: ...situacoes" AS "Situacao"   WHERE "Situacao"."id" = '\x31'   
+                                                              ^</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 557]
+2013-05-20 16:22:16 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  invalid input syntax for integer: "\x31"
+LINE 1: ...icao" FROM "tipos" AS "Tipo"   WHERE "Tipo"."id" = '\x31'   
+                                                              ^ in [CORE/cake/libs/model/datasources/dbo/dbo_postgres.php, line 148]
+2013-05-20 16:22:16 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> ERROR:  invalid input syntax for integer: "\x31"
+LINE 1: ...icao" FROM "tipos" AS "Tipo"   WHERE "Tipo"."id" = '\x31'   
+                                                              ^</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 557]
+2013-05-20 16:22:16 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  invalid input syntax for integer: "\x31"
+LINE 1: ...entos" AS "Mapeamento"   WHERE "Mapeamento"."id" = '\x31'   
+                                                              ^ in [CORE/cake/libs/model/datasources/dbo/dbo_postgres.php, line 148]
+2013-05-20 16:22:16 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> ERROR:  invalid input syntax for integer: "\x31"
+LINE 1: ...entos" AS "Mapeamento"   WHERE "Mapeamento"."id" = '\x31'   
+                                                              ^</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 557]
+2013-05-20 16:45:47 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  invalid input syntax for integer: "\x31"
+LINE 1: ...M "usuarios" AS "Usuario"   WHERE "Usuario"."id" = '\x31'   
+                                                              ^ in [CORE/cake/libs/model/datasources/dbo/dbo_postgres.php, line 148]
+2013-05-20 16:45:47 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> ERROR:  invalid input syntax for integer: "\x31"
+LINE 1: ...M "usuarios" AS "Usuario"   WHERE "Usuario"."id" = '\x31'   
+                                                              ^</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 557]
+2013-05-20 16:45:47 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  invalid input syntax for integer: "\x31"
+LINE 1: ...FROM "artigos" AS "Artigo"   WHERE "Artigo"."id" = '\x31'   
+                                                              ^ in [CORE/cake/libs/model/datasources/dbo/dbo_postgres.php, line 148]
+2013-05-20 16:45:47 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> ERROR:  invalid input syntax for integer: "\x31"
+LINE 1: ...FROM "artigos" AS "Artigo"   WHERE "Artigo"."id" = '\x31'   
+                                                              ^</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 557]
+2013-05-20 16:45:47 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  invalid input syntax for integer: "\x31"
+LINE 1: ...situacoes" AS "Situacao"   WHERE "Situacao"."id" = '\x31'   
+                                                              ^ in [CORE/cake/libs/model/datasources/dbo/dbo_postgres.php, line 148]
+2013-05-20 16:45:47 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> ERROR:  invalid input syntax for integer: "\x31"
+LINE 1: ...situacoes" AS "Situacao"   WHERE "Situacao"."id" = '\x31'   
+                                                              ^</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 557]
+2013-05-20 16:45:47 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  invalid input syntax for integer: "\x31"
+LINE 1: ...icao" FROM "tipos" AS "Tipo"   WHERE "Tipo"."id" = '\x31'   
+                                                              ^ in [CORE/cake/libs/model/datasources/dbo/dbo_postgres.php, line 148]
+2013-05-20 16:45:47 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> ERROR:  invalid input syntax for integer: "\x31"
+LINE 1: ...icao" FROM "tipos" AS "Tipo"   WHERE "Tipo"."id" = '\x31'   
+                                                              ^</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 557]
+2013-05-20 16:45:47 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  invalid input syntax for integer: "\x31"
+LINE 1: ...entos" AS "Mapeamento"   WHERE "Mapeamento"."id" = '\x31'   
+                                                              ^ in [CORE/cake/libs/model/datasources/dbo/dbo_postgres.php, line 148]
+2013-05-20 16:45:47 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> ERROR:  invalid input syntax for integer: "\x31"
+LINE 1: ...entos" AS "Mapeamento"   WHERE "Mapeamento"."id" = '\x31'   
+                                                              ^</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 557]
+2013-05-20 16:55:25 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  column Tipo.nome does not exist
+LINE 1: SELECT "Tipo"."id" AS "Tipo__id", "Tipo"."nome" AS "Tipo__no...
+                                          ^ in [CORE/cake/libs/model/datasources/dbo/dbo_postgres.php, line 148]
+2013-05-20 16:55:25 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> ERROR:  column Tipo.nome does not exist
+LINE 1: SELECT "Tipo"."id" AS "Tipo__id", "Tipo"."nome" AS "Tipo__no...
+                                          ^</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 525]
+2013-05-21 21:51:02 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  column Tipo.nome does not exist
+LINE 1: SELECT "Tipo"."id" AS "Tipo__id", "Tipo"."nome" AS "Tipo__no...
+                                          ^ in [CORE/cake/libs/model/datasources/dbo/dbo_postgres.php, line 148]
+2013-05-21 21:51:02 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> ERROR:  column Tipo.nome does not exist
+LINE 1: SELECT "Tipo"."id" AS "Tipo__id", "Tipo"."nome" AS "Tipo__no...
+                                          ^</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 525]
+2013-05-23 21:14:18 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  column Tipo.nome does not exist
+LINE 1: SELECT "Tipo"."id" AS "Tipo__id", "Tipo"."nome" AS "Tipo__no...
+                                          ^ in [CORE/cake/libs/model/datasources/dbo/dbo_postgres.php, line 148]
+2013-05-23 21:14:18 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> ERROR:  column Tipo.nome does not exist
+LINE 1: SELECT "Tipo"."id" AS "Tipo__id", "Tipo"."nome" AS "Tipo__no...
+                                          ^</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 525]
+2013-05-23 21:17:41 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  column Tipo.nome does not exist
+LINE 1: SELECT "Tipo"."id" AS "Tipo__id", "Tipo"."nome" AS "Tipo__no...
+                                          ^ in [CORE/cake/libs/model/datasources/dbo/dbo_postgres.php, line 148]
+2013-05-23 21:17:41 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> ERROR:  column Tipo.nome does not exist
+LINE 1: SELECT "Tipo"."id" AS "Tipo__id", "Tipo"."nome" AS "Tipo__no...
+                                          ^</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 525]
+2013-05-23 21:19:02 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  column Tipo.nome does not exist
+LINE 1: SELECT "Tipo"."id" AS "Tipo__id", "Tipo"."nome" AS "Tipo__no...
+                                          ^ in [CORE/cake/libs/model/datasources/dbo/dbo_postgres.php, line 148]
+2013-05-23 21:19:02 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> ERROR:  column Tipo.nome does not exist
+LINE 1: SELECT "Tipo"."id" AS "Tipo__id", "Tipo"."nome" AS "Tipo__no...
+                                          ^</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 525]
+2013-05-23 21:52:57 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  invalid input syntax for integer: "\x"
+LINE 1: ...ivosSelecao"   WHERE "MotivosSelecao"."selecao_id" = '\x'   
+                                                                ^ in [CORE/cake/libs/model/datasources/dbo/dbo_postgres.php, line 148]
+2013-05-23 21:52:57 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> ERROR:  invalid input syntax for integer: "\x"
+LINE 1: ...ivosSelecao"   WHERE "MotivosSelecao"."selecao_id" = '\x'   
+                                                                ^</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 525]
+2013-05-23 21:52:57 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  invalid input syntax for integer: "\x"
+LINE 1: ...tivos_selecoes" ("selecao_id","motivo_id") VALUES ('\x','2')
+                                                              ^ in [CORE/cake/libs/model/datasources/dbo/dbo_postgres.php, line 148]
+2013-05-23 21:52:57 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> ERROR:  invalid input syntax for integer: "\x"
+LINE 1: ...tivos_selecoes" ("selecao_id","motivo_id") VALUES ('\x','2')
+                                                              ^</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 525]
+2013-05-23 21:52:57 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  invalid input syntax for integer: "\x"
+LINE 1: ...tivos_selecoes" ("selecao_id","motivo_id") VALUES ('\x','4')
+                                                              ^ in [CORE/cake/libs/model/datasources/dbo/dbo_postgres.php, line 148]
+2013-05-23 21:52:57 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> ERROR:  invalid input syntax for integer: "\x"
+LINE 1: ...tivos_selecoes" ("selecao_id","motivo_id") VALUES ('\x','4')
+                                                              ^</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 525]
+2013-05-23 21:52:57 Warning: Warning (2): Cannot modify header information - headers already sent by (output started at /var/www/mapping/cake/basics.php:307) in [CORE/cake/libs/controller/controller.php, line 644]
+2013-05-23 21:56:31 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  invalid input syntax for integer: "\x"
+LINE 1: ...ivosSelecao"   WHERE "MotivosSelecao"."selecao_id" = '\x'   
+                                                                ^ in [CORE/cake/libs/model/datasources/dbo/dbo_postgres.php, line 148]
+2013-05-23 21:56:31 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> ERROR:  invalid input syntax for integer: "\x"
+LINE 1: ...ivosSelecao"   WHERE "MotivosSelecao"."selecao_id" = '\x'   
+                                                                ^</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 525]
+2013-05-23 21:56:31 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  invalid input syntax for integer: "\x"
+LINE 1: ...tivos_selecoes" ("selecao_id","motivo_id") VALUES ('\x','2')
+                                                              ^ in [CORE/cake/libs/model/datasources/dbo/dbo_postgres.php, line 148]
+2013-05-23 21:56:31 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> ERROR:  invalid input syntax for integer: "\x"
+LINE 1: ...tivos_selecoes" ("selecao_id","motivo_id") VALUES ('\x','2')
+                                                              ^</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 525]
+2013-05-23 21:56:31 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  invalid input syntax for integer: "\x"
+LINE 1: ...tivos_selecoes" ("selecao_id","motivo_id") VALUES ('\x','4')
+                                                              ^ in [CORE/cake/libs/model/datasources/dbo/dbo_postgres.php, line 148]
+2013-05-23 21:56:31 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> ERROR:  invalid input syntax for integer: "\x"
+LINE 1: ...tivos_selecoes" ("selecao_id","motivo_id") VALUES ('\x','4')
+                                                              ^</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 525]
+2013-05-23 21:56:31 Warning: Warning (2): Cannot modify header information - headers already sent by (output started at /var/www/mapping/cake/basics.php:307) in [CORE/cake/libs/controller/controller.php, line 644]
+2013-05-23 21:58:31 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  invalid input syntax for integer: "\x373737"
+LINE 1: ...O "selecoes" ("artigo_id", "situacao_id") VALUES ('\x373737'...
+                                                             ^ in [CORE/cake/libs/model/datasources/dbo/dbo_postgres.php, line 148]
+2013-05-23 21:58:31 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> ERROR:  invalid input syntax for integer: "\x373737"
+LINE 1: ...O "selecoes" ("artigo_id", "situacao_id") VALUES ('\x373737'...
+                                                             ^</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 525]
+2013-05-23 22:00:34 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  invalid input syntax for integer: "\x333434"
+LINE 1: ...O "selecoes" ("artigo_id", "situacao_id") VALUES ('\x333434'...
+                                                             ^ in [CORE/cake/libs/model/datasources/dbo/dbo_postgres.php, line 148]
+2013-05-23 22:00:34 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> ERROR:  invalid input syntax for integer: "\x333434"
+LINE 1: ...O "selecoes" ("artigo_id", "situacao_id") VALUES ('\x333434'...
+                                                             ^</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 525]
+2013-05-23 22:03:41 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  invalid input syntax for integer: "\x333434"
+LINE 1: ...O "selecoes" ("artigo_id", "situacao_id") VALUES ('\x333434'...
+                                                             ^ in [CORE/cake/libs/model/datasources/dbo/dbo_postgres.php, line 148]
+2013-05-23 22:03:41 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> ERROR:  invalid input syntax for integer: "\x333434"
+LINE 1: ...O "selecoes" ("artigo_id", "situacao_id") VALUES ('\x333434'...
+                                                             ^</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 525]
+2013-05-23 22:04:47 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  invalid input syntax for integer: "\x333434"
+LINE 1: ...O "selecoes" ("artigo_id", "situacao_id") VALUES ('\x333434'...
+                                                             ^ in [CORE/cake/libs/model/datasources/dbo/dbo_postgres.php, line 148]
+2013-05-23 22:04:47 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> ERROR:  invalid input syntax for integer: "\x333434"
+LINE 1: ...O "selecoes" ("artigo_id", "situacao_id") VALUES ('\x333434'...
+                                                             ^</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 525]
+2013-05-23 22:04:57 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  invalid input syntax for integer: "\x343434"
+LINE 1: ...O "selecoes" ("artigo_id", "situacao_id") VALUES ('\x343434'...
+                                                             ^ in [CORE/cake/libs/model/datasources/dbo/dbo_postgres.php, line 148]
+2013-05-23 22:04:57 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> ERROR:  invalid input syntax for integer: "\x343434"
+LINE 1: ...O "selecoes" ("artigo_id", "situacao_id") VALUES ('\x343434'...
+                                                             ^</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 525]
+2013-05-23 22:11:01 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  invalid input syntax for integer: "\x333331"
+LINE 1: ...O "selecoes" ("artigo_id", "situacao_id") VALUES ('\x333331'...
+                                                             ^ in [CORE/cake/libs/model/datasources/dbo/dbo_postgres.php, line 148]
+2013-05-23 22:11:01 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> ERROR:  invalid input syntax for integer: "\x333331"
+LINE 1: ...O "selecoes" ("artigo_id", "situacao_id") VALUES ('\x333331'...
+                                                             ^</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 525]
+2013-05-25 23:12:13 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  invalid input syntax for integer: "\x333331"
+LINE 1: ...O "selecoes" ("artigo_id", "situacao_id") VALUES ('\x333331'...
+                                                             ^ in [CORE/cake/libs/model/datasources/dbo/dbo_postgres.php, line 148]
+2013-05-25 23:12:13 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> ERROR:  invalid input syntax for integer: "\x333331"
+LINE 1: ...O "selecoes" ("artigo_id", "situacao_id") VALUES ('\x333331'...
+                                                             ^</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 525]
+2013-05-25 23:13:27 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  invalid input syntax for integer: "\x333331"
+LINE 1: ...O "selecoes" ("artigo_id", "situacao_id") VALUES ('\x333331'...
+                                                             ^ in [CORE/cake/libs/model/datasources/dbo/dbo_postgres.php, line 148]
+2013-05-25 23:13:27 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> ERROR:  invalid input syntax for integer: "\x333331"
+LINE 1: ...O "selecoes" ("artigo_id", "situacao_id") VALUES ('\x333331'...
+                                                             ^</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 525]
+2013-05-25 23:15:25 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  invalid input syntax for integer: "\x333331"
+LINE 1: ...O "selecoes" ("artigo_id", "situacao_id") VALUES ('\x333331'...
+                                                             ^ in [CORE/cake/libs/model/datasources/dbo/dbo_postgres.php, line 148]
+2013-05-25 23:15:25 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> ERROR:  invalid input syntax for integer: "\x333331"
+LINE 1: ...O "selecoes" ("artigo_id", "situacao_id") VALUES ('\x333331'...
+                                                             ^</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 525]
+2013-05-25 23:15:32 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  invalid input syntax for integer: "\x3132"
+LINE 1: ...O "selecoes" ("artigo_id", "situacao_id") VALUES ('\x3132', ...
+                                                             ^ in [CORE/cake/libs/model/datasources/dbo/dbo_postgres.php, line 148]
+2013-05-25 23:15:32 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> ERROR:  invalid input syntax for integer: "\x3132"
+LINE 1: ...O "selecoes" ("artigo_id", "situacao_id") VALUES ('\x3132', ...
+                                                             ^</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 525]
+2013-05-25 23:15:38 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  invalid input syntax for integer: "\x3132"
+LINE 1: ...O "selecoes" ("artigo_id", "situacao_id") VALUES ('\x3132', ...
+                                                             ^ in [CORE/cake/libs/model/datasources/dbo/dbo_postgres.php, line 148]
+2013-05-25 23:15:38 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> ERROR:  invalid input syntax for integer: "\x3132"
+LINE 1: ...O "selecoes" ("artigo_id", "situacao_id") VALUES ('\x3132', ...
+                                                             ^</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 525]
+2013-05-25 23:15:43 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  invalid input syntax for integer: "\x31"
+LINE 1: ...O "selecoes" ("artigo_id", "situacao_id") VALUES ('\x31', '\...
+                                                             ^ in [CORE/cake/libs/model/datasources/dbo/dbo_postgres.php, line 148]
+2013-05-25 23:15:43 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> ERROR:  invalid input syntax for integer: "\x31"
+LINE 1: ...O "selecoes" ("artigo_id", "situacao_id") VALUES ('\x31', '\...
+                                                             ^</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 525]
+2013-06-02 14:49:00 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  invalid input syntax for integer: "\x32"
+LINE 1: ...O "selecoes" ("artigo_id", "situacao_id") VALUES ('\x32', '\...
+                                                             ^ in [CORE/cake/libs/model/datasources/dbo/dbo_postgres.php, line 148]
+2013-06-02 14:49:00 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> ERROR:  invalid input syntax for integer: "\x32"
+LINE 1: ...O "selecoes" ("artigo_id", "situacao_id") VALUES ('\x32', '\...
+                                                             ^</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 525]
+2013-06-02 15:08:07 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  null value in column "id" violates not-null constraint in [CORE/cake/libs/model/datasources/dbo/dbo_postgres.php, line 148]
+2013-06-02 15:08:07 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> ERROR:  null value in column "id" violates not-null constraint</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 525]
+2013-06-02 15:11:20 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  null value in column "id" violates not-null constraint in [CORE/cake/libs/model/datasources/dbo/dbo_postgres.php, line 148]
+2013-06-02 15:11:20 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> ERROR:  null value in column "id" violates not-null constraint</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 525]
+2013-06-02 15:13:31 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  invalid input syntax for integer: "\x3636"
+LINE 1: ...O "selecoes" ("artigo_id", "situacao_id") VALUES ('\x3636', ...
+                                                             ^ in [CORE/cake/libs/model/datasources/dbo/dbo_postgres.php, line 148]
+2013-06-02 15:13:31 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> ERROR:  invalid input syntax for integer: "\x3636"
+LINE 1: ...O "selecoes" ("artigo_id", "situacao_id") VALUES ('\x3636', ...
+                                                             ^</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 525]
+2013-06-02 15:15:16 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  invalid input syntax for integer: "\x36"
+LINE 1: ...O "selecoes" ("artigo_id", "situacao_id") VALUES ('\x36', '\...
+                                                             ^ in [CORE/cake/libs/model/datasources/dbo/dbo_postgres.php, line 148]
+2013-06-02 15:15:16 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> ERROR:  invalid input syntax for integer: "\x36"
+LINE 1: ...O "selecoes" ("artigo_id", "situacao_id") VALUES ('\x36', '\...
+                                                             ^</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 525]
+2013-06-02 15:16:00 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  invalid input syntax for integer: "\x36"
+LINE 1: ...O "selecoes" ("artigo_id", "situacao_id") VALUES ('\x36', '\...
+                                                             ^ in [CORE/cake/libs/model/datasources/dbo/dbo_postgres.php, line 148]
+2013-06-02 15:16:00 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> ERROR:  invalid input syntax for integer: "\x36"
+LINE 1: ...O "selecoes" ("artigo_id", "situacao_id") VALUES ('\x36', '\...
+                                                             ^</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 525]
+2013-06-02 15:17:36 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  invalid input syntax for integer: "\x32"
+LINE 1: ...O "selecoes" ("artigo_id", "situacao_id") VALUES ('\x32', '\...
+                                                             ^ in [CORE/cake/libs/model/datasources/dbo/dbo_postgres.php, line 148]
+2013-06-02 15:17:36 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> ERROR:  invalid input syntax for integer: "\x32"
+LINE 1: ...O "selecoes" ("artigo_id", "situacao_id") VALUES ('\x32', '\...
+                                                             ^</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 525]
+2013-06-02 15:19:45 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  invalid input syntax for integer: "\x31"
+LINE 1: ...O "selecoes" ("artigo_id", "situacao_id") VALUES ('\x31', '\...
+                                                             ^ in [CORE/cake/libs/model/datasources/dbo/dbo_postgres.php, line 148]
+2013-06-02 15:19:45 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> ERROR:  invalid input syntax for integer: "\x31"
+LINE 1: ...O "selecoes" ("artigo_id", "situacao_id") VALUES ('\x31', '\...
+                                                             ^</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 525]
+2013-06-02 15:53:11 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> 1054: Unknown column 'Situacao.descricao' in 'field list'</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 525]
+2013-06-02 15:59:17 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> 1062: Duplicate entry '0' for key 'PRIMARY'</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 525]
+2013-06-02 18:08:45 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> 1062: Duplicate entry '0' for key 'PRIMARY'</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 525]
+2013-06-02 18:08:51 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> 1062: Duplicate entry '0' for key 'PRIMARY'</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 525]
+2013-06-02 18:18:37 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> 1062: Duplicate entry '0' for key 'PRIMARY'</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 525]
+2013-06-04 21:16:50 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> 1062: Duplicate entry '0' for key 'PRIMARY'</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 525]
+2013-06-04 21:39:11 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> 1054: Unknown column 'AcaoPerfil.perfil_id' in 'where clause'</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 525]
+2013-06-04 21:39:11 Warning: Warning (2): Cannot modify header information - headers already sent by (output started at /var/www/mapping/cake/basics.php:307) in [CORE/cake/libs/controller/controller.php, line 644]
+2013-06-04 21:42:28 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> 1054: Unknown column 'AcaoPerfil.perfil_id' in 'where clause'</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 525]
+2013-06-04 21:42:28 Warning: Warning (2): Cannot modify header information - headers already sent by (output started at /var/www/mapping/cake/basics.php:307) in [CORE/cake/libs/controller/controller.php, line 644]
+2013-06-04 21:43:18 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> 1054: Unknown column 'AcaoPerfil.perfil_id' in 'where clause'</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 525]
+2013-06-04 21:44:24 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> 1054: Unknown column 'AcaoPerfil.perfil_id' in 'where clause'</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 525]
+2013-06-04 21:44:24 Warning: Warning (2): Cannot modify header information - headers already sent by (output started at /var/www/mapping/cake/libs/debugger.php:512) in [CORE/cake/libs/controller/controller.php, line 644]
+2013-06-04 21:48:08 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'acoes_perfis AcaoPerfil INNER Array  WHERE `AcaoPerfil`.`perfil_id` = '1'   ORDE' at line 1</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 525]
+2013-06-04 21:48:08 Warning: Warning (2): Cannot modify header information - headers already sent by (output started at /var/www/mapping/cake/libs/debugger.php:501) in [CORE/cake/libs/controller/controller.php, line 644]
+2013-06-04 21:51:19 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'acoes_perfis AcaoPerfil INNER Array  WHERE `AcaoPerfil`.`perfil_id` = '1'   ORDE' at line 1</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 525]
+2013-06-04 21:51:19 Warning: Warning (2): Cannot modify header information - headers already sent by (output started at /var/www/mapping/cake/libs/debugger.php:501) in [CORE/cake/libs/controller/controller.php, line 644]
+2013-06-04 21:52:33 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'acoes_perfis AcaoPerfil INNER Array  WHERE `AcaoPerfil`.`perfil_id` = '1'   ORDE' at line 1</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 525]
+2013-06-04 21:53:57 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'acoes_perfis AcaoPerfil INNER Array  WHERE `AcaoPerfil`.`perfil_id` = '1'   ORDE' at line 1</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 525]
+2013-06-04 21:58:28 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'acoes_perfis AcaoPerfil INNER Array  WHERE `AcaoPerfil`.`perfil_id` = '1'   ORDE' at line 1</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 525]
+2013-06-04 21:58:35 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'acoes_perfis AcaoPerfil INNER Array  WHERE `AcaoPerfil`.`perfil_id` = '1'   ORDE' at line 1</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 525]
+2013-06-04 21:59:31 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'acoes_perfis AcaoPerfil INNER Acao.id = AcaoPerfil.acao_id  WHERE `AcaoPerfil`.`' at line 1</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 525]
+2013-06-04 22:01:44 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'acoes_perfis AcaoPerfil INNER Array  WHERE `AcaoPerfil`.`perfil_id` = '1'   ORDE' at line 1</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 525]
+2013-06-04 22:11:46 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> 1062: Duplicate entry '0' for key 'PRIMARY'</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 525]
+2013-06-04 22:17:29 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> 1054: Unknown column 'conditions' in 'where clause'</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 525]
+2013-06-04 22:17:29 Warning: Warning (2): Invalid argument supplied for foreach() in [APP/views/selecoes/index.ctp, line 88]
+2013-06-04 22:18:15 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> 1054: Unknown column 'conditions' in 'where clause'</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 525]
+2013-06-04 22:18:15 Warning: Warning (2): Invalid argument supplied for foreach() in [APP/views/selecoes/index.ctp, line 88]
+2013-06-04 22:18:16 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> 1054: Unknown column 'conditions' in 'where clause'</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 525]
+2013-06-04 22:18:16 Warning: Warning (2): Invalid argument supplied for foreach() in [APP/views/selecoes/index.ctp, line 88]
+2013-06-04 22:18:16 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> 1054: Unknown column 'conditions' in 'where clause'</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 525]
+2013-06-04 22:18:16 Warning: Warning (2): Invalid argument supplied for foreach() in [APP/views/selecoes/index.ctp, line 88]
+2013-06-04 22:18:24 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> 1054: Unknown column 'conditions' in 'where clause'</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 525]
+2013-06-04 22:18:24 Warning: Warning (2): Invalid argument supplied for foreach() in [APP/views/selecoes/index.ctp, line 88]
+2013-06-04 22:20:35 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> 1062: Duplicate entry '0' for key 'PRIMARY'</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 525]
+2013-06-05 00:04:34 Warning: Warning (2): date() expects parameter 2 to be long, string given in [APP/controllers/selecoes_controller.php, line 34]
+2013-06-05 00:04:34 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> 1062: Duplicate entry '0' for key 'PRIMARY'</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 525]
+2013-06-05 00:04:34 Warning: Warning (2): Cannot modify header information - headers already sent by (output started at /var/www/mapping/cake/basics.php:307) in [CORE/cake/libs/controller/controller.php, line 644]
+2013-06-05 00:06:56 Warning: Warning (2): date() expects parameter 2 to be long, string given in [APP/controllers/selecoes_controller.php, line 34]
+2013-06-05 00:06:56 Warning: Warning (512): <span style = "color:Red;text-align:left"><b>SQL Error:</b> 1062: Duplicate entry '0' for key 'PRIMARY'</span> in [CORE/cake/libs/model/datasources/dbo_source.php, line 525]
+2013-06-05 00:06:56 Warning: Warning (2): Cannot modify header information - headers already sent by (output started at /var/www/mapping/cake/basics.php:307) in [CORE/cake/libs/controller/controller.php, line 644]
+2013-06-05 00:09:44 Warning: Warning (2): date() expects parameter 2 to be long, string given in [APP/controllers/selecoes_controller.php, line 34]
+2013-06-06 21:10:47 Warning: Warning (2): mysql_connect() [http://php.net/function.mysql-connect]: Host 'srv12.main-hosting.eu' is not allowed to connect to this MySQL server in [CORE/cake/libs/model/datasources/dbo/dbo_mysql.php, line 374]
+2013-06-06 21:10:47 Warning: Warning (2): mysql_select_db() expects parameter 2 to be resource, boolean given in [CORE/cake/libs/model/datasources/dbo/dbo_mysql.php, line 379]
+2013-06-06 21:10:47 Warning: Warning (2): mysql_query() expects parameter 2 to be resource, boolean given in [CORE/cake/libs/model/datasources/dbo/dbo_mysql.php, line 411]
+2013-06-06 21:10:47 Warning: Warning (2): mysql_get_server_info() expects parameter 1 to be resource, boolean given in [CORE/cake/libs/model/datasources/dbo/dbo_mysql.php, line 387]

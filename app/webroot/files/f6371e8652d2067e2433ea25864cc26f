@@ -1,0 +1,1162 @@
+2010-05-05 16:39:59 ERROR  : ERRO:  inserção ou atualização em tabela "grupos_acessos_permissoes" viola restrição de chave estrangeira "grupos_acessos_permissoes_permissoes_fk"
+DETAIL:  Chave (permissao_id)=(165) não está presente na tabela "permissoes".
+2010-05-05 16:40:02 ERROR  : ERRO:  inserção ou atualização em tabela "grupos_acessos_permissoes" viola restrição de chave estrangeira "grupos_acessos_permissoes_permissoes_fk"
+DETAIL:  Chave (permissao_id)=(165) não está presente na tabela "permissoes".
+2010-05-06 14:04:30 ERROR  : Error connecting to the server: FATAL:  autenticação do tipo password falhou para usuário "postgres"
+
+2010-05-06 16:04:56 ERROR  : Error connecting to the server: FATAL:  autenticação do tipo password falhou para usuário "postgres"
+
+2010-05-06 17:31:47 ERROR  : ERRO:  não pode remover banco de dados que se encontra aberto
+2010-05-07 13:17:20 ERROR  : Error connecting to the server: FATAL:  autenticação do tipo password falhou para usuário "postgres"
+
+2010-05-07 13:48:36 ERROR  : ERRO:  atualização ou exclusão em tabela "permissoes" viola restrição de chave estrangeira "grupos_acessos_permissoes_permissoes_fk" em "grupos_acessos_permissoes"
+DETAIL:  Chave (id)=(170) ainda é referenciada pela tabela "grupos_acessos_permissoes".
+2010-05-07 13:48:40 ERROR  : ERRO:  erro de sintaxe no fim da entrada
+LINE 1: DELETE FROM public.grupos_acessos_permissoes WHERE 
+                                                           ^
+2010-05-07 13:54:15 ERROR  : ERRO:  não pôde criar índice único "justificativas_uk"
+DETAIL:  Tabela contém valores duplicados.
+2010-05-10 13:41:47 ERROR  : ERRO:  atualização ou exclusão em tabela "alocacao_tempos" viola restrição de chave estrangeira "alocacao_tempos_regentsai_alocacao_tempos" em "alocacao_tempos_registros_entradas_saidas"
+DETAIL:  Chave (id)=(28) ainda é referenciada pela tabela "alocacao_tempos_registros_entradas_saidas".
+2010-05-10 13:41:51 ERROR  : ERRO:  atualização ou exclusão em tabela "alocacao_tempos" viola restrição de chave estrangeira "alocacao_tempos_regentsai_alocacao_tempos" em "alocacao_tempos_registros_entradas_saidas"
+DETAIL:  Chave (id)=(27) ainda é referenciada pela tabela "alocacao_tempos_registros_entradas_saidas".
+2010-05-10 14:46:22 ERROR  : ERRO:  valor nulo na coluna "ativo" viola a restrição não-nula
+2010-05-10 14:47:07 ERROR  : ERRO:  valor nulo na coluna "ativo" viola a restrição não-nula
+2010-05-11 13:31:22 ERROR  : Error connecting to the server: FATAL:  autenticação do tipo password falhou para usuário "postgres"
+
+2010-05-11 17:15:08 ERROR  : ERRO:  erro de sintaxe em ou próximo a "1"
+LINE 1: 1 SELECT "RegistrosEntradasSaida"."id" AS "RegistrosEntradas...
+        ^
+2010-05-12 14:39:52 ERROR  : ERRO:  coluna "data" contém valores nulos
+2010-05-12 14:40:08 ERROR  : ERRO:  coluna "data" contém valores nulos
+2010-05-12 14:40:17 ERROR  : ERRO:  coluna "data" contém valores nulos
+2010-05-12 14:53:12 ERROR  : ERRO:  relação "registros_entradas_saidas" já existe
+2010-05-12 16:19:46 ERROR  : ERRO:  duplicar valor da chave viola a restrição de unicidade "registros_entradas_saidas_uk"
+2010-05-12 16:19:48 ERROR  : ERRO:  duplicar valor da chave viola a restrição de unicidade "registros_entradas_saidas_uk"
+2010-05-12 16:19:53 ERROR  : ERRO:  duplicar valor da chave viola a restrição de unicidade "registros_entradas_saidas_uk"
+2010-05-12 16:20:09 ERROR  : ERRO:  duplicar valor da chave viola a restrição de unicidade "registros_entradas_saidas_uk"
+2010-05-12 16:20:48 ERROR  : ERRO:  duplicar valor da chave viola a restrição de unicidade "registros_entradas_saidas_uk"
+2010-05-12 16:20:51 ERROR  : ERRO:  duplicar valor da chave viola a restrição de unicidade "registros_entradas_saidas_uk"
+2010-05-12 16:54:13 ERROR  : ERRO:  erro de sintaxe em ou próximo a "'select distinct aloc.*
+                                from alocacao_tempos_registros_entradas_saidas atres
+                                inner join alocacao_tempos aloc
+                                on (atres.alocacao_tempo_id = aloc.id )
+                                where atres.registros_entradas_saida_id = 29 and aloc.ativo = true'"
+LINE 1: 'select distinct aloc.*
+        ^
+2010-05-12 16:56:11 ERROR  : ERRO:  faltando entrada para tabela "aloc" na cláusula FROM
+LINE 1: select distinct aloc.*
+                        ^
+2010-05-12 16:56:12 ERROR  : ERRO:  faltando entrada para tabela "aloc" na cláusula FROM
+LINE 1: select distinct aloc.*
+                        ^
+2010-05-12 16:56:12 ERROR  : ERRO:  faltando entrada para tabela "aloc" na cláusula FROM
+LINE 1: select distinct aloc.*
+                        ^
+2010-05-12 16:56:27 ERROR  : ERRO:  faltando entrada para tabela "aloc" na cláusula FROM
+LINE 3: ... where atres.registros_entradas_saida_id = 29 and aloc.ativo...
+                                                             ^
+2010-05-12 16:56:28 ERROR  : ERRO:  faltando entrada para tabela "aloc" na cláusula FROM
+LINE 3: ... where atres.registros_entradas_saida_id = 29 and aloc.ativo...
+                                                             ^
+2010-05-12 16:56:28 ERROR  : ERRO:  faltando entrada para tabela "aloc" na cláusula FROM
+LINE 3: ... where atres.registros_entradas_saida_id = 29 and aloc.ativo...
+                                                             ^
+2010-05-13 15:01:49 ERROR  : ERRO:  operador não existe: date = integer
+LINE 11: ...                                  where aloc.data = 05/03/20...
+                                                              ^
+HINT:  Nenhum operador corresponde com o nome e o(s) tipo(s) de argumento(s) informados. Você precisa adicionar conversões de tipo explícitas.
+2010-05-13 15:02:02 ERROR  : ERRO:  coluna "05/03/2010" não existe
+LINE 11: ...                                where aloc.data = "05/03/201...
+                                                              ^
+2010-05-13 15:02:23 ERROR  : ERRO:  coluna "05-13-2010" não existe
+LINE 11: ...                                where aloc.data = "05-13-201...
+                                                              ^
+2010-05-13 15:02:25 ERROR  : ERRO:  coluna "05-13-2010" não existe
+LINE 11: ...                                where aloc.data = "05-13-201...
+                                                              ^
+2010-05-13 15:02:43 ERROR  : ERRO:  coluna "2010-05-13" não existe
+LINE 11: ...                                where aloc.data = "2010-05-1...
+                                                              ^
+2010-05-13 15:02:45 ERROR  : ERRO:  coluna "2010-05-13" não existe
+LINE 11: ...                                where aloc.data = "2010-05-1...
+                                                              ^
+2010-05-13 15:02:45 ERROR  : ERRO:  coluna "2010-05-13" não existe
+LINE 11: ...                                where aloc.data = "2010-05-1...
+                                                              ^
+2010-05-13 15:02:54 ERROR  : ERRO:  operador não existe: date = integer
+LINE 11: ...                                  where aloc.data = 2010-05-...
+                                                              ^
+HINT:  Nenhum operador corresponde com o nome e o(s) tipo(s) de argumento(s) informados. Você precisa adicionar conversões de tipo explícitas.
+2010-05-13 15:02:59 ERROR  : ERRO:  operador não existe: # integer
+LINE 11: ...                                where aloc.data = #2010-05-1...
+                                                              ^
+HINT:  Nenhum operador corresponde com o nome e o(s) tipo(s) de argumento(s) informados. Você precisa adicionar conversões de tipo explícitas.
+2010-05-13 15:03:07 ERROR  : ERRO:  operador não existe: date = integer
+LINE 11: ...                                  where aloc.data = 2010-05-...
+                                                              ^
+HINT:  Nenhum operador corresponde com o nome e o(s) tipo(s) de argumento(s) informados. Você precisa adicionar conversões de tipo explícitas.
+2010-05-13 15:03:08 ERROR  : ERRO:  operador não existe: date = integer
+LINE 11: ...                                  where aloc.data = 2010-05-...
+                                                              ^
+HINT:  Nenhum operador corresponde com o nome e o(s) tipo(s) de argumento(s) informados. Você precisa adicionar conversões de tipo explícitas.
+2010-05-13 15:03:18 ERROR  : ERRO:  coluna "2010-05-13" não existe
+LINE 11: ...                                where aloc.data = "2010-05-1...
+                                                              ^
+2010-05-13 15:05:49 ERROR  : ERRO:  coluna "2010-05-13" não existe
+LINE 11: ...                                where aloc.data = "2010-05-1...
+                                                              ^
+2010-05-13 15:32:41 ERROR  : ERRO:  faltando entrada para tabela "recursos" na cláusula FROM
+LINE 1: select recursos.nome
+               ^
+2010-05-13 15:35:36 ERROR  : ERRO:  erro de sintaxe em ou próximo a "r"
+LINE 1: select r.nome as recurso r
+                                 ^
+2010-05-18 15:07:29 ERROR  : ERRO:  erro de sintaxe em ou próximo a "in"
+LINE 4: where in (select * from setores where id = 1)
+              ^
+2010-05-18 15:07:36 ERROR  : ERRO:  erro de sintaxe em ou próximo a "in"
+LINE 4: where not in (select * from setores where id = 1)
+                  ^
+2010-05-18 15:07:37 ERROR  : ERRO:  erro de sintaxe em ou próximo a "in"
+LINE 4: where not in (select * from setores where id = 1)
+                  ^
+2010-05-18 15:09:01 ERROR  : ERRO:  erro de sintaxe em ou próximo a "in"
+LINE 4: where in (select * from setores where id = 1)
+              ^
+2010-05-18 15:09:02 ERROR  : ERRO:  erro de sintaxe em ou próximo a "in"
+LINE 4: where in (select * from setores where id = 1)
+              ^
+2010-05-18 15:09:02 ERROR  : ERRO:  erro de sintaxe em ou próximo a "in"
+LINE 4: where in (select * from setores where id = 1)
+              ^
+2010-05-18 15:09:03 ERROR  : ERRO:  erro de sintaxe em ou próximo a "in"
+LINE 4: where in (select * from setores where id = 1)
+              ^
+2010-05-18 15:09:03 ERROR  : ERRO:  erro de sintaxe em ou próximo a "in"
+LINE 4: where in (select * from setores where id = 1)
+              ^
+2010-05-18 15:09:03 ERROR  : ERRO:  erro de sintaxe em ou próximo a "in"
+LINE 4: where in (select * from setores where id = 1)
+              ^
+2010-05-18 15:14:25 ERROR  : ERRO:  faltando entrada para tabela "s" na cláusula FROM
+LINE 6:                                 order by s.nome
+                                                 ^
+2010-05-18 15:14:33 ERROR  : ERRO:  coluna "nome" não existe
+LINE 6:                                 order by nome
+                                                 ^
+2010-05-18 15:14:34 ERROR  : ERRO:  coluna "nome" não existe
+LINE 6:                                 order by nome
+                                                 ^
+2010-05-18 15:14:34 ERROR  : ERRO:  coluna "nome" não existe
+LINE 6:                                 order by nome
+                                                 ^
+2010-05-18 15:14:56 ERROR  : ERRO:  posição 3 do ORDER BY não está na lista de seleção
+LINE 6:                                 order by 3
+                                                 ^
+2010-05-18 16:53:48 ERROR  : ERRO:  duplicar valor da chave viola a restrição de unicidade "permissoes_uk"
+2010-05-20 13:46:28 ERROR  : Error connecting to the server: FATAL:  autenticação do tipo password falhou para usuário "postgres"
+
+2010-05-20 13:54:02 ERROR  : ERRO:  referência à coluna "data" é ambígua
+LINE 7:  data = '2010-05-18'
+         ^
+2010-05-20 14:21:12 ERROR  : ERRO:  referência à coluna "data" é ambígua
+LINE 10:                                         data = 2010-05-08
+                                                 ^
+2010-05-20 14:21:15 ERROR  : ERRO:  referência à coluna "data" é ambígua
+LINE 10:                                         data = 2010-05-08
+                                                 ^
+2010-05-20 14:21:28 ERROR  : ERRO:  operador não existe: date = integer
+LINE 10:                                         res.data = 2010-05-0...
+                                                          ^
+HINT:  Nenhum operador corresponde com o nome e o(s) tipo(s) de argumento(s) informados. Você precisa adicionar conversões de tipo explícitas.
+2010-05-20 14:41:13 ERROR  : ERRO:  coluna j.tipo_jutificativa_id não existe
+LINE 5:  tipo_justificativas tj on (j.tipo_jutificativa_id = tf.id)
+                                    ^
+2010-05-20 14:41:39 ERROR  : ERRO:  coluna j.jutificativa_id não existe
+LINE 5:  tipo_justificativas tj on (j.jutificativa_id = tf.id)
+                                    ^
+2010-05-20 14:41:45 ERROR  : ERRO:  coluna j.justificativa_id não existe
+LINE 5:  tipo_justificativas tj on (j.justificativa_id = tf.id)
+                                    ^
+2010-05-20 14:41:50 ERROR  : ERRO:  faltando entrada para tabela "tf" na cláusula FROM
+LINE 5:  tipo_justificativas tj on (j.tipo_justificativa_id = tf.id)
+                                                              ^
+2010-05-20 14:42:33 ERROR  : ERRO:  faltando entrada para tabela "jtj" na cláusula FROM
+LINE 1: select jtj.sigla
+               ^
+2010-05-20 16:35:34 ERROR  : ERRO:  linguagem "plpgsql" já existe
+2010-05-21 15:55:09 ERROR  : ERRO:  atualização ou exclusão em tabela "recursos" viola restrição de chave estrangeira "empresas_recursos_recursos_fk" em "empresas_recursos"
+DETAIL:  Chave (id)=(19) ainda é referenciada pela tabela "empresas_recursos".
+2010-05-21 15:55:51 ERROR  : ERRO:  atualização ou exclusão em tabela "recursos" viola restrição de chave estrangeira "empresas_recursos_recursos_fk" em "empresas_recursos"
+DETAIL:  Chave (id)=(19) ainda é referenciada pela tabela "empresas_recursos".
+2010-05-21 15:57:02 ERROR  : ERRO:  atualização ou exclusão em tabela "recursos" viola restrição de chave estrangeira "empresas_recursos_recursos_fk" em "empresas_recursos"
+DETAIL:  Chave (id)=(19) ainda é referenciada pela tabela "empresas_recursos".
+2010-05-21 15:57:28 ERROR  : ERRO:  atualização ou exclusão em tabela "recursos" viola restrição de chave estrangeira "empresas_recursos_recursos_fk" em "empresas_recursos"
+DETAIL:  Chave (id)=(19) ainda é referenciada pela tabela "empresas_recursos".
+2010-05-21 15:58:09 ERROR  : ERRO:  atualização ou exclusão em tabela "recursos" viola restrição de chave estrangeira "recursos_setores_recursos_fk" em "recursos_setores"
+DETAIL:  Chave (id)=(19) ainda é referenciada pela tabela "recursos_setores".
+2010-05-25 15:21:50 ERROR  : ERRO:  duplicar valor da chave viola a restrição de unicidade "recursos_setores_uk"
+2010-05-25 15:21:51 ERROR  : ERRO:  duplicar valor da chave viola a restrição de unicidade "recursos_setores_uk"
+2010-05-26 16:01:00 ERROR  : ERRO:  atualização ou exclusão em tabela "empresas_recursos" viola restrição de chave estrangeira "custos_empresas_recursos_fk" em "custos"
+DETAIL:  Chave (id)=(9) ainda é referenciada pela tabela "custos".
+2010-05-26 16:01:02 ERROR  : ERRO:  atualização ou exclusão em tabela "empresas_recursos" viola restrição de chave estrangeira "custos_empresas_recursos_fk" em "custos"
+DETAIL:  Chave (id)=(6) ainda é referenciada pela tabela "custos".
+2010-05-26 16:13:48 ERROR  : Error connecting to the server: FATAL:  autenticação do tipo password falhou para usuário "postgres"
+
+2010-05-26 16:15:12 ERROR  : Error connecting to the server: FATAL:  autenticação do tipo password falhou para usuário "postgres"
+
+2010-05-27 13:36:40 ERROR  : ERRO:  atualização ou exclusão em tabela "recursos" viola restrição de chave estrangeira "atv_proj_pap_rec_rec_fk" em "atividades_projetos_papeis_recursos"
+DETAIL:  Chave (id)=(6) ainda é referenciada pela tabela "atividades_projetos_papeis_recursos".
+2010-05-31 13:52:39 ERROR  : ERRO:  atualização ou exclusão em tabela "justificativas" viola restrição de chave estrangeira "regentsai_justificativas_fk" em "registros_entradas_saidas"
+DETAIL:  Chave (id)=(19) ainda é referenciada pela tabela "registros_entradas_saidas".
+2010-05-31 13:52:44 ERROR  : ERRO:  atualização ou exclusão em tabela "justificativas" viola restrição de chave estrangeira "regentsai_justificativas_fk" em "registros_entradas_saidas"
+DETAIL:  Chave (id)=(13) ainda é referenciada pela tabela "registros_entradas_saidas".
+2010-05-31 13:52:45 ERROR  : ERRO:  atualização ou exclusão em tabela "justificativas" viola restrição de chave estrangeira "regentsai_justificativas_fk" em "registros_entradas_saidas"
+DETAIL:  Chave (id)=(11) ainda é referenciada pela tabela "registros_entradas_saidas".
+2010-05-31 13:52:46 ERROR  : ERRO:  atualização ou exclusão em tabela "justificativas" viola restrição de chave estrangeira "regentsai_justificativas_fk" em "registros_entradas_saidas"
+DETAIL:  Chave (id)=(10) ainda é referenciada pela tabela "registros_entradas_saidas".
+2010-05-31 13:52:46 ERROR  : ERRO:  atualização ou exclusão em tabela "justificativas" viola restrição de chave estrangeira "regentsai_justificativas_fk" em "registros_entradas_saidas"
+DETAIL:  Chave (id)=(9) ainda é referenciada pela tabela "registros_entradas_saidas".
+2010-05-31 16:09:35 ERROR  : ERRO:  erro de sintaxe em ou próximo a "$"
+LINE 7:             where r.id = $recurso and er.data_desligamento i...
+                                 ^
+2010-05-31 16:09:46 ERROR  : ERRO:  erro de sintaxe em ou próximo a "$"
+LINE 15:             where r.id = $recurso and er.data_desligamento i...
+                                  ^
+2010-05-31 16:09:47 ERROR  : ERRO:  erro de sintaxe em ou próximo a "$"
+LINE 15:             where r.id = $recurso and er.data_desligamento i...
+                                  ^
+2010-05-31 16:09:47 ERROR  : ERRO:  erro de sintaxe em ou próximo a "$"
+LINE 15:             where r.id = $recurso and er.data_desligamento i...
+                                  ^
+2010-05-31 16:09:48 ERROR  : ERRO:  erro de sintaxe em ou próximo a "$"
+LINE 15:             where r.id = $recurso and er.data_desligamento i...
+                                  ^
+2010-05-31 16:09:48 ERROR  : ERRO:  erro de sintaxe em ou próximo a "$"
+LINE 15:             where r.id = $recurso and er.data_desligamento i...
+                                  ^
+2010-05-31 16:09:48 ERROR  : ERRO:  erro de sintaxe em ou próximo a "$"
+LINE 15:             where r.id = $recurso and er.data_desligamento i...
+                                  ^
+2010-05-31 16:09:48 ERROR  : ERRO:  erro de sintaxe em ou próximo a "$"
+LINE 15:             where r.id = $recurso and er.data_desligamento i...
+                                  ^
+2010-05-31 16:09:49 ERROR  : ERRO:  erro de sintaxe em ou próximo a "$"
+LINE 15:             where r.id = $recurso and er.data_desligamento i...
+                                  ^
+2010-05-31 16:09:49 ERROR  : ERRO:  erro de sintaxe em ou próximo a "$"
+LINE 15:             where r.id = $recurso and er.data_desligamento i...
+                                  ^
+2010-06-01 14:24:41 ERROR  : ERRO:  erro de sintaxe em ou próximo a "auto_increment"
+LINE 2: Id int not null auto_increment primary key,
+                        ^
+2010-06-01 14:25:12 ERROR  : ERRO:  erro de sintaxe em ou próximo a "int"
+LINE 2: Id serial int not null,
+                  ^
+2010-06-01 14:25:21 ERROR  : ERRO:  erro de sintaxe em ou próximo a ")"
+LINE 5: );
+        ^
+2010-06-01 14:26:28 ERROR  : ERRO:  erro de sintaxe em ou próximo a "ALTER"
+LINE 11: ALTER TABLE cidades OWNER TO postgres;
+         ^
+2010-06-01 14:28:00 ERROR  : ERRO:  erro de sintaxe em ou próximo a "("
+LINE 2: ALTER TABLE cidades add constraint (cidades_pk) primary key ...
+                                           ^
+2010-06-01 14:30:36 ERROR  : ERRO:  chaves primárias múltiplas na tabela "cidades" não são permitidas
+2010-06-01 14:30:38 ERROR  : ERRO:  chaves primárias múltiplas na tabela "cidades" não são permitidas
+2010-06-01 14:30:38 ERROR  : ERRO:  chaves primárias múltiplas na tabela "cidades" não são permitidas
+2010-06-02 16:32:02 ERROR  : ERROR:  duplicate key violates unique constraint "permissoes_pk"
+2010-06-02 16:34:12 ERROR  : ERROR:  duplicate key violates unique constraint "grupos_acessos_permissoes_pk"
+2010-06-02 16:37:31 ERROR  : ERROR:  duplicate key violates unique constraint "setores_pk"
+2010-06-07 14:40:21 ERROR  : ERROR:  syntax error at or near "where"
+LINE 5: where
+        ^
+2010-06-09 14:09:28 ERROR  : ERROR:  column "usuario_interno" contains null values
+2010-06-09 14:10:28 ERROR  : ERROR:  syntax error at or near "not"
+LINE 1: ALTER TABLE recursos alter COLUMN usuario_interno not null
+                                                          ^
+2010-06-09 14:10:42 ERROR  : ERROR:  syntax error at or near "boolean"
+LINE 1: ALTER TABLE recursos alter COLUMN usuario_interno boolean no...
+                                                          ^
+2010-06-09 14:10:51 ERROR  : ERROR:  syntax error at or near "boolean"
+LINE 1: ALTER TABLE recursos alter usuario_interno boolean not null
+                                                   ^
+2010-06-09 14:10:56 ERROR  : ERROR:  syntax error at or near "not"
+LINE 1: ALTER TABLE recursos alter usuario_interno not null
+                                                   ^
+2010-06-10 15:03:44 ERROR  : ERROR:  cannot change number of columns in view
+2010-06-10 15:04:12 ERROR  : ERROR:  relation "vw_custos_adicionais" already exists
+2010-06-10 15:04:47 ERROR  : ERROR:  syntax error at or near "CREATE"
+LINE 2: CREATE VIEW vw_custos_adicionais AS 
+        ^
+2010-06-10 15:05:35 ERROR  : ERROR:  relation "vw_custos_adicionais" does not exist
+2010-06-16 13:49:34 ERROR  : ERROR:  syntax error at or near "select"
+LINE 2: select * from custos
+        ^
+2010-06-16 17:39:07 ERROR  : ERRO:  banco de dados "teste" já existe
+2010-06-18 15:06:13 ERROR  : ERROR:  syntax error at or near "'%deletar%'"
+LINE 1: select * from permissoes where like '%deletar%'
+                                            ^
+2010-06-18 15:06:20 ERROR  : ERROR:  syntax error at or near "%"
+LINE 1: select * from permissoes where like %'deletar'%
+                                            ^
+2010-06-18 15:06:29 ERROR  : ERROR:  syntax error at or near "nome"
+LINE 1: select * from permissoes where like nome '%deletar%'
+                                            ^
+2010-06-21 15:40:35 ERROR  : ERROR:  update or delete on table "atividades" violates foreign key constraint "atividades_templates_atividades_fk" on table "atividades_templates"
+DETAIL:  Key (id)=(20) is still referenced from table "atividades_templates".
+2010-06-21 15:40:35 ERROR  : ERROR:  update or delete on table "atividades" violates foreign key constraint "atividades_atividades_fk" on table "atividades"
+DETAIL:  Key (id)=(19) is still referenced from table "atividades".
+2010-06-21 15:40:38 ERROR  : ERROR:  update or delete on table "atividades" violates foreign key constraint "atividades_templates_atividades_fk" on table "atividades_templates"
+DETAIL:  Key (id)=(17) is still referenced from table "atividades_templates".
+2010-06-21 15:40:38 ERROR  : ERROR:  update or delete on table "atividades" violates foreign key constraint "atividades_atividades_fk" on table "atividades"
+DETAIL:  Key (id)=(16) is still referenced from table "atividades".
+2010-06-21 15:41:15 ERROR  : ERROR:  update or delete on table "atividades_templates" violates foreign key constraint "atividades_templates_papeis_recursos_atividades_templates_fk" on table "atividades_templates_papeis"
+DETAIL:  Key (id)=(62) is still referenced from table "atividades_templates_papeis".
+2010-06-21 15:41:16 ERROR  : ERROR:  update or delete on table "atividades_templates" violates foreign key constraint "atividades_templates_papeis_recursos_atividades_templates_fk" on table "atividades_templates_papeis"
+DETAIL:  Key (id)=(61) is still referenced from table "atividades_templates_papeis".
+2010-06-21 15:41:17 ERROR  : ERROR:  update or delete on table "atividades_templates" violates foreign key constraint "atividades_templates_papeis_recursos_atividades_templates_fk" on table "atividades_templates_papeis"
+DETAIL:  Key (id)=(60) is still referenced from table "atividades_templates_papeis".
+2010-06-21 15:41:17 ERROR  : ERROR:  update or delete on table "atividades_templates" violates foreign key constraint "atividades_templates_papeis_recursos_atividades_templates_fk" on table "atividades_templates_papeis"
+DETAIL:  Key (id)=(59) is still referenced from table "atividades_templates_papeis".
+2010-06-21 15:41:17 ERROR  : ERROR:  update or delete on table "atividades_templates" violates foreign key constraint "atividades_templates_papeis_recursos_atividades_templates_fk" on table "atividades_templates_papeis"
+DETAIL:  Key (id)=(58) is still referenced from table "atividades_templates_papeis".
+2010-07-05 15:19:33 ERROR  : ERROR:  update or delete on table "atividades_projetos_papeis" violates foreign key constraint "atv_proj_pap_rec_atv_proj_pap_fk" on table "atividades_projetos_papeis_recursos"
+DETAIL:  Key (id)=(13) is still referenced from table "atividades_projetos_papeis_recursos".
+2010-07-05 15:19:36 ERROR  : ERROR:  update or delete on table "atividades_projetos_papeis" violates foreign key constraint "atv_proj_pap_rec_atv_proj_pap_fk" on table "atividades_projetos_papeis_recursos"
+DETAIL:  Key (id)=(7) is still referenced from table "atividades_projetos_papeis_recursos".
+2010-07-05 15:20:02 ERROR  : ERROR:  update or delete on table "atividades_projetos" violates foreign key constraint "atividades_projetos_papeis_atividades_projetos_fk" on table "atividades_projetos_papeis"
+DETAIL:  Key (id)=(12) is still referenced from table "atividades_projetos_papeis".
+2010-07-05 15:20:04 ERROR  : ERROR:  update or delete on table "atividades_projetos" violates foreign key constraint "atividades_projetos_papeis_atividades_projetos_fk" on table "atividades_projetos_papeis"
+DETAIL:  Key (id)=(6) is still referenced from table "atividades_projetos_papeis".
+2010-07-05 15:20:12 ERROR  : ERROR:  update or delete on table "atividades_projetos_papeis" violates foreign key constraint "atv_proj_pap_rec_atv_proj_pap_fk" on table "atividades_projetos_papeis_recursos"
+DETAIL:  Key (id)=(13) is still referenced from table "atividades_projetos_papeis_recursos".
+2010-07-05 15:20:13 ERROR  : ERROR:  update or delete on table "atividades_projetos_papeis" violates foreign key constraint "atv_proj_pap_rec_atv_proj_pap_fk" on table "atividades_projetos_papeis_recursos"
+DETAIL:  Key (id)=(7) is still referenced from table "atividades_projetos_papeis_recursos".
+2010-07-05 15:29:49 ERROR  : ERROR:  update or delete on table "atividades_projetos" violates foreign key constraint "atividades_projetos_papeis_atividades_projetos_fk" on table "atividades_projetos_papeis"
+DETAIL:  Key (id)=(12) is still referenced from table "atividades_projetos_papeis".
+2010-07-05 15:30:29 ERROR  : ERROR:  update or delete on table "atividades_projetos" violates foreign key constraint "atividades_projetos_papeis_atividades_projetos_fk" on table "atividades_projetos_papeis"
+DETAIL:  Key (id)=(12) is still referenced from table "atividades_projetos_papeis".
+2010-07-05 15:30:37 ERROR  : ERROR:  update or delete on table "atividades_projetos" violates foreign key constraint "atividades_projetos_papeis_atividades_projetos_fk" on table "atividades_projetos_papeis"
+DETAIL:  Key (id)=(6) is still referenced from table "atividades_projetos_papeis".
+2010-07-05 15:30:50 ERROR  : ERROR:  update or delete on table "atividades_projetos_papeis" violates foreign key constraint "atv_proj_pap_rec_atv_proj_pap_fk" on table "atividades_projetos_papeis_recursos"
+DETAIL:  Key (id)=(13) is still referenced from table "atividades_projetos_papeis_recursos".
+2010-07-05 15:49:05 ERROR  : ERROR:  update or delete on table "atividades_projetos" violates foreign key constraint "atividades_projetos_papeis_atividades_projetos_fk" on table "atividades_projetos_papeis"
+DETAIL:  Key (id)=(72) is still referenced from table "atividades_projetos_papeis".
+2010-07-05 15:49:23 ERROR  : ERROR:  update or delete on table "atividades_projetos" violates foreign key constraint "atividades_projetos_papeis_atividades_projetos_fk" on table "atividades_projetos_papeis"
+DETAIL:  Key (id)=(14) is still referenced from table "atividades_projetos_papeis".
+2010-07-05 15:50:07 ERROR  : ERROR:  update or delete on table "atividades_projetos" violates foreign key constraint "atividades_projetos_papeis_atividades_projetos_fk" on table "atividades_projetos_papeis"
+DETAIL:  Key (id)=(76) is still referenced from table "atividades_projetos_papeis".
+2010-07-05 15:50:10 ERROR  : ERROR:  update or delete on table "atividades_projetos" violates foreign key constraint "atividades_projetos_papeis_atividades_projetos_fk" on table "atividades_projetos_papeis"
+DETAIL:  Key (id)=(75) is still referenced from table "atividades_projetos_papeis".
+2010-07-05 15:50:11 ERROR  : ERROR:  update or delete on table "atividades_projetos" violates foreign key constraint "atividades_projetos_papeis_atividades_projetos_fk" on table "atividades_projetos_papeis"
+DETAIL:  Key (id)=(74) is still referenced from table "atividades_projetos_papeis".
+2010-07-05 15:50:12 ERROR  : ERROR:  update or delete on table "atividades_projetos" violates foreign key constraint "atividades_projetos_papeis_atividades_projetos_fk" on table "atividades_projetos_papeis"
+DETAIL:  Key (id)=(73) is still referenced from table "atividades_projetos_papeis".
+2010-07-05 15:50:12 ERROR  : ERROR:  update or delete on table "atividades_projetos" violates foreign key constraint "atividades_projetos_papeis_atividades_projetos_fk" on table "atividades_projetos_papeis"
+DETAIL:  Key (id)=(71) is still referenced from table "atividades_projetos_papeis".
+2010-07-05 15:50:12 ERROR  : ERROR:  update or delete on table "atividades_projetos" violates foreign key constraint "atividades_projetos_papeis_atividades_projetos_fk" on table "atividades_projetos_papeis"
+DETAIL:  Key (id)=(40) is still referenced from table "atividades_projetos_papeis".
+2010-07-05 15:50:12 ERROR  : ERROR:  update or delete on table "atividades_projetos" violates foreign key constraint "atividades_projetos_papeis_atividades_projetos_fk" on table "atividades_projetos_papeis"
+DETAIL:  Key (id)=(36) is still referenced from table "atividades_projetos_papeis".
+2010-07-05 15:50:13 ERROR  : ERROR:  update or delete on table "atividades_projetos" violates foreign key constraint "atividades_projetos_papeis_atividades_projetos_fk" on table "atividades_projetos_papeis"
+DETAIL:  Key (id)=(35) is still referenced from table "atividades_projetos_papeis".
+2010-07-05 15:50:13 ERROR  : ERROR:  update or delete on table "atividades_projetos" violates foreign key constraint "atividades_projetos_papeis_atividades_projetos_fk" on table "atividades_projetos_papeis"
+DETAIL:  Key (id)=(34) is still referenced from table "atividades_projetos_papeis".
+2010-07-05 15:50:13 ERROR  : ERROR:  update or delete on table "atividades_projetos" violates foreign key constraint "atividades_projetos_papeis_atividades_projetos_fk" on table "atividades_projetos_papeis"
+DETAIL:  Key (id)=(33) is still referenced from table "atividades_projetos_papeis".
+2010-07-05 15:50:13 ERROR  : ERROR:  update or delete on table "atividades_projetos" violates foreign key constraint "atividades_projetos_papeis_atividades_projetos_fk" on table "atividades_projetos_papeis"
+DETAIL:  Key (id)=(31) is still referenced from table "atividades_projetos_papeis".
+2010-07-05 15:50:13 ERROR  : ERROR:  update or delete on table "atividades_projetos" violates foreign key constraint "atividades_projetos_papeis_atividades_projetos_fk" on table "atividades_projetos_papeis"
+DETAIL:  Key (id)=(28) is still referenced from table "atividades_projetos_papeis".
+2010-07-05 15:50:13 ERROR  : ERROR:  update or delete on table "atividades_projetos" violates foreign key constraint "atividades_projetos_papeis_atividades_projetos_fk" on table "atividades_projetos_papeis"
+DETAIL:  Key (id)=(27) is still referenced from table "atividades_projetos_papeis".
+2010-07-05 15:50:13 ERROR  : ERROR:  update or delete on table "atividades_projetos" violates foreign key constraint "atividades_projetos_papeis_atividades_projetos_fk" on table "atividades_projetos_papeis"
+DETAIL:  Key (id)=(26) is still referenced from table "atividades_projetos_papeis".
+2010-07-05 15:50:13 ERROR  : ERROR:  update or delete on table "atividades_projetos" violates foreign key constraint "atividades_projetos_papeis_atividades_projetos_fk" on table "atividades_projetos_papeis"
+DETAIL:  Key (id)=(25) is still referenced from table "atividades_projetos_papeis".
+2010-07-05 15:50:13 ERROR  : ERROR:  update or delete on table "atividades_projetos" violates foreign key constraint "atividades_projetos_papeis_atividades_projetos_fk" on table "atividades_projetos_papeis"
+DETAIL:  Key (id)=(22) is still referenced from table "atividades_projetos_papeis".
+2010-07-05 15:50:14 ERROR  : ERROR:  update or delete on table "atividades_projetos" violates foreign key constraint "atividades_projetos_papeis_atividades_projetos_fk" on table "atividades_projetos_papeis"
+DETAIL:  Key (id)=(14) is still referenced from table "atividades_projetos_papeis".
+2010-07-05 15:58:24 ERROR  : ERRO:  atualização ou exclusão em tabela "atividades_projetos" viola restrição de chave estrangeira "atividades_projetos_papeis_atividades_projetos_fk" em "atividades_projetos_papeis"
+DETAIL:  Chave (id)=(82) ainda é referenciada pela tabela "atividades_projetos_papeis".
+2010-07-05 15:58:25 ERROR  : ERRO:  atualização ou exclusão em tabela "atividades_projetos" viola restrição de chave estrangeira "atividades_projetos_papeis_atividades_projetos_fk" em "atividades_projetos_papeis"
+DETAIL:  Chave (id)=(81) ainda é referenciada pela tabela "atividades_projetos_papeis".
+2010-07-05 15:58:25 ERROR  : ERRO:  atualização ou exclusão em tabela "atividades_projetos" viola restrição de chave estrangeira "atividades_projetos_papeis_atividades_projetos_fk" em "atividades_projetos_papeis"
+DETAIL:  Chave (id)=(80) ainda é referenciada pela tabela "atividades_projetos_papeis".
+2010-07-05 15:58:25 ERROR  : ERRO:  atualização ou exclusão em tabela "atividades_projetos" viola restrição de chave estrangeira "atividades_projetos_papeis_atividades_projetos_fk" em "atividades_projetos_papeis"
+DETAIL:  Chave (id)=(79) ainda é referenciada pela tabela "atividades_projetos_papeis".
+2010-07-05 15:58:30 ERROR  : ERRO:  atualização ou exclusão em tabela "atividades_projetos" viola restrição de chave estrangeira "atividades_projetos_papeis_atividades_projetos_fk" em "atividades_projetos_papeis"
+DETAIL:  Chave (id)=(78) ainda é referenciada pela tabela "atividades_projetos_papeis".
+2010-07-05 15:58:30 ERROR  : ERRO:  atualização ou exclusão em tabela "atividades_projetos" viola restrição de chave estrangeira "atividades_projetos_papeis_atividades_projetos_fk" em "atividades_projetos_papeis"
+DETAIL:  Chave (id)=(77) ainda é referenciada pela tabela "atividades_projetos_papeis".
+2010-07-05 15:58:30 ERROR  : ERRO:  atualização ou exclusão em tabela "atividades_projetos" viola restrição de chave estrangeira "atividades_projetos_papeis_atividades_projetos_fk" em "atividades_projetos_papeis"
+DETAIL:  Chave (id)=(76) ainda é referenciada pela tabela "atividades_projetos_papeis".
+2010-07-05 15:58:30 ERROR  : ERRO:  atualização ou exclusão em tabela "atividades_projetos" viola restrição de chave estrangeira "atividades_projetos_papeis_atividades_projetos_fk" em "atividades_projetos_papeis"
+DETAIL:  Chave (id)=(75) ainda é referenciada pela tabela "atividades_projetos_papeis".
+2010-07-05 15:58:30 ERROR  : ERRO:  atualização ou exclusão em tabela "atividades_projetos" viola restrição de chave estrangeira "atividades_projetos_papeis_atividades_projetos_fk" em "atividades_projetos_papeis"
+DETAIL:  Chave (id)=(74) ainda é referenciada pela tabela "atividades_projetos_papeis".
+2010-07-05 15:58:30 ERROR  : ERRO:  atualização ou exclusão em tabela "atividades_projetos" viola restrição de chave estrangeira "atividades_projetos_papeis_atividades_projetos_fk" em "atividades_projetos_papeis"
+DETAIL:  Chave (id)=(73) ainda é referenciada pela tabela "atividades_projetos_papeis".
+2010-07-05 15:58:31 ERROR  : ERRO:  atualização ou exclusão em tabela "atividades_projetos" viola restrição de chave estrangeira "atividades_projetos_papeis_atividades_projetos_fk" em "atividades_projetos_papeis"
+DETAIL:  Chave (id)=(72) ainda é referenciada pela tabela "atividades_projetos_papeis".
+2010-07-05 15:58:31 ERROR  : ERRO:  atualização ou exclusão em tabela "atividades_projetos" viola restrição de chave estrangeira "atividades_projetos_papeis_atividades_projetos_fk" em "atividades_projetos_papeis"
+DETAIL:  Chave (id)=(71) ainda é referenciada pela tabela "atividades_projetos_papeis".
+2010-07-05 15:58:31 ERROR  : ERRO:  atualização ou exclusão em tabela "atividades_projetos" viola restrição de chave estrangeira "atividades_projetos_papeis_atividades_projetos_fk" em "atividades_projetos_papeis"
+DETAIL:  Chave (id)=(70) ainda é referenciada pela tabela "atividades_projetos_papeis".
+2010-07-05 15:58:31 ERROR  : ERRO:  atualização ou exclusão em tabela "atividades_projetos" viola restrição de chave estrangeira "atividades_projetos_papeis_atividades_projetos_fk" em "atividades_projetos_papeis"
+DETAIL:  Chave (id)=(69) ainda é referenciada pela tabela "atividades_projetos_papeis".
+2010-07-05 15:58:31 ERROR  : ERRO:  atualização ou exclusão em tabela "atividades_projetos" viola restrição de chave estrangeira "atividades_projetos_papeis_atividades_projetos_fk" em "atividades_projetos_papeis"
+DETAIL:  Chave (id)=(68) ainda é referenciada pela tabela "atividades_projetos_papeis".
+2010-07-05 15:58:31 ERROR  : ERRO:  atualização ou exclusão em tabela "atividades_projetos" viola restrição de chave estrangeira "atividades_projetos_papeis_atividades_projetos_fk" em "atividades_projetos_papeis"
+DETAIL:  Chave (id)=(67) ainda é referenciada pela tabela "atividades_projetos_papeis".
+2010-07-05 15:58:31 ERROR  : ERRO:  atualização ou exclusão em tabela "atividades_projetos" viola restrição de chave estrangeira "atividades_projetos_papeis_atividades_projetos_fk" em "atividades_projetos_papeis"
+DETAIL:  Chave (id)=(66) ainda é referenciada pela tabela "atividades_projetos_papeis".
+2010-07-05 15:58:31 ERROR  : ERRO:  atualização ou exclusão em tabela "atividades_projetos" viola restrição de chave estrangeira "atividades_projetos_papeis_atividades_projetos_fk" em "atividades_projetos_papeis"
+DETAIL:  Chave (id)=(65) ainda é referenciada pela tabela "atividades_projetos_papeis".
+2010-07-05 15:58:31 ERROR  : ERRO:  atualização ou exclusão em tabela "atividades_projetos" viola restrição de chave estrangeira "atividades_projetos_papeis_atividades_projetos_fk" em "atividades_projetos_papeis"
+DETAIL:  Chave (id)=(64) ainda é referenciada pela tabela "atividades_projetos_papeis".
+2010-07-05 15:58:31 ERROR  : ERRO:  atualização ou exclusão em tabela "atividades_projetos" viola restrição de chave estrangeira "atividades_projetos_papeis_atividades_projetos_fk" em "atividades_projetos_papeis"
+DETAIL:  Chave (id)=(63) ainda é referenciada pela tabela "atividades_projetos_papeis".
+2010-07-05 15:58:31 ERROR  : ERRO:  atualização ou exclusão em tabela "atividades_projetos" viola restrição de chave estrangeira "atividades_projetos_papeis_atividades_projetos_fk" em "atividades_projetos_papeis"
+DETAIL:  Chave (id)=(62) ainda é referenciada pela tabela "atividades_projetos_papeis".
+2010-07-05 15:58:31 ERROR  : ERRO:  atualização ou exclusão em tabela "atividades_projetos" viola restrição de chave estrangeira "atividades_projetos_papeis_atividades_projetos_fk" em "atividades_projetos_papeis"
+DETAIL:  Chave (id)=(61) ainda é referenciada pela tabela "atividades_projetos_papeis".
+2010-07-05 15:58:31 ERROR  : ERRO:  atualização ou exclusão em tabela "atividades_projetos" viola restrição de chave estrangeira "atividades_projetos_papeis_atividades_projetos_fk" em "atividades_projetos_papeis"
+DETAIL:  Chave (id)=(60) ainda é referenciada pela tabela "atividades_projetos_papeis".
+2010-07-05 15:58:31 ERROR  : ERRO:  atualização ou exclusão em tabela "atividades_projetos" viola restrição de chave estrangeira "atividades_projetos_papeis_atividades_projetos_fk" em "atividades_projetos_papeis"
+DETAIL:  Chave (id)=(59) ainda é referenciada pela tabela "atividades_projetos_papeis".
+2010-07-05 15:58:31 ERROR  : ERRO:  atualização ou exclusão em tabela "atividades_projetos" viola restrição de chave estrangeira "atividades_projetos_papeis_atividades_projetos_fk" em "atividades_projetos_papeis"
+DETAIL:  Chave (id)=(58) ainda é referenciada pela tabela "atividades_projetos_papeis".
+2010-07-05 15:58:31 ERROR  : ERRO:  atualização ou exclusão em tabela "atividades_projetos" viola restrição de chave estrangeira "atividades_projetos_papeis_atividades_projetos_fk" em "atividades_projetos_papeis"
+DETAIL:  Chave (id)=(57) ainda é referenciada pela tabela "atividades_projetos_papeis".
+2010-07-05 15:58:31 ERROR  : ERRO:  atualização ou exclusão em tabela "atividades_projetos" viola restrição de chave estrangeira "atividades_projetos_papeis_atividades_projetos_fk" em "atividades_projetos_papeis"
+DETAIL:  Chave (id)=(56) ainda é referenciada pela tabela "atividades_projetos_papeis".
+2010-07-05 15:58:31 ERROR  : ERRO:  atualização ou exclusão em tabela "atividades_projetos" viola restrição de chave estrangeira "atividades_projetos_papeis_atividades_projetos_fk" em "atividades_projetos_papeis"
+DETAIL:  Chave (id)=(55) ainda é referenciada pela tabela "atividades_projetos_papeis".
+2010-07-05 15:58:31 ERROR  : ERRO:  atualização ou exclusão em tabela "atividades_projetos" viola restrição de chave estrangeira "atividades_projetos_papeis_atividades_projetos_fk" em "atividades_projetos_papeis"
+DETAIL:  Chave (id)=(54) ainda é referenciada pela tabela "atividades_projetos_papeis".
+2010-07-05 15:58:31 ERROR  : ERRO:  atualização ou exclusão em tabela "atividades_projetos" viola restrição de chave estrangeira "atividades_projetos_papeis_atividades_projetos_fk" em "atividades_projetos_papeis"
+DETAIL:  Chave (id)=(53) ainda é referenciada pela tabela "atividades_projetos_papeis".
+2010-07-05 15:58:31 ERROR  : ERRO:  atualização ou exclusão em tabela "atividades_projetos" viola restrição de chave estrangeira "atividades_projetos_papeis_atividades_projetos_fk" em "atividades_projetos_papeis"
+DETAIL:  Chave (id)=(52) ainda é referenciada pela tabela "atividades_projetos_papeis".
+2010-07-05 15:58:31 ERROR  : ERRO:  atualização ou exclusão em tabela "atividades_projetos" viola restrição de chave estrangeira "atividades_projetos_papeis_atividades_projetos_fk" em "atividades_projetos_papeis"
+DETAIL:  Chave (id)=(51) ainda é referenciada pela tabela "atividades_projetos_papeis".
+2010-07-05 15:58:31 ERROR  : ERRO:  atualização ou exclusão em tabela "atividades_projetos" viola restrição de chave estrangeira "atividades_projetos_papeis_atividades_projetos_fk" em "atividades_projetos_papeis"
+DETAIL:  Chave (id)=(50) ainda é referenciada pela tabela "atividades_projetos_papeis".
+2010-07-05 15:58:31 ERROR  : ERRO:  atualização ou exclusão em tabela "atividades_projetos" viola restrição de chave estrangeira "atividades_projetos_papeis_atividades_projetos_fk" em "atividades_projetos_papeis"
+DETAIL:  Chave (id)=(49) ainda é referenciada pela tabela "atividades_projetos_papeis".
+2010-07-05 15:58:31 ERROR  : ERRO:  atualização ou exclusão em tabela "atividades_projetos" viola restrição de chave estrangeira "atividades_projetos_papeis_atividades_projetos_fk" em "atividades_projetos_papeis"
+DETAIL:  Chave (id)=(48) ainda é referenciada pela tabela "atividades_projetos_papeis".
+2010-07-05 15:58:31 ERROR  : ERRO:  atualização ou exclusão em tabela "atividades_projetos" viola restrição de chave estrangeira "atividades_projetos_papeis_atividades_projetos_fk" em "atividades_projetos_papeis"
+DETAIL:  Chave (id)=(47) ainda é referenciada pela tabela "atividades_projetos_papeis".
+2010-07-05 15:58:31 ERROR  : ERRO:  atualização ou exclusão em tabela "atividades_projetos" viola restrição de chave estrangeira "atividades_projetos_papeis_atividades_projetos_fk" em "atividades_projetos_papeis"
+DETAIL:  Chave (id)=(46) ainda é referenciada pela tabela "atividades_projetos_papeis".
+2010-07-05 15:58:32 ERROR  : ERRO:  atualização ou exclusão em tabela "atividades_projetos" viola restrição de chave estrangeira "atividades_projetos_papeis_atividades_projetos_fk" em "atividades_projetos_papeis"
+DETAIL:  Chave (id)=(45) ainda é referenciada pela tabela "atividades_projetos_papeis".
+2010-07-05 15:58:32 ERROR  : ERRO:  atualização ou exclusão em tabela "atividades_projetos" viola restrição de chave estrangeira "atividades_projetos_papeis_atividades_projetos_fk" em "atividades_projetos_papeis"
+DETAIL:  Chave (id)=(44) ainda é referenciada pela tabela "atividades_projetos_papeis".
+2010-07-05 15:58:32 ERROR  : ERRO:  atualização ou exclusão em tabela "atividades_projetos" viola restrição de chave estrangeira "atividades_projetos_papeis_atividades_projetos_fk" em "atividades_projetos_papeis"
+DETAIL:  Chave (id)=(43) ainda é referenciada pela tabela "atividades_projetos_papeis".
+2010-07-05 15:58:32 ERROR  : ERRO:  atualização ou exclusão em tabela "atividades_projetos" viola restrição de chave estrangeira "atividades_projetos_papeis_atividades_projetos_fk" em "atividades_projetos_papeis"
+DETAIL:  Chave (id)=(42) ainda é referenciada pela tabela "atividades_projetos_papeis".
+2010-07-05 15:58:32 ERROR  : ERRO:  atualização ou exclusão em tabela "atividades_projetos" viola restrição de chave estrangeira "atividades_projetos_papeis_atividades_projetos_fk" em "atividades_projetos_papeis"
+DETAIL:  Chave (id)=(41) ainda é referenciada pela tabela "atividades_projetos_papeis".
+2010-07-05 15:58:32 ERROR  : ERRO:  atualização ou exclusão em tabela "atividades_projetos" viola restrição de chave estrangeira "atividades_projetos_papeis_atividades_projetos_fk" em "atividades_projetos_papeis"
+DETAIL:  Chave (id)=(40) ainda é referenciada pela tabela "atividades_projetos_papeis".
+2010-07-05 15:58:32 ERROR  : ERRO:  atualização ou exclusão em tabela "atividades_projetos" viola restrição de chave estrangeira "atividades_projetos_papeis_atividades_projetos_fk" em "atividades_projetos_papeis"
+DETAIL:  Chave (id)=(39) ainda é referenciada pela tabela "atividades_projetos_papeis".
+2010-07-05 15:58:32 ERROR  : ERRO:  atualização ou exclusão em tabela "atividades_projetos" viola restrição de chave estrangeira "atividades_projetos_papeis_atividades_projetos_fk" em "atividades_projetos_papeis"
+DETAIL:  Chave (id)=(38) ainda é referenciada pela tabela "atividades_projetos_papeis".
+2010-07-05 15:58:32 ERROR  : ERRO:  atualização ou exclusão em tabela "atividades_projetos" viola restrição de chave estrangeira "atividades_projetos_papeis_atividades_projetos_fk" em "atividades_projetos_papeis"
+DETAIL:  Chave (id)=(37) ainda é referenciada pela tabela "atividades_projetos_papeis".
+2010-07-05 15:58:32 ERROR  : ERRO:  atualização ou exclusão em tabela "atividades_projetos" viola restrição de chave estrangeira "atividades_projetos_papeis_atividades_projetos_fk" em "atividades_projetos_papeis"
+DETAIL:  Chave (id)=(36) ainda é referenciada pela tabela "atividades_projetos_papeis".
+2010-07-05 15:58:32 ERROR  : ERRO:  atualização ou exclusão em tabela "atividades_projetos" viola restrição de chave estrangeira "atividades_projetos_papeis_atividades_projetos_fk" em "atividades_projetos_papeis"
+DETAIL:  Chave (id)=(35) ainda é referenciada pela tabela "atividades_projetos_papeis".
+2010-07-05 15:58:32 ERROR  : ERRO:  atualização ou exclusão em tabela "atividades_projetos" viola restrição de chave estrangeira "atividades_projetos_papeis_atividades_projetos_fk" em "atividades_projetos_papeis"
+DETAIL:  Chave (id)=(34) ainda é referenciada pela tabela "atividades_projetos_papeis".
+2010-07-05 15:58:32 ERROR  : ERRO:  atualização ou exclusão em tabela "atividades_projetos" viola restrição de chave estrangeira "atividades_projetos_papeis_atividades_projetos_fk" em "atividades_projetos_papeis"
+DETAIL:  Chave (id)=(33) ainda é referenciada pela tabela "atividades_projetos_papeis".
+2010-07-05 15:58:32 ERROR  : ERRO:  atualização ou exclusão em tabela "atividades_projetos" viola restrição de chave estrangeira "atividades_projetos_papeis_atividades_projetos_fk" em "atividades_projetos_papeis"
+DETAIL:  Chave (id)=(32) ainda é referenciada pela tabela "atividades_projetos_papeis".
+2010-07-05 15:58:32 ERROR  : ERRO:  atualização ou exclusão em tabela "atividades_projetos" viola restrição de chave estrangeira "atividades_projetos_papeis_atividades_projetos_fk" em "atividades_projetos_papeis"
+DETAIL:  Chave (id)=(31) ainda é referenciada pela tabela "atividades_projetos_papeis".
+2010-07-05 15:58:32 ERROR  : ERRO:  atualização ou exclusão em tabela "atividades_projetos" viola restrição de chave estrangeira "atividades_projetos_papeis_atividades_projetos_fk" em "atividades_projetos_papeis"
+DETAIL:  Chave (id)=(30) ainda é referenciada pela tabela "atividades_projetos_papeis".
+2010-07-05 15:58:32 ERROR  : ERRO:  atualização ou exclusão em tabela "atividades_projetos" viola restrição de chave estrangeira "atividades_projetos_papeis_atividades_projetos_fk" em "atividades_projetos_papeis"
+DETAIL:  Chave (id)=(29) ainda é referenciada pela tabela "atividades_projetos_papeis".
+2010-07-05 15:58:32 ERROR  : ERRO:  atualização ou exclusão em tabela "atividades_projetos" viola restrição de chave estrangeira "atividades_projetos_papeis_atividades_projetos_fk" em "atividades_projetos_papeis"
+DETAIL:  Chave (id)=(28) ainda é referenciada pela tabela "atividades_projetos_papeis".
+2010-07-05 15:58:32 ERROR  : ERRO:  atualização ou exclusão em tabela "atividades_projetos" viola restrição de chave estrangeira "atividades_projetos_papeis_atividades_projetos_fk" em "atividades_projetos_papeis"
+DETAIL:  Chave (id)=(27) ainda é referenciada pela tabela "atividades_projetos_papeis".
+2010-07-05 15:58:32 ERROR  : ERRO:  atualização ou exclusão em tabela "atividades_projetos" viola restrição de chave estrangeira "atividades_projetos_papeis_atividades_projetos_fk" em "atividades_projetos_papeis"
+DETAIL:  Chave (id)=(26) ainda é referenciada pela tabela "atividades_projetos_papeis".
+2010-07-05 15:58:32 ERROR  : ERRO:  atualização ou exclusão em tabela "atividades_projetos" viola restrição de chave estrangeira "atividades_projetos_papeis_atividades_projetos_fk" em "atividades_projetos_papeis"
+DETAIL:  Chave (id)=(25) ainda é referenciada pela tabela "atividades_projetos_papeis".
+2010-07-05 15:58:32 ERROR  : ERRO:  atualização ou exclusão em tabela "atividades_projetos" viola restrição de chave estrangeira "atividades_projetos_papeis_atividades_projetos_fk" em "atividades_projetos_papeis"
+DETAIL:  Chave (id)=(24) ainda é referenciada pela tabela "atividades_projetos_papeis".
+2010-07-05 15:58:32 ERROR  : ERRO:  atualização ou exclusão em tabela "atividades_projetos" viola restrição de chave estrangeira "atividades_projetos_papeis_atividades_projetos_fk" em "atividades_projetos_papeis"
+DETAIL:  Chave (id)=(23) ainda é referenciada pela tabela "atividades_projetos_papeis".
+2010-07-05 15:58:32 ERROR  : ERRO:  atualização ou exclusão em tabela "atividades_projetos" viola restrição de chave estrangeira "atividades_projetos_papeis_atividades_projetos_fk" em "atividades_projetos_papeis"
+DETAIL:  Chave (id)=(22) ainda é referenciada pela tabela "atividades_projetos_papeis".
+2010-07-05 15:58:32 ERROR  : ERRO:  atualização ou exclusão em tabela "atividades_projetos" viola restrição de chave estrangeira "atividades_projetos_papeis_atividades_projetos_fk" em "atividades_projetos_papeis"
+DETAIL:  Chave (id)=(21) ainda é referenciada pela tabela "atividades_projetos_papeis".
+2010-07-05 15:58:32 ERROR  : ERRO:  atualização ou exclusão em tabela "atividades_projetos" viola restrição de chave estrangeira "atividades_projetos_papeis_atividades_projetos_fk" em "atividades_projetos_papeis"
+DETAIL:  Chave (id)=(20) ainda é referenciada pela tabela "atividades_projetos_papeis".
+2010-07-05 15:58:33 ERROR  : ERRO:  atualização ou exclusão em tabela "atividades_projetos" viola restrição de chave estrangeira "atividades_projetos_papeis_atividades_projetos_fk" em "atividades_projetos_papeis"
+DETAIL:  Chave (id)=(19) ainda é referenciada pela tabela "atividades_projetos_papeis".
+2010-07-05 15:58:33 ERROR  : ERRO:  atualização ou exclusão em tabela "atividades_projetos" viola restrição de chave estrangeira "atividades_projetos_papeis_atividades_projetos_fk" em "atividades_projetos_papeis"
+DETAIL:  Chave (id)=(18) ainda é referenciada pela tabela "atividades_projetos_papeis".
+2010-07-05 15:58:33 ERROR  : ERRO:  atualização ou exclusão em tabela "atividades_projetos" viola restrição de chave estrangeira "atividades_projetos_papeis_atividades_projetos_fk" em "atividades_projetos_papeis"
+DETAIL:  Chave (id)=(17) ainda é referenciada pela tabela "atividades_projetos_papeis".
+2010-07-05 15:58:33 ERROR  : ERRO:  atualização ou exclusão em tabela "atividades_projetos" viola restrição de chave estrangeira "atividades_projetos_papeis_atividades_projetos_fk" em "atividades_projetos_papeis"
+DETAIL:  Chave (id)=(16) ainda é referenciada pela tabela "atividades_projetos_papeis".
+2010-07-05 15:58:33 ERROR  : ERRO:  atualização ou exclusão em tabela "atividades_projetos" viola restrição de chave estrangeira "atividades_projetos_papeis_atividades_projetos_fk" em "atividades_projetos_papeis"
+DETAIL:  Chave (id)=(15) ainda é referenciada pela tabela "atividades_projetos_papeis".
+2010-07-05 15:58:33 ERROR  : ERRO:  atualização ou exclusão em tabela "atividades_projetos" viola restrição de chave estrangeira "atividades_projetos_papeis_atividades_projetos_fk" em "atividades_projetos_papeis"
+DETAIL:  Chave (id)=(14) ainda é referenciada pela tabela "atividades_projetos_papeis".
+2010-07-05 15:58:33 ERROR  : ERRO:  atualização ou exclusão em tabela "atividades_projetos" viola restrição de chave estrangeira "atividades_projetos_papeis_atividades_projetos_fk" em "atividades_projetos_papeis"
+DETAIL:  Chave (id)=(13) ainda é referenciada pela tabela "atividades_projetos_papeis".
+2010-07-05 15:58:33 ERROR  : ERRO:  atualização ou exclusão em tabela "atividades_projetos" viola restrição de chave estrangeira "atividades_projetos_papeis_atividades_projetos_fk" em "atividades_projetos_papeis"
+DETAIL:  Chave (id)=(12) ainda é referenciada pela tabela "atividades_projetos_papeis".
+2010-07-05 15:58:33 ERROR  : ERRO:  atualização ou exclusão em tabela "atividades_projetos" viola restrição de chave estrangeira "atividades_projetos_papeis_atividades_projetos_fk" em "atividades_projetos_papeis"
+DETAIL:  Chave (id)=(11) ainda é referenciada pela tabela "atividades_projetos_papeis".
+2010-07-05 15:58:33 ERROR  : ERRO:  atualização ou exclusão em tabela "atividades_projetos" viola restrição de chave estrangeira "atividades_projetos_papeis_atividades_projetos_fk" em "atividades_projetos_papeis"
+DETAIL:  Chave (id)=(10) ainda é referenciada pela tabela "atividades_projetos_papeis".
+2010-07-05 15:58:33 ERROR  : ERRO:  atualização ou exclusão em tabela "atividades_projetos" viola restrição de chave estrangeira "atividades_projetos_papeis_atividades_projetos_fk" em "atividades_projetos_papeis"
+DETAIL:  Chave (id)=(9) ainda é referenciada pela tabela "atividades_projetos_papeis".
+2010-07-05 15:58:33 ERROR  : ERRO:  atualização ou exclusão em tabela "atividades_projetos" viola restrição de chave estrangeira "atividades_projetos_papeis_atividades_projetos_fk" em "atividades_projetos_papeis"
+DETAIL:  Chave (id)=(8) ainda é referenciada pela tabela "atividades_projetos_papeis".
+2010-07-05 15:58:33 ERROR  : ERRO:  atualização ou exclusão em tabela "atividades_projetos" viola restrição de chave estrangeira "atividades_projetos_papeis_atividades_projetos_fk" em "atividades_projetos_papeis"
+DETAIL:  Chave (id)=(7) ainda é referenciada pela tabela "atividades_projetos_papeis".
+2010-07-05 15:58:33 ERROR  : ERRO:  atualização ou exclusão em tabela "atividades_projetos" viola restrição de chave estrangeira "atividades_projetos_papeis_atividades_projetos_fk" em "atividades_projetos_papeis"
+DETAIL:  Chave (id)=(6) ainda é referenciada pela tabela "atividades_projetos_papeis".
+2010-07-05 15:58:33 ERROR  : ERRO:  atualização ou exclusão em tabela "atividades_projetos" viola restrição de chave estrangeira "atividades_projetos_papeis_atividades_projetos_fk" em "atividades_projetos_papeis"
+DETAIL:  Chave (id)=(5) ainda é referenciada pela tabela "atividades_projetos_papeis".
+2010-07-05 15:58:33 ERROR  : ERRO:  atualização ou exclusão em tabela "atividades_projetos" viola restrição de chave estrangeira "atividades_projetos_papeis_atividades_projetos_fk" em "atividades_projetos_papeis"
+DETAIL:  Chave (id)=(4) ainda é referenciada pela tabela "atividades_projetos_papeis".
+2010-07-05 15:58:33 ERROR  : ERRO:  atualização ou exclusão em tabela "atividades_projetos" viola restrição de chave estrangeira "atividades_projetos_papeis_atividades_projetos_fk" em "atividades_projetos_papeis"
+DETAIL:  Chave (id)=(3) ainda é referenciada pela tabela "atividades_projetos_papeis".
+2010-07-05 15:58:33 ERROR  : ERRO:  atualização ou exclusão em tabela "atividades_projetos" viola restrição de chave estrangeira "atividades_projetos_papeis_atividades_projetos_fk" em "atividades_projetos_papeis"
+DETAIL:  Chave (id)=(1) ainda é referenciada pela tabela "atividades_projetos_papeis".
+2010-07-06 13:36:13 ERROR  : Error connecting to the server: FATAL:  password authentication failed for user "usr_prodeb_sarba"
+
+2010-07-12 13:51:56 ERROR  : ERROR:  column "prrecurso_id" does not exist
+LINE 9: left join recursos r on (r.id = prrecurso_id)
+                                        ^
+2010-07-12 13:51:59 ERROR  : ERROR:  column "precurso_id" does not exist
+LINE 9: left join recursos r on (r.id = precurso_id)
+                                        ^
+2010-07-13 14:10:41 ERROR  : ERROR:  missing FROM-clause entry for table "r"
+LINE 2:  r.nome,
+         ^
+2010-07-13 14:11:44 ERROR  : ERROR:  column prp.projetos_recurso does not exist
+LINE 6:  projetos_recursos pr on (prp.projetos_recurso = pr.id)
+                                  ^
+2010-07-13 14:12:03 ERROR  : ERROR:  column prp.projetos_recurso does not exist
+LINE 6:  projetos_recursos pr on (prp.projetos_recurso = pr.id)
+                                  ^
+2010-07-13 14:13:42 ERROR  : ERROR:  argument of JOIN/ON must be type boolean, not type integer
+2010-07-19 15:28:55 ERROR  : Error connecting to the server: FATAL:  password authentication failed for user "usr_prodeb_sarba"
+
+2010-07-19 16:49:20 ERROR  : ERRO:  coluna "atividades_templates" não existe
+LINE 1: select atividades_templates order by template_id
+               ^
+2010-07-19 16:49:26 ERROR  : ERRO:  erro de sintaxe em ou próximo a "atividades_templates"
+LINE 1: select * atividades_templates order by template_id
+                 ^
+2010-07-19 16:53:17 ERROR  : ERRO:  erro de sintaxe em ou próximo a "where"
+LINE 1: ...es_templates order by template_id, sequenciamento where temp...
+                                                             ^
+2010-07-19 17:11:59 ERROR  : ERRO:  atualização ou exclusão em tabela "atividades_templates" viola restrição de chave estrangeira "atividades_templates_papeis_recursos_atividades_templates_fk" em "atividades_templates_papeis"
+DETAIL:  Chave (id)=(64) ainda é referenciada pela tabela "atividades_templates_papeis".
+2010-07-19 17:12:30 ERROR  : ERRO:  atualização ou exclusão em tabela "atividades_templates" viola restrição de chave estrangeira "atividades_templates_papeis_recursos_atividades_templates_fk" em "atividades_templates_papeis"
+DETAIL:  Chave (id)=(64) ainda é referenciada pela tabela "atividades_templates_papeis".
+2010-07-20 15:01:30 ERROR  : ERROR:  update or delete on table "atividades_projetos" violates foreign key constraint "atividades_projetos_papeis_atividades_projetos_fk" on table "atividades_projetos_papeis"
+DETAIL:  Key (id)=(73) is still referenced from table "atividades_projetos_papeis".
+2010-07-20 15:02:53 ERROR  : ERROR:  update or delete on table "atividades_projetos" violates foreign key constraint "atividades_projetos_papeis_atividades_projetos_fk" on table "atividades_projetos_papeis"
+DETAIL:  Key (id)=(40) is still referenced from table "atividades_projetos_papeis".
+2010-07-20 15:02:55 ERROR  : ERROR:  update or delete on table "atividades_projetos" violates foreign key constraint "atividades_projetos_papeis_atividades_projetos_fk" on table "atividades_projetos_papeis"
+DETAIL:  Key (id)=(40) is still referenced from table "atividades_projetos_papeis".
+2010-07-20 15:03:25 ERROR  : ERROR:  update or delete on table "atividades_projetos_papeis" violates foreign key constraint "atv_proj_pap_rec_atv_proj_pap_fk" on table "atividades_projetos_papeis_recursos"
+DETAIL:  Key (id)=(89) is still referenced from table "atividades_projetos_papeis_recursos".
+2010-07-20 15:03:45 ERROR  : ERROR:  update or delete on table "atividades_projetos_papeis" violates foreign key constraint "atv_proj_pap_rec_atv_proj_pap_fk" on table "atividades_projetos_papeis_recursos"
+DETAIL:  Key (id)=(89) is still referenced from table "atividades_projetos_papeis_recursos".
+2010-07-20 15:04:53 ERROR  : ERROR:  update or delete on table "atividades_projetos" violates foreign key constraint "atividades_projetos_papeis_atividades_projetos_fk" on table "atividades_projetos_papeis"
+DETAIL:  Key (id)=(73) is still referenced from table "atividades_projetos_papeis".
+2010-07-20 15:05:11 ERROR  : ERROR:  update or delete on table "atividades_projetos_papeis" violates foreign key constraint "atv_proj_pap_rec_atv_proj_pap_fk" on table "atividades_projetos_papeis_recursos"
+DETAIL:  Key (id)=(89) is still referenced from table "atividades_projetos_papeis_recursos".
+2010-07-20 15:06:35 ERROR  : ERROR:  update or delete on table "atividades_projetos" violates foreign key constraint "atividades_projetos_papeis_atividades_projetos_fk" on table "atividades_projetos_papeis"
+DETAIL:  Key (id)=(34) is still referenced from table "atividades_projetos_papeis".
+2010-07-20 15:14:00 ERROR  : ERROR:  column "projeto_id" does not exist
+LINE 1: select * from atividades_templates order by projeto_id, sequ...
+                                                    ^
+2010-07-20 15:17:24 ERROR  : ERROR:  update or delete on table "atividades_templates" violates foreign key constraint "atividades_templates_papeis_recursos_atividades_templates_fk" on table "atividades_templates_papeis"
+DETAIL:  Key (id)=(64) is still referenced from table "atividades_templates_papeis".
+2010-07-20 15:24:27 ERROR  : ERROR:  update or delete on table "atividades_templates" violates foreign key constraint "atividades_templates_papeis_recursos_atividades_templates_fk" on table "atividades_templates_papeis"
+DETAIL:  Key (id)=(69) is still referenced from table "atividades_templates_papeis".
+2010-07-20 16:09:11 ERROR  : ERROR:  update or delete on table "atividades_templates" violates foreign key constraint "atividades_templates_papeis_recursos_atividades_templates_fk" on table "atividades_templates_papeis"
+DETAIL:  Key (id)=(76) is still referenced from table "atividades_templates_papeis".
+2010-07-20 16:33:11 ERROR  : 
+2010-07-21 13:35:34 ERROR  : Error connecting to the server: FATAL:  password authentication failed for user "usr_prodeb_sarba"
+
+2010-07-21 13:36:27 ERROR  : ERROR:  column "cust" does not exist
+LINE 2: ...recurso_id, setor_id, mes, setor_nome, nome, horas_mes, cust
+                                                                   ^
+2010-07-21 14:22:01 ERROR  : ERROR:  column "at.id" must appear in the GROUP BY clause or be used in an aggregate function
+2010-07-21 14:23:12 ERROR  : ERROR:  column "at.id" must appear in the GROUP BY clause or be used in an aggregate function
+2010-07-23 14:42:13 ERROR  : Error connecting to the server: FATAL:  password authentication failed for user "usr_prodeb_sarba"
+
+2010-07-27 13:38:40 ERROR  : ERROR:  syntax error at or near "RIGTH"
+LINE 12:  "atividades" AS "Atividade" RIGTH JOIN atividades AS "Child...
+                                      ^
+2010-07-27 13:40:31 ERROR  : ERROR:  column "Atividade.id" must appear in the GROUP BY clause or be used in an aggregate function
+2010-07-27 13:40:37 ERROR  : ERROR:  column "Atividade.nome" must appear in the GROUP BY clause or be used in an aggregate function
+2010-07-27 13:40:51 ERROR  : ERROR:  column "Atividade.nome" must appear in the GROUP BY clause or be used in an aggregate function
+2010-07-27 13:40:52 ERROR  : ERROR:  column "Atividade.nome" must appear in the GROUP BY clause or be used in an aggregate function
+2010-07-27 13:40:52 ERROR  : ERROR:  column "Atividade.nome" must appear in the GROUP BY clause or be used in an aggregate function
+2010-07-27 13:40:55 ERROR  : ERROR:  column "Atividade.nome" must appear in the GROUP BY clause or be used in an aggregate function
+2010-07-27 13:40:56 ERROR  : ERROR:  column "Atividade.nome" must appear in the GROUP BY clause or be used in an aggregate function
+2010-07-27 13:40:57 ERROR  : ERROR:  column "Atividade.nome" must appear in the GROUP BY clause or be used in an aggregate function
+2010-07-27 13:40:58 ERROR  : ERROR:  column "Atividade.nome" must appear in the GROUP BY clause or be used in an aggregate function
+2010-07-27 13:40:59 ERROR  : ERROR:  column "Atividade.nome" must appear in the GROUP BY clause or be used in an aggregate function
+2010-07-27 13:40:59 ERROR  : ERROR:  column "Atividade.nome" must appear in the GROUP BY clause or be used in an aggregate function
+2010-07-27 13:40:59 ERROR  : ERROR:  column "Atividade.nome" must appear in the GROUP BY clause or be used in an aggregate function
+2010-07-27 13:41:00 ERROR  : ERROR:  column "Atividade.nome" must appear in the GROUP BY clause or be used in an aggregate function
+2010-07-27 13:41:00 ERROR  : ERROR:  column "Atividade.nome" must appear in the GROUP BY clause or be used in an aggregate function
+2010-07-27 13:41:01 ERROR  : ERROR:  column "Atividade.nome" must appear in the GROUP BY clause or be used in an aggregate function
+2010-07-27 13:41:10 ERROR  : ERROR:  syntax error at or near "DISTINCT"
+LINE 3:  DISTINCT "Atividade"."nome" AS "Atividade__nome", 
+         ^
+2010-07-27 13:43:13 ERROR  : ERROR:  syntax error at or near "DISTINCT"
+LINE 3:  DISTINCT ON "Atividade"."nome" AS "Atividade__nome", 
+         ^
+2010-07-27 13:43:19 ERROR  : ERROR:  syntax error at or near ""Atividade""
+LINE 2:  DISTINCT ON "Atividade"."id" AS "Atividade__id", 
+                     ^
+2010-07-27 13:43:27 ERROR  : ERROR:  column "Atividade.nome" must appear in the GROUP BY clause or be used in an aggregate function
+2010-07-27 13:43:28 ERROR  : ERROR:  column "Atividade.nome" must appear in the GROUP BY clause or be used in an aggregate function
+2010-07-27 13:43:28 ERROR  : ERROR:  column "Atividade.nome" must appear in the GROUP BY clause or be used in an aggregate function
+2010-07-27 13:43:28 ERROR  : ERROR:  column "Atividade.nome" must appear in the GROUP BY clause or be used in an aggregate function
+2010-07-27 13:43:51 ERROR  : ERROR:  syntax error at or near ""Atividade""
+LINE 2:  DISTINCT ON "Atividade"."id" AS "Atividade__id", 
+                     ^
+2010-07-27 13:44:06 ERROR  : ERROR:  syntax error at or near "AS"
+LINE 2:  DISTINCT ON ("Atividade"."id") AS "Atividade__id", 
+                                        ^
+2010-07-27 13:44:11 ERROR  : ERROR:  syntax error at or near ","
+LINE 2:  DISTINCT ON ("Atividade"."id"), 
+                                       ^
+2010-07-27 13:46:15 ERROR  : ERROR:  syntax error at or near "DISTINCT"
+LINE 3:  DISTINCT "Atividade"."nome" AS "Atividade__nome", 
+         ^
+2010-07-27 16:52:34 ERROR  : ERROR:  insert or update on table "recursos" violates foreign key constraint "recursos_grupos_acessos_fk"
+DETAIL:  Key (grupos_acesso_id)=(2) is not present in table "grupos_acessos".
+2010-07-27 16:52:37 ERROR  : ERROR:  insert or update on table "recursos" violates foreign key constraint "recursos_grupos_acessos_fk"
+DETAIL:  Key (grupos_acesso_id)=(2) is not present in table "grupos_acessos".
+2010-08-11 13:47:39 ERROR  : ERROR:  syntax error at or near "select"
+LINE 4: select * from vw_custo_projeto_recurso
+        ^
+2010-08-11 13:47:45 ERROR  : ERROR:  column "vw_custo_projeto_recurso.servico_id" must appear in the GROUP BY clause or be used in an aggregate function
+2010-08-11 13:52:58 ERROR  : ERROR:  duplicate key violates unique constraint "registros_entradas_saidas_pk"
+2010-08-11 13:53:09 ERROR  : ERROR:  invalid input syntax for type time: "
+"
+2010-08-11 13:53:12 ERROR  : ERROR:  invalid input syntax for type time: "
+"
+2010-08-11 13:53:38 ERROR  : ERROR:  invalid input syntax for type time: "
+"
+2010-08-11 13:53:41 ERROR  : ERROR:  invalid input syntax for type time: "
+"
+2010-08-11 13:54:14 ERROR  : ERROR:  duplicate key violates unique constraint "registros_entradas_saidas_pk"
+2010-08-12 15:13:38 ERROR  : ERROR:  syntax error at or near ")"
+LINE 1: ...tico" = TRUE)) AND "RecursosSetor"."setor_id" in () ORDER BY...
+                                                             ^
+2010-08-13 13:52:52 ERROR  : Error connecting to the server: FATAL:  password authentication failed for user "usr_prodeb_sarba"
+
+2010-08-13 13:56:03 ERROR  : ERROR:  relation "avalicacoes_contabeis" does not exist
+2010-08-13 13:56:10 ERROR  : ERROR:  relation "avaliacacoes_contabeis" does not exist
+2010-08-13 13:56:13 ERROR  : ERROR:  column ac.ativo does not exist
+LINE 8: ...                              where r.id = 10 and ac.ativo=t...
+                                                             ^
+2010-08-13 13:57:36 ERROR  : ERROR:  each UNION query must have the same number of columns
+2010-08-16 14:04:49 ERROR  : ERRO:  erro de sintaxe em ou próximo a "tabel"
+LINE 1: drop tabel Sarba
+             ^
+2010-08-16 14:04:54 ERROR  : ERRO:  tabela "sarba" não existe
+2010-08-16 14:05:25 ERROR  : ERRO:  tabela "sisnat" não existe
+2010-08-16 14:05:27 ERROR  : ERRO:  tabela "sisnat" não existe
+2010-08-16 14:05:27 ERROR  : ERRO:  tabela "sisnat" não existe
+2010-08-16 14:05:27 ERROR  : ERRO:  tabela "sisnat" não existe
+2010-08-16 14:05:46 ERROR  : ERRO:  tabela "sisnat" não existe
+2010-08-16 14:05:47 ERROR  : ERRO:  tabela "sisnat" não existe
+2010-08-16 14:05:47 ERROR  : ERRO:  tabela "sisnat" não existe
+2010-08-16 14:05:47 ERROR  : ERRO:  tabela "sisnat" não existe
+2010-08-16 14:47:10 ERROR  : server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+2010-08-16 14:47:14 ERROR  : server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+
+2010-08-16 14:47:15 ERROR  : server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+
+2010-08-17 15:05:22 ERROR  : ERRO:  inserção ou atualização em tabela "propostas" viola restrição de chave estrangeira "propostas_projetos_fk"
+DETAIL:  Chave (projeto_id)=(3) não está presente na tabela "projetos".
+2010-08-17 15:05:23 ERROR  : ERRO:  inserção ou atualização em tabela "propostas" viola restrição de chave estrangeira "propostas_projetos_fk"
+DETAIL:  Chave (projeto_id)=(3) não está presente na tabela "projetos".
+2010-08-17 15:05:28 ERROR  : ERRO:  inserção ou atualização em tabela "propostas" viola restrição de chave estrangeira "propostas_projetos_fk"
+DETAIL:  Chave (projeto_id)=(5) não está presente na tabela "projetos".
+2010-08-17 15:05:29 ERROR  : ERRO:  inserção ou atualização em tabela "propostas" viola restrição de chave estrangeira "propostas_projetos_fk"
+DETAIL:  Chave (projeto_id)=(5) não está presente na tabela "projetos".
+2010-08-17 15:42:44 ERROR  : ERRO:  duplicar valor da chave viola a restrição de unicidade "grupos_acessos_pk"
+2010-08-17 15:55:41 ERROR  : ERRO:  erro de sintaxe em ou próximo a "DISTINCT"
+LINE 1: SELECT "Projeto"."id" AS "Projeto__id", DISTINCT "Projeto"."...
+                                                ^
+2010-08-17 15:55:43 ERROR  : ERRO:  erro de sintaxe em ou próximo a "DISTINCT"
+LINE 1: SELECT "Projeto"."id" AS "Projeto__id", DISTINCT "Projeto"."...
+                                                ^
+2010-08-17 15:55:44 ERROR  : ERRO:  erro de sintaxe em ou próximo a "DISTINCT"
+LINE 1: SELECT "Projeto"."id" AS "Projeto__id", DISTINCT "Projeto"."...
+                                                ^
+2010-08-17 15:55:44 ERROR  : ERRO:  erro de sintaxe em ou próximo a "DISTINCT"
+LINE 1: SELECT "Projeto"."id" AS "Projeto__id", DISTINCT "Projeto"."...
+                                                ^
+2010-08-17 15:55:44 ERROR  : ERRO:  erro de sintaxe em ou próximo a "DISTINCT"
+LINE 1: SELECT "Projeto"."id" AS "Projeto__id", DISTINCT "Projeto"."...
+                                                ^
+2010-08-17 15:55:44 ERROR  : ERRO:  erro de sintaxe em ou próximo a "DISTINCT"
+LINE 1: SELECT "Projeto"."id" AS "Projeto__id", DISTINCT "Projeto"."...
+                                                ^
+2010-08-17 15:55:45 ERROR  : ERRO:  erro de sintaxe em ou próximo a "DISTINCT"
+LINE 1: SELECT "Projeto"."id" AS "Projeto__id", DISTINCT "Projeto"."...
+                                                ^
+2010-08-17 15:55:45 ERROR  : ERRO:  erro de sintaxe em ou próximo a "DISTINCT"
+LINE 1: SELECT "Projeto"."id" AS "Projeto__id", DISTINCT "Projeto"."...
+                                                ^
+2010-08-17 15:55:45 ERROR  : ERRO:  erro de sintaxe em ou próximo a "DISTINCT"
+LINE 1: SELECT "Projeto"."id" AS "Projeto__id", DISTINCT "Projeto"."...
+                                                ^
+2010-08-17 15:55:46 ERROR  : ERRO:  erro de sintaxe em ou próximo a "DISTINCT"
+LINE 1: SELECT "Projeto"."id" AS "Projeto__id", DISTINCT "Projeto"."...
+                                                ^
+2010-08-17 15:55:46 ERROR  : ERRO:  erro de sintaxe em ou próximo a "DISTINCT"
+LINE 1: SELECT "Projeto"."id" AS "Projeto__id", DISTINCT "Projeto"."...
+                                                ^
+2010-08-17 15:55:46 ERROR  : ERRO:  erro de sintaxe em ou próximo a "DISTINCT"
+LINE 1: SELECT "Projeto"."id" AS "Projeto__id", DISTINCT "Projeto"."...
+                                                ^
+2010-08-17 15:55:47 ERROR  : ERRO:  erro de sintaxe em ou próximo a "DISTINCT"
+LINE 1: SELECT "Projeto"."id" AS "Projeto__id", DISTINCT "Projeto"."...
+                                                ^
+2010-08-17 15:55:47 ERROR  : ERRO:  erro de sintaxe em ou próximo a "DISTINCT"
+LINE 1: SELECT "Projeto"."id" AS "Projeto__id", DISTINCT "Projeto"."...
+                                                ^
+2010-08-17 15:55:47 ERROR  : ERRO:  erro de sintaxe em ou próximo a "DISTINCT"
+LINE 1: SELECT "Projeto"."id" AS "Projeto__id", DISTINCT "Projeto"."...
+                                                ^
+2010-08-17 15:55:48 ERROR  : ERRO:  erro de sintaxe em ou próximo a "DISTINCT"
+LINE 1: SELECT "Projeto"."id" AS "Projeto__id", DISTINCT "Projeto"."...
+                                                ^
+2010-08-17 15:55:48 ERROR  : ERRO:  erro de sintaxe em ou próximo a "DISTINCT"
+LINE 1: SELECT "Projeto"."id" AS "Projeto__id", DISTINCT "Projeto"."...
+                                                ^
+2010-08-17 15:55:50 ERROR  : ERRO:  erro de sintaxe em ou próximo a "DISTINCT"
+LINE 1: SELECT "Projeto"."id" AS "Projeto__id", DISTINCT "Projeto"."...
+                                                ^
+2010-08-17 15:55:50 ERROR  : ERRO:  erro de sintaxe em ou próximo a "DISTINCT"
+LINE 1: SELECT "Projeto"."id" AS "Projeto__id", DISTINCT "Projeto"."...
+                                                ^
+2010-08-17 16:05:15 ERROR  : ERRO:  erro de sintaxe em ou próximo a "inner"
+LINE 1: inner
+        ^
+2010-08-17 16:05:25 ERROR  : ERRO:  erro de sintaxe em ou próximo a "RIGHT"
+LINE 1: RIGHT
+        ^
+2010-08-18 08:40:31 ERROR  : ERRO:  operador não existe: boolean = integer
+LINE 40:  "Projeto"."necessita_acompanhamento" = 0 
+                                               ^
+HINT:  Nenhum operador corresponde com o nome e o(s) tipo(s) de argumento(s) informados. Você precisa adicionar conversões de tipo explícitas.
+2010-08-18 08:41:08 ERROR  : ERRO:  operador não existe: boolean ~~ unknown
+LINE 40:  "Projeto"."necessita_acompanhamento" like '%false%'
+                                               ^
+HINT:  Nenhum operador corresponde com o nome e o(s) tipo(s) de argumento(s) informados. Você precisa adicionar conversões de tipo explícitas.
+2010-08-18 08:41:20 ERROR  : ERRO:  erro de sintaxe em ou próximo a "false"
+LINE 40:  "Projeto"."necessita_acompanhamento" like '%'false'%'
+                                                       ^
+2010-08-18 10:03:43 ERROR  : ERROR:  column "centros_custo_id" referenced in foreign key constraint does not exist
+2010-08-18 13:53:31 ERROR  : server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+2010-08-18 13:53:33 ERROR  : server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+
+2010-08-18 13:53:35 ERROR  : server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+
+2010-08-18 13:53:37 ERROR  : connection pointer is NULL
+
+2010-08-18 14:50:20 ERROR  : ERROR:  constraint "avaliacoes_contabeis_classificacoes_contabeis_fk" for relation "avaliacoes_contabeis" already exists
+2010-08-18 15:15:16 ERROR  : server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+2010-08-18 15:15:56 ERROR  : server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+
+2010-08-18 15:15:59 ERROR  : server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+
+2010-08-18 16:08:24 ERROR  : server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+2010-08-18 16:08:28 ERROR  : server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+
+2010-08-18 16:08:46 ERROR  : server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+
+2010-08-18 16:11:40 ERROR  : ERROR:  column AtividadesProjetosPapeisRecurso.recurso_i does not exist
+LINE 1: ...'%%' AND (("RecursosSetor"."setor_id" in (3)) OR ("Atividade...
+                                                             ^
+2010-08-18 16:30:37 ERROR  : server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+2010-08-18 16:30:39 ERROR  : server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+
+2010-08-18 16:30:40 ERROR  : server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+
+2010-08-18 16:38:49 ERROR  : server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+2010-08-18 16:38:51 ERROR  : server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+
+2010-08-18 16:38:52 ERROR  : server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+
+2010-08-18 16:42:02 ERROR  : connection pointer is NULL
+
+2010-08-18 16:42:05 ERROR  : connection pointer is NULL
+
+2010-08-18 17:09:15 ERROR  : ERROR:  syntax error at or near "from"
+LINE 3: from
+        ^
+2010-08-18 17:09:32 ERROR  : ERROR:  syntax error at or near "from"
+LINE 3: from
+        ^
+2010-08-18 17:09:39 ERROR  : ERROR:  syntax error at or near "from"
+LINE 3: from
+        ^
+2010-08-18 17:09:51 ERROR  : ERROR:  syntax error at or near "from"
+LINE 3: from
+        ^
+2010-08-18 17:09:52 ERROR  : ERROR:  syntax error at or near "from"
+LINE 3: from
+        ^
+2010-08-18 17:09:52 ERROR  : ERROR:  syntax error at or near "from"
+LINE 3: from
+        ^
+2010-08-18 17:09:52 ERROR  : ERROR:  syntax error at or near "from"
+LINE 3: from
+        ^
+2010-08-18 17:10:03 ERROR  : ERROR:  column app.atividades_projeto does not exist
+LINE 8:  atividades_projetos ap on (app.atividades_projeto = ap.id)
+                                    ^
+2010-08-18 17:10:23 ERROR  : ERROR:  missing FROM-clause entry for table "ap"
+LINE 2:  ap.id
+         ^
+2010-08-18 17:10:34 ERROR  : ERROR:  column app.atividades_projeto does not exist
+LINE 8:  atividades_projetos ap on (app.atividades_projeto = ap.id)
+                                    ^
+2010-08-19 08:22:27 ERROR  : ERRO:  coluna "centros_custo_id" referenciada na restrição de chave estrangeira não existe
+2010-08-19 11:46:39 ERROR  : ERROR:  duplicate key violates unique constraint "grupos_acessos_permissoes_uk"
+2010-08-19 11:46:43 ERROR  : ERROR:  duplicate key violates unique constraint "grupos_acessos_permissoes_uk"
+2010-08-19 14:19:25 ERROR  : ERROR:  missing FROM-clause entry in subquery for table "r"
+LINE 12: ...                inner join recursos_setores rs on(r.id = rs....
+                                                              ^
+2010-08-19 14:22:02 ERROR  : ERROR:  syntax error at or near ")"
+LINE 6: ...' and rs.data_desligamento is not null and rs.setor_id in ()
+                                                                      ^
+2010-08-19 14:25:21 ERROR  : ERROR:  syntax error at or near ")"
+LINE 15: ...'2' and rs.data_desligamento is null and rs.recurso_id in ()
+                                                                       ^
+2010-08-19 14:26:20 ERROR  : ERROR:  unterminated quoted string at or near "'10 and rs.data_desligamento is null"
+LINE 16:                         and rs.recurso_id = '10 and rs.data_...
+                                                     ^
+2010-08-19 14:33:21 ERROR  : ERROR:  invalid input syntax for integer: ""
+2010-08-19 14:40:14 ERROR  : ERROR:  syntax error at or near "and"
+LINE 2:                         and '2010-08-01' between er.data_alo...
+                                ^
+2010-08-19 14:40:20 ERROR  : ERROR:  syntax error at or near "select"
+LINE 18: select e.id as empresaid, e.nome as empresanome
+         ^
+2010-08-19 14:40:21 ERROR  : ERROR:  syntax error at or near "select"
+LINE 18: select e.id as empresaid, e.nome as empresanome
+         ^
+2010-08-19 14:40:21 ERROR  : ERROR:  syntax error at or near "select"
+LINE 18: select e.id as empresaid, e.nome as empresanome
+         ^
+2010-08-19 14:40:21 ERROR  : ERROR:  syntax error at or near "select"
+LINE 18: select e.id as empresaid, e.nome as empresanome
+         ^
+2010-08-19 14:40:22 ERROR  : ERROR:  syntax error at or near "select"
+LINE 18: select e.id as empresaid, e.nome as empresanome
+         ^
+2010-08-19 14:40:22 ERROR  : ERROR:  syntax error at or near "select"
+LINE 18: select e.id as empresaid, e.nome as empresanome
+         ^
+2010-08-19 14:40:23 ERROR  : ERROR:  syntax error at or near "select"
+LINE 18: select e.id as empresaid, e.nome as empresanome
+         ^
+2010-08-19 14:40:23 ERROR  : ERROR:  syntax error at or near "select"
+LINE 18: select e.id as empresaid, e.nome as empresanome
+         ^
+2010-08-19 14:40:24 ERROR  : ERROR:  syntax error at or near "select"
+LINE 18: select e.id as empresaid, e.nome as empresanome
+         ^
+2010-08-19 15:16:31 ERROR  : ERROR:  column "2010-08-01" does not exist
+LINE 6:  "2010-08-01"
+         ^
+2010-08-19 15:18:10 ERROR  : ERROR:  column "'2010-08-01'" does not exist
+LINE 1: ... FROM "recursos_setores" AS "RecursosSetor" WHERE "'2010-08-...
+                                                             ^
+2010-08-19 15:20:56 ERROR  : ERROR:  column "'2010-08-01'" does not exist
+LINE 1: ... FROM "recursos_setores" AS "RecursosSetor" WHERE "'2010-08-...
+                                                             ^
+2010-08-19 15:21:03 ERROR  : ERROR:  syntax error at or near "SELECT"
+LINE 15: SELECT 
+         ^
+2010-08-19 15:27:22 ERROR  : ERROR:  column "'2010-08-01'" does not exist
+LINE 1: ... FROM "recursos_setores" AS "RecursosSetor" WHERE "'2010-08-...
+                                                             ^
+2010-08-19 15:31:34 ERROR  : ERROR:  each UNION query must have the same number of columns
+2010-08-19 16:26:15 ERROR  : ERROR:  each UNION query must have the same number of columns
+2010-08-19 16:26:22 ERROR  : ERROR:  each UNION query must have the same number of columns
+2010-08-19 16:27:31 ERROR  : ERROR:  each UNION query must have the same number of columns
+2010-08-19 16:54:41 ERROR  : message contents do not agree with length in message type "T"
+server sent data ("D" message) without prior row description ("T" message)
+2010-08-19 16:54:42 ERROR  : connection pointer is NULL
+
+2010-08-19 17:02:27 ERROR  : ERROR:  syntax error at or near "order"
+LINE 5: ...id = '4' and rs.data_desligamento is not null and order by r...
+                                                             ^
+2010-08-19 17:02:31 ERROR  : ERROR:  syntax error at or near "order"
+LINE 5: ...id = '4' and rs.data_desligamento is not null and order by r...
+                                                             ^
+2010-08-19 17:02:36 ERROR  : ERROR:  syntax error at or near "union"
+LINE 7:                                     union
+                                            ^
+2010-08-19 17:02:55 ERROR  : ERROR:  syntax error at or near "union"
+LINE 7:                                     union
+                                            ^
+2010-08-19 17:02:56 ERROR  : ERROR:  syntax error at or near "union"
+LINE 7:                                     union
+                                            ^
+2010-08-19 17:02:56 ERROR  : ERROR:  syntax error at or near "union"
+LINE 7:                                     union
+                                            ^
+2010-08-19 17:02:56 ERROR  : ERROR:  syntax error at or near "union"
+LINE 7:                                     union
+                                            ^
+2010-08-19 17:02:57 ERROR  : ERROR:  syntax error at or near "union"
+LINE 7:                                     union
+                                            ^
+2010-08-19 17:03:28 ERROR  : ERROR:  missing FROM-clause entry for table "r"
+LINE 13: ...or_id = '4' and rs.data_desligamento is null order by r.nome
+                                                                  ^
+2010-08-19 17:03:41 ERROR  : ERROR:  syntax error at or near "union"
+LINE 7:                                     union
+                                            ^
+2010-08-19 17:03:51 ERROR  : ERROR:  syntax error at or near "union"
+LINE 7:                                     union
+                                            ^
+2010-08-19 17:03:52 ERROR  : ERROR:  syntax error at or near "union"
+LINE 7:                                     union
+                                            ^
+2010-08-19 17:23:07 ERROR  : ERROR:  syntax error at or near "($"
+LINE 5: ... '2' and rs.data_desligamento is not null and r.id in ($ids)
+                                                                 ^
+2010-08-19 17:23:09 ERROR  : ERROR:  syntax error at or near "($"
+LINE 5: ... '2' and rs.data_desligamento is not null and r.id in ($ids)
+                                                                 ^
+2010-08-19 17:23:27 ERROR  : ERROR:  syntax error at or near "r"
+LINE 5: ...r_id = '2' and rs.data_desligamento is not null order r.nome
+                                                                 ^
+2010-08-19 17:23:29 ERROR  : ERROR:  syntax error at or near "r"
+LINE 5: ...r_id = '2' and rs.data_desligamento is not null order r.nome
+                                                                 ^
+2010-08-19 17:23:29 ERROR  : ERROR:  syntax error at or near "r"
+LINE 5: ...r_id = '2' and rs.data_desligamento is not null order r.nome
+                                                                 ^
+2010-08-19 17:23:29 ERROR  : ERROR:  syntax error at or near "r"
+LINE 5: ...r_id = '2' and rs.data_desligamento is not null order r.nome
+                                                                 ^
+2010-08-19 17:23:29 ERROR  : ERROR:  syntax error at or near "r"
+LINE 5: ...r_id = '2' and rs.data_desligamento is not null order r.nome
+                                                                 ^
+2010-08-19 17:23:29 ERROR  : ERROR:  syntax error at or near "r"
+LINE 5: ...r_id = '2' and rs.data_desligamento is not null order r.nome
+                                                                 ^
+2010-08-19 17:23:29 ERROR  : ERROR:  syntax error at or near "r"
+LINE 5: ...r_id = '2' and rs.data_desligamento is not null order r.nome
+                                                                 ^
+2010-08-19 17:24:25 ERROR  : ERROR:  syntax error at or near "r"
+LINE 13: ...setor_id = '2' and rs.data_desligamento is null order r.nome
+                                                                  ^
+2010-08-19 17:24:26 ERROR  : ERROR:  syntax error at or near "r"
+LINE 13: ...setor_id = '2' and rs.data_desligamento is null order r.nome
+                                                                  ^
+2010-08-19 17:24:26 ERROR  : ERROR:  syntax error at or near "r"
+LINE 13: ...setor_id = '2' and rs.data_desligamento is null order r.nome
+                                                                  ^
+2010-08-19 17:24:26 ERROR  : ERROR:  syntax error at or near "r"
+LINE 13: ...setor_id = '2' and rs.data_desligamento is null order r.nome
+                                                                  ^
+2010-08-19 17:24:27 ERROR  : ERROR:  syntax error at or near "r"
+LINE 13: ...setor_id = '2' and rs.data_desligamento is null order r.nome
+                                                                  ^
+2010-08-19 17:24:29 ERROR  : ERROR:  syntax error at or near "r"
+LINE 13: ...setor_id = '2' and rs.data_desligamento is null order r.nome
+                                                                  ^
+2010-08-19 17:24:29 ERROR  : ERROR:  syntax error at or near "r"
+LINE 13: ...setor_id = '2' and rs.data_desligamento is null order r.nome
+                                                                  ^
+2010-08-19 17:24:30 ERROR  : ERROR:  syntax error at or near "r"
+LINE 13: ...setor_id = '2' and rs.data_desligamento is null order r.nome
+                                                                  ^
+2010-08-19 17:24:30 ERROR  : ERROR:  syntax error at or near "r"
+LINE 13: ...setor_id = '2' and rs.data_desligamento is null order r.nome
+                                                                  ^
+2010-08-19 17:24:49 ERROR  : ERROR:  syntax error at or near "recursos"
+LINE 13: ...r_id = '2' and rs.data_desligamento is null order recursos.n...
+                                                              ^
+2010-08-19 17:24:50 ERROR  : ERROR:  syntax error at or near "recursos"
+LINE 13: ...r_id = '2' and rs.data_desligamento is null order recursos.n...
+                                                              ^
+2010-08-19 17:25:34 ERROR  : ERROR:  missing FROM-clause entry for table "recursos"
+LINE 13: ...d = '2' and rs.data_desligamento is null ORDER BY recursos.n...
+                                                              ^
+2010-08-19 17:25:38 ERROR  : ERROR:  missing FROM-clause entry for table "r"
+LINE 13: ...or_id = '2' and rs.data_desligamento is null ORDER BY R.nome
+                                                                  ^
+2010-08-19 17:25:41 ERROR  : ERROR:  missing FROM-clause entry for table "r"
+LINE 13: ...or_id = '2' and rs.data_desligamento is null ORDER BY r.nome
+                                                                  ^
+2010-08-19 17:26:37 ERROR  : ERROR:  missing FROM-clause entry for table "r"
+LINE 13: ...r_id = '2' and rs.data_desligamento is null) ORDER BY r.nome
+                                                                  ^
+2010-08-19 17:28:42 ERROR  : ERROR:  syntax error at or near "ORDER"
+LINE 1: ORDER BY r.nome desc
+        ^
+2010-08-19 17:29:58 ERROR  : ERROR:  syntax error at or near "DESC"
+LINE 13: ...r_id = '2' and rs.data_desligamento is null ORDER DESC r.nom...
+                                                              ^
+2010-08-19 17:30:01 ERROR  : ERROR:  syntax error at or near "r"
+LINE 13: ...r_id = '2' and rs.data_desligamento is null ORDER r.nome DES...
+                                                              ^
+2010-08-19 17:30:02 ERROR  : ERROR:  syntax error at or near "r"
+LINE 13: ...r_id = '2' and rs.data_desligamento is null ORDER r.nome DES...
+                                                              ^
+2010-08-19 17:30:02 ERROR  : ERROR:  syntax error at or near "r"
+LINE 13: ...r_id = '2' and rs.data_desligamento is null ORDER r.nome DES...
+                                                              ^
+2010-08-19 17:30:03 ERROR  : ERROR:  syntax error at or near "r"
+LINE 13: ...r_id = '2' and rs.data_desligamento is null ORDER r.nome DES...
+                                                              ^
+2010-08-19 17:30:03 ERROR  : ERROR:  syntax error at or near "r"
+LINE 13: ...r_id = '2' and rs.data_desligamento is null ORDER r.nome DES...
+                                                              ^
+2010-08-19 17:30:03 ERROR  : ERROR:  syntax error at or near "r"
+LINE 13: ...r_id = '2' and rs.data_desligamento is null ORDER r.nome DES...
+                                                              ^
+2010-08-19 17:30:41 ERROR  : ERROR:  syntax error at or near "AS"
+LINE 5: ...'2' and rs.data_desligamento is not null ORDER BY r.nome AS)
+                                                                    ^
+2010-08-19 17:32:07 ERROR  : ERROR:  syntax error at or near "r"
+LINE 1: select * from r.nome recursos r order by r.nome
+                                      ^
+2010-08-20 08:46:33 ERROR  : ERROR:  date/time field value out of range: "2010-65-01"
+HINT:  Perhaps you need a different "datestyle" setting.
+2010-08-20 08:46:34 ERROR  : ERROR:  date/time field value out of range: "2010-65-01"
+HINT:  Perhaps you need a different "datestyle" setting.
+2010-08-20 08:48:57 ERROR  : ERROR:  syntax error at end of input
+LINE 12: ...      and rs.setor_id = '1' and rs.data_desligamento is null
+                                                                        ^
+2010-08-20 08:49:08 ERROR  : ERROR:  syntax error at end of input
+LINE 12: ...      and rs.setor_id = '1' and rs.data_desligamento is null
+                                                                        ^
+2010-08-20 08:49:12 ERROR  : ERROR:  syntax error at end of input
+LINE 12: ...      and rs.setor_id = '1' and rs.data_desligamento is null
+                                                                        ^
+2010-08-20 08:49:13 ERROR  : ERROR:  syntax error at end of input
+LINE 12: ...      and rs.setor_id = '1' and rs.data_desligamento is null
+                                                                        ^
+2010-08-20 08:49:14 ERROR  : ERROR:  syntax error at end of input
+LINE 12: ...      and rs.setor_id = '1' and rs.data_desligamento is null
+                                                                        ^
+2010-08-20 14:19:09 ERROR  : server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+2010-08-20 14:19:11 ERROR  : server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+
+2010-08-20 14:19:12 ERROR  : server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+
+2010-08-23 13:43:52 ERROR  : ERROR:  syntax error at or near "'select distinct
+                                        p.id,
+                                        p.nome as projeto
+                                from
+                                        projetos p
+                                join
+                                        avaliacoes_contabeis ac on (ac.projeto_id = p.id)
+                                join
+                                        recursos r on (p.recurso_id = r.id)
+                                join
+                                        recursos_setores rs on (r.id = rs.recurso_id)
+                                where
+                                        rs.setor_id in (1) and p.ativo = true and ac.aprovado = true
+                                order by
+                                        p.nome'"
+LINE 1: 'select distinct
+        ^
+2010-08-23 16:34:43 ERROR  : ERRO:  faltando entrada para tabela "AvaliacoesContabil" na cláusula FROM
+LINE 1: ...to__encerrado" FROM "projetos" AS "Projeto" WHERE "Avaliacoe...
+                                                             ^
+2010-08-24 09:51:17 ERROR  : server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+2010-08-24 09:51:19 ERROR  : server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+
+2010-08-24 10:03:57 ERROR  : server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+2010-08-24 10:03:58 ERROR  : server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+
+2010-08-24 10:03:59 ERROR  : server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+
+2010-08-24 10:11:20 ERROR  : ERROR:  null value in column "posicionamento" violates not-null constraint

@@ -1,0 +1,1866 @@
+<?php
+App::import('Vendor', 'DateUtil', array('file' => 'dateutil.class.php'));
+class CompromissosController extends AppController {
+
+    var $name = 'Compromissos';
+    var $helpers = array('Html', 'Form', 'Jquery', 'Tinymce', 'Javascript', 'Jmycake');
+    var $uses = array('Acontecimento', 'Participante','VwCompromisso','Agenda','MotivoNegacao','Territorio','Pais', 'Estado', 'Municipio', 'MeioSolicitacao', 'Pessoa','Compromisso','Solicitacao', 'Situacao','Governo', 'VwSolicitacao','GovernadorExercicio','VwDeslocamento', 'VwAgendaPleito', 'Documento');
+    var $components = array('Upload');
+
+
+    var $DocDeleted = array();
+    var $Docs = array();
+
+    function delete($compromissoid, $todos = false) {
+        if (empty ($compromissoid)) {
+            $this->Session->setFlash(__('Agenda inválida.', true), 'default', array('tipo' => 'E'), 'mensagem');
+            $this->redirect(array('action'=>'index'));
+        }
+
+        $this->Compromisso->recursive = -1;
+        $this->Acontecimento->recursive = -1;
+        $compromissoBase = $this->Compromisso->read(array('id','acontecimento_id'), $compromissoid);
+        $acontecimento   = $this->Acontecimento->read('agenda_id', $compromissoBase['Compromisso']['acontecimento_id']);
+        $this->checkPermissaoEscrita($acontecimento['Acontecimento']['agenda_id']);
+
+        $compromissos = array();
+        if(!$todos) {
+            $compromissos[0] = $compromissoBase;
+        } else {
+            $compromissos = $this->Compromisso->find('all', array(
+                    'conditions'=>array('acontecimento_id' => $compromissoBase['Compromisso']['acontecimento_id']),
+                    'fields'=>array('id','acontecimento_id')
+            ));
+        }
+
+        $this->Compromisso->begin();
+        $excluidos = 0;
+        $this->Compromisso->HistoricoSituacao->unbindModel( array('belongsTo' => array('PessoaFisica','Compromisso','MotivoNegacao','Usuario')), false);
+        foreach ($compromissos as $key => $value) {
+            $historicos = $this->Compromisso->HistoricoSituacao->find('all', array('conditions' => array('HistoricoSituacao.compromisso_id' => $compromissos[$key]['Compromisso']['id']), 'order' => array('HistoricoSituacao.data DESC'), 'limit' => '1'));
+            if (!$historicos[0]['Situacao']['situacao_final']) {
+                $compromissos[$key]['Compromisso']['registro_excluido'] = 'TRUE';
+                $this->Compromisso->Save($compromissos[$key]);
+                $excluidos++;
+            }
+        }
+
+
+        if ( empty ($this->Compromisso->getDataSource()->error) ) {
+            $this->Compromisso->commit();
+            if($excluidos == sizeof($compromissos) ) {
+                $this->Session->setFlash(__('Compromisso(s) excluído(s) com sucesso!' , true), 'default', array('tipo' => 'S'), 'mensagem');
+            } else if( $todos ) {
+                $this->Session->setFlash(__('Compromisso(s) não finalizados excluído(s) com sucesso!', true), 'default', array('tipo' => 'S'), 'mensagem');
+            } else {
+                $this->Session->setFlash(__('<b>Compromisso(s)</b> finalizado(s) não pode(em) ser excluído(s).', true), 'default', array('tipo' => 'E'), 'mensagem');
+            }
+        } else {
+            $this->Compromisso->rollback();
+            if ($error == '') {
+                $error = 'Compromisso não pôde ser excluído. Tente novamente.';
+            }
+            $this->Session->setFlash(__($error, true), 'default', array('tipo' => 'E'), 'mensagem');
+        }
+        $this->redirect(array('action'=>'index'));
+    }
+
+    function index($limparFiltro = false ) {
+
+        $this->Session->del('situacao');
+        if ( $limparFiltro ) {
+            $this->Session->del('Compromisso');
+            $this->Session->del('CompromissoControle');
+        }
+
+        $this->clearConteiner($this->params['controller']);
+
+        $this->carregaDadosSessao('Compromisso');
+        $this->carregaDadosSessao('CompromissoControle');
+
+        $this->paginate['conditions'] = $this->carregaCondicoesIndex();
+        $this->paginate['fields'] = array('DISTINCT id','compromisso_id', 'tiposolicitacao', 'protocolo',
+                'data_hora_programada_fim', 'data_hora_programada_inicio', 'local', 'assunto',
+                'situacao', 'origem_compromisso', 'nomeagenda', 'registro_excluido','lower(nomeagenda)',
+                'lower(protocolo)', 'lower(tiposolicitacao)', 'lower(local)', 'lower(assunto)',
+                'lower(situacao)', 'repeticao_id', 'compromisso', 'origem', 'lower(origem)', 'situacao_final'
+        );
+        $this->paginate['order'] = array('data_hora_programada_inicio' => 'desc');
+        $registros = $this->paginate('VwSolicitacao');
+        $this->set('compromissos', $registros);
+
+        $this->carregaOpcoesFiltroIndex();
+
+    }
+
+    function view($compromissoid = '', $esconderButon = 'false', $data = null, $aba = null, $agendas_compromissos = null, $agendas_lembretes = null) {
+        $this->set('esconderButon',false);
+        if($esconderButon == 'true') {
+            $this->set('esconderButon',true);
+            $this->layout = 'window';
+        }
+
+        if (!$compromissoid) {
+            $this->Session->setFlash(__('Agenda inválida.', true), 'default', array('tipo' => 'E'), 'mensagem');
+            $this->redirect(array('action'=>'index'));
+        }
+
+        if (!empty($this->data)) {
+
+            $this->Compromisso->recursive = -1;
+            $compromisso = $this->Compromisso->read(null, $compromissoid);
+
+            $this->data['Compromisso'][0]['id'] = $compromissoid ;
+
+            if(!empty($this->data['HistoricoSituacao'][0]['situacao_id']) && $this->data['HistoricoSituacao'][0]['situacao_id'] == $this->parametros['SITUACAO_CONFIRMADO']) {
+                $this->Session->Write('situacao',$this->data['HistoricoSituacao'][0]['situacao_id']);
+                $this->redirect(array('action'=>'edit',$compromisso['Compromisso']['id'], 'false'));
+            }
+
+            if(!empty($this->data['HistoricoSituacao'][0]['situacao_id']) && $this->data['HistoricoSituacao'][0]['situacao_id'] == $this->parametros['SITUACAO_ATENDIDO']) {
+                $this->Session->Write('situacao',$this->data['HistoricoSituacao'][0]['situacao_id']);
+                $this->redirect(array('action'=>'atendido',$compromisso['Compromisso']['acontecimento_id'],$compromisso['Compromisso']['id']));
+            }
+
+            if(!$this->saveHistoricoSituacao()) {
+                $this->Session->setFlash(__('Situação não pode ser realizada.', true), 'default', array('tipo' => 'E'), 'mensagem');
+            }else {
+                $this->Session->setFlash(__('Situação alterada com sucesso.', true), 'default', array('tipo' => 'S'), 'mensagem');
+                $this->redirect(array('action'=>'index'));
+            }
+        }
+
+        $this->Compromisso->recursive = 0;
+        $compromisso = $this->Compromisso->read(null, $compromissoid);
+
+        if($compromisso) {
+
+            $contain = array(
+                    'Acontecimento' => array('Agenda','TipoAcontecimento', 'TipoLocal','Categoria', 'Repeticao',
+                            'Municipio', 'PaisLocal', 'MunicipioLocal'=>array('Estado'), 'Documento',
+                            'Solicitacao'=>array( 'MeioSolicitacao', 'Encaminhante',
+                                    'Organizacao'=>array('Pessoa'),
+                                    'HistoricoFuncional'=>array('PessoaFisica'=>array('Pessoa'=>array('order'=>'nome ASC')))),
+                    ),
+                    'Participante' => array(
+                            'HistoricoFuncional'=>array('PessoaFisica'=>array('Pessoa'))),
+                    'TipoDeslocamento',
+                    'HistoricoSituacao' => array('Situacao', 'Usuario','MotivoNegacao',
+                            'PessoaFisica'=>array('Pessoa'))
+            );
+            $this->data = $this->Compromisso->find('first', array('conditions'=>array('Compromisso.id'=>$compromissoid), 'contain'=>$contain ) );
+
+            if(!empty( $this->data['Acontecimento']['acontecimento_origem_id'])) {
+                $this->Acontecimento->recursive = -1;
+                $this->data['Origem'] = $this->Acontecimento->find('first', array(
+                        'conditions' => array('Acontecimento.id'=>$this->data['Acontecimento']['acontecimento_origem_id']),
+                        'fields' => array('Acontecimento.id', 'Acontecimento.assunto', 'Acontecimento.protocolo', 'Acontecimento.descricao_agenda')
+                ));
+            }
+
+            if(!empty($this->data['Acontecimento']['Repeticao']['id'])) {
+
+                $this->carregaTipoRepeticao();
+
+                $this->Compromisso->recursive = -1;
+                $compromissos = $this->Compromisso->find('all', array(
+                        'conditions'=>array(
+                                'Compromisso.acontecimento_id'=>$this->data['Acontecimento']['id'],
+                                'Compromisso.registro_excluido'=>'false'),
+                        'order'=>array('data_hora_programada_inicio') ) );
+                foreach ( $compromissos as $value ) {
+                    $this->data['Repeticao']['Compromisso'][] = $value['Compromisso'];
+                }
+            }
+
+
+            $this->carregaProximasSituacoes();
+            $this->set('ESTADO_PADRAO', $this->Estado->find('first', array('conditions'=>array('id'=>$this->parametros['ESTADO_PADRAO']))));
+            $this->set('PermissaoAgenda',$this->checkPermissaoEscrita($this->data['Acontecimento']['agenda_id'],true));
+
+            if (!empty($data)) {
+                $this->data['Calendario'] = $this->Session->read('Calendario');
+                $this->data['Calendario']['abaAtual'] = $aba;
+                $this->data['Calendario']['dataSelecionada'] = str_replace("-", "/", $data);
+                $this->data['Calendario']['agendasLembretes'] = $agendas_lembretes;
+                $this->data['Calendario']['agendasCompromissos'] = $agendas_compromissos;
+                $this->Session->Write('Calendario', $this->data['Calendario']);
+            }
+
+            $pleitos = $this->VwAgendaPleito->find('all', array( 'fields'=>array('DISTINCT id_solicitacao_siag', 'solicitacao_id', 'situacao_solicitacao','resumo_solicitacao'),
+                    'conditions'=>array('id_solicitacao_siag'=>$this->data['Acontecimento']['id'])
+            ));
+            $this->set('pleitos', $pleitos);
+
+        }else {
+            $this->Session->setFlash(__('Agenda inválida.', true), 'default', array('tipo' => 'E'), 'mensagem');
+            $this->redirect(array('action'=>'index'));
+        }
+
+
+    }
+
+    function add($acontecimentoid = '') {
+
+        if( trim($acontecimentoid) == '0') {
+            $acontecimentoid = '';
+        }
+        $this->set(compact("acontecimentoid"));
+
+        parent::add();
+
+        if (!empty($this->data)) {
+            $this->Save();
+        }
+
+        if (empty($this->data)  && !empty($acontecimentoid)) {
+
+            $contain = array( 'Compromisso', 'Documento','Categoria','Municipio');
+            $this->data = $this->Acontecimento->find('first', array('conditions'=>array('Acontecimento.id'=>$acontecimentoid), 'contain'=>$contain ) );
+            $this->data['Compromisso'] = $this->data['Compromisso'][0];
+            unset($this->data['Compromisso'][0]);
+
+            $this->voltaDatas();
+            $this->set('PermissaoAgenda',$this->checkPermissaoEscrita($this->data['Acontecimento']['agenda_id'],true));
+        }
+
+        $this->carregaDadosFormulario( );
+
+        if(!empty($acontecimentoid)) {
+            if(!empty($this->data['Acontecimento']['data_hora_inicio']) && !empty($this->data['Acontecimento']['data_hora_fim']) ) {
+                $data_fim    = $this->Acontecimento->dateFormate($this->data['Acontecimento']['data_hora_fim']);
+                $data_inicio = $this->Acontecimento->dateFormate($this->data['Acontecimento']['data_hora_inicio']);
+
+                $dias = DateUtil::DateDiff($data_fim,$data_inicio,DATEUNIT::DAY);
+
+                $diasAlternados = array();
+                if($dias > 0) {
+                    $this->viewVars['tipoRepeticao'][6] = 'Diário (horários alternados)';
+
+                    for($i = 0; $i <= $dias; $i++) {
+                        $diasAlternados[] = DateUtil::IntervalToDate($data_inicio,$i,DATEUNIT::DAY);
+                    }
+                }
+                $this->set('diasAlternados', $diasAlternados);
+            }
+        }
+    }
+
+
+    function beforeFilter() {
+        parent::beforeFilter();
+        $this->set('parametros',$this->parametros);
+    }
+
+    private function limpaReagendamento() {
+        if(!empty($this->data['Compromisso'][0]['id'])) {
+            $this->Compromisso->recursive= -1;
+            $compromisso = $this->Compromisso->read(null, $this->data['Compromisso'][0]['id']);
+            $dataInicio = $this->data['Compromisso'][0]['data_hora_programada_inicio'] . ':00';
+            $dataFim = $this->data['Compromisso'][0]['data_hora_programada_fim'] . ':00';
+
+            if(($compromisso['Compromisso']['data_hora_programada_inicio'] != $dataInicio) || ($dataFim != $compromisso['Compromisso']['data_hora_programada_fim'])  && !empty($compromisso['Compromisso']['id'])) {
+                $sql = "UPDATE participantes SET data_envio_convite = NULL, data_resposta_convite = NULL, convite_aceito = FALSE WHERE  compromisso_id = " . $compromisso['Compromisso']['id'];
+                $this->Compromisso->Participante->query($sql);
+            }
+        }
+    }
+
+    function edit($compromissoid , $todos = 'false') {
+
+        $todos = ( $todos=='true' ? true : false );
+        $this->set('todos', $todos);
+
+        parent::add();
+
+        if (!empty($this->data)) {
+
+            $this->checkPermissaoEscrita($this->data['Acontecimento']['agenda_id']);
+            $this->trataDados();
+
+            $this->processarDocumento();
+
+            $modificacaoAcontecimento = $this->checaModificacaoAcontecimento($this->data['Acontecimento']['id']) ;
+
+            if($todos) {
+
+                $contain = array(
+                        'Participante',
+                        'HistoricoSituacao' => array('order'=>'data DESC', 'conditions' => array( 'atual'=>'true'),
+                                'Situacao'=> array( 'conditions' => array( 'situacao_final'=>'false') ))
+                );
+                $compromissos = $this->Compromisso->find('all', array('conditions'=>array('Compromisso.acontecimento_id'=> $this->data['Acontecimento']['id'], 'Compromisso.registro_excluido'=> 'false'), 'contain'=>$contain ) );
+
+                //remove compromissos sem 'Situacao', que não foram carregados por ter situacao_final = true
+                foreach ( $compromissos as $key => $value) {
+                    if( empty ($value['HistoricoSituacao'][0]['Situacao'])  ) {
+                        unset($compromissos[$key]);
+                    }
+                }
+
+                //fazer aqui as conferencias do que foi alterado//
+                $compromissoBase = $this->Compromisso->find('first', array(
+                        'conditions'=>array('Compromisso.id'=> $compromissoid),
+                        'contain'=> array( 'Participante', 'HistoricoSituacao' => array('conditions' => array( 'atual'=>'true') ) )
+                ));
+
+
+                $alteraTipo = $compromissoBase['Compromisso']['tipo_deslocamento_id'] != $this->data['Compromissos'][0]['Compromisso']['tipo_deslocamento_id'];
+                $alteraSituacao = $compromissoBase['HistoricoSituacao'][0]['situacao_id'] != $this->data['Compromissos'][0]['HistoricoSituacao'][0]['situacao_id'];
+                $alteraParticipantes = false;
+                if(!empty($this->data['Compromissos'][0]['Participante']) && !empty($compromissoBase['Participante'])) {
+                    $alteraParticipantes = $this->checaModificacaoArray($this->data['Compromissos'][0]['Participante'], $compromissoBase['Participante'], 'historico_funcional_id');
+                } else if (!empty($this->data['Compromissos'][0]['Participante']) ^ !empty($compromissoBase['Participante'])) {
+                    $alteraParticipantes = true;
+                }
+
+                foreach($compromissos as $key=>$value) {
+                    if($alteraSituacao) {
+                        $compromissos[$key]['HistoricoSituacao'] = $this->data['Compromissos'][0]['HistoricoSituacao'];
+                    } else if ( $modificacaoAcontecimento ) {
+                        unset($compromissos[$key]['HistoricoSituacao'][0]['id']);
+                        unset($compromissos[$key]['HistoricoSituacao'][0]['compromisso_id']);
+                        unset($compromissos[$key]['HistoricoSituacao'][0]['Situacao']);
+                    } else {
+                        unset($compromissos[$key]['HistoricoSituacao']);
+                    }
+
+                    if($alteraParticipantes) {
+                        if(!empty($this->data['Compromissos'][0]['Participante'])) {
+                            $compromissos[$key]['Participante'] = $this->data['Compromissos'][0]['Participante'];
+                            foreach ( $compromissos[$key]['Participante'] as $index => $aux) {
+                                unset($compromissos[$key]['Participante'][$index]['id']);
+                            }
+                        } else {
+                            $compromissos[$key]['Participante'] = array();
+                        }
+                    } else if(!$modificacaoAcontecimento) {
+                        unset($compromissos[$key]['Participante']);
+                    }
+
+                    if( $alteraTipo) {
+                        $compromissos[$key]['Compromisso']['tipo_deslocamento_id'] = $this->data['Compromissos'][0]['Compromisso']['tipo_deslocamento_id'];
+                    }
+                }
+                $this->data['Compromissos'] = $compromissos;
+
+            }
+            else if(!$modificacaoAcontecimento) {
+                //fazer aqui as conferencias do que foi alterado//
+                $compromissoBase = $this->Compromisso->find('first', array(
+                        'conditions'=>array('Compromisso.id'=> $compromissoid),
+                        'contain'=> array( 'HistoricoSituacao' => array('conditions' => array( 'atual'=>'true') ) )
+                ));
+                $alteraSituacao = $compromissoBase['HistoricoSituacao'][0]['situacao_id'] != $this->data['Compromissos'][0]['HistoricoSituacao'][0]['situacao_id'];
+                if( !$alteraSituacao ){
+                    unset ($this->data['Compromissos'][0]['HistoricoSituacao']);
+                }
+            }
+
+
+            if( !$modificacaoAcontecimento) {
+                $this->SaveCompromisso($todos);
+            } else {
+                $this->SaveAcontecimento($todos);
+            }
+
+        }
+
+        $situacao = '';
+        if($this->Session->check('situacao'))
+            $situacao = $this->Session->Read('situacao');
+        $this->set('situacao',$situacao);
+
+        if ( empty($this->data) ) {
+
+            $contain = array(
+                    'Acontecimento'=>array('Categoria','Municipio','Documento'),
+                    'HistoricoSituacao'=> array('Situacao')
+//                    'HistoricoSituacao' => array('Situacao', 'Usuario','MotivoNegacao',
+//                            'PessoaFisica'=>array('Pessoa'), 'order'=>'data DESC')
+            );
+            $this->data = $this->Compromisso->find('first', array('conditions'=>array('Compromisso.id'=>$compromissoid), 'contain'=>$contain ) );
+
+            if(!empty($this->data['Acontecimento']['Categoria'])) {
+                $this->data['Categoria'] = $this->data['Acontecimento']['Categoria'];
+                unset($this->data['Acontecimento']['Categoria']);
+            }
+            if(!empty($this->data['Acontecimento']['Municipio'])) {
+                $this->data['Municipio'] = $this->data['Acontecimento']['Municipio'];
+                unset($this->data['Acontecimento']['Municipio']);
+            }
+            if(!empty($this->data['Acontecimento']['Documento'])) {
+                $this->data['Documento'] = $this->data['Acontecimento']['Documento'];
+                unset($this->data['Acontecimento']['Documento']);
+            }
+
+            $this->voltaDatas();
+            $this->set('PermissaoAgenda',$this->checkPermissaoEscrita($this->data['Acontecimento']['agenda_id'],true));
+        }
+
+        $this->carregaDadosFormulario( );
+
+    }
+
+
+    private function SaveCompromisso($todos) {
+
+        $contemchoque = false;
+        if( $this->is_confirmado() ) {
+            $contemchoque = $this->validaChoqueHorario();
+        }
+
+        if(!$contemchoque) {
+            $this->Compromisso->begin();
+            foreach($this->data['Compromissos'] as $key => $value) {
+                if(isset($this->data['Compromissos'][$key]['Participante'])) {
+                    $this->Compromisso->Participante->deleteAll(array('compromisso_id' => $this->data['Compromissos'][$key]['Compromisso']['id'] ));
+                }
+                $this->Compromisso->saveAll($this->data['Compromissos'][$key],array('atomic'=>false));
+            }
+            if( empty ($this->Compromisso->getDataSource()->error) ) {
+                $this->Compromisso->commit();
+                $this->Session->del('situacao');
+                if($this->isWindow()) {
+                    Configure::write('debug',0);
+                    if($this->checkSessionMetodo()) {
+                        $this->set('objeto',array('true'));
+                    }
+                    $this->render('window','window','/pages/window');
+                    $this->closeWindow();
+
+                }else {
+                    $this->Session->setFlash(__('Agenda salva com sucesso!', true), 'default', array('tipo' => 'S'), 'mensagem');
+                    $this->redirect(array('action'=>'index'));
+                }
+            } else {
+                $this->Acontecimento->rollback();
+                $this->voltaDados();
+                $error = 'Agenda não pôde ser salvo. Tente novamente.';
+                $this->Session->setFlash(__($error, true), 'default', array('tipo' => 'E'), 'mensagem');
+            }
+        } else {
+            $this->voltaDados();
+        }
+
+    }
+
+    private function SaveAcontecimento($todos) {
+
+        $contemchoque = false;
+        if( $this->is_confirmado() ) {
+            $contemchoque = $this->validaChoqueHorario();
+        }
+
+        if(!$contemchoque) {
+            $this->Compromisso->begin();
+
+            $this->data['Acontecimento']['acontecimento_origem_id'] = $this->data['Acontecimento']['id'];
+            $this->Solicitacao->recursive = -1;
+            $solicitacoes = $this->Solicitacao->find('all',array('conditions'=>array('Solicitacao.acontecimento_id'=>$this->data['Acontecimento']['id'])));
+            foreach ($solicitacoes as $value ) {
+                unset($value['Solicitacao']['id']);
+                $this->data['Solicitacao'][] = $value['Solicitacao'];
+            }
+            unset($this->data['Acontecimento']['id']);
+            if(!$todos) {
+                unset($this->data['Acontecimento']['repeticao_id']);
+            }
+            if(!empty($this->data['Documento'])) {
+                foreach($this->data['Documento'] as $key => $value) {
+                    unset($this->data['Documento'][$key]['id']);
+                }
+            }
+            if ( isset($this->data['Municipio']) && isset($this->data['Municipio']['Municipio']) && empty($this->data['Municipio']['Municipio'])) {
+                unset($this->data['Municipio']);
+            }
+            if ( isset($this->data['Categoria']) && isset($this->data['Categoria']['Categoria']) && empty($this->data['Categoria']['Categoria'])) {
+                unset($this->data['Categoria']);
+            }
+            foreach($this->data['Compromissos'] as $key => $value) {
+                $this->Compromisso->Save(
+                        array('Compromisso'=>array(
+                                'id' => $this->data['Compromissos'][$key]['Compromisso']['id'],
+                                'registro_excluido'=>'true')));
+
+                unset($this->data['Compromissos'][$key]['Compromisso']['id']);
+                unset($this->data['Compromissos'][$key]['Compromisso']['acontecimento_id']);
+                if(!empty($this->data['Compromissos'][$key]['Participante'])) {
+                    foreach ($this->data['Compromissos'][$key]['Participante'] as $key_participante => $value_participante ) {
+                        unset($this->data['Compromissos'][$key]['Participante'][$key_participante]['id']);
+                        unset($this->data['Compromissos'][$key]['Participante'][$key_participante]['compromisso_id']);
+                    }
+                }
+            }
+
+
+            $this->Compromisso->Acontecimento->saveAll($this->data,array('atomic'=>false));
+
+            foreach($this->data['Compromissos'] as $key => $value) {
+                $this->data['Compromissos'][$key]['Compromisso']['acontecimento_id'] = $this->Acontecimento->id;
+                if( !empty($this->data['Compromissos'][$key]['Compromisso']['id']) && isset($this->data['Compromissos'][$key]['Participante']) ) {
+                    $this->Compromisso->Participante->deleteAll(array('compromisso_id' => $this->data['Compromissos'][$key]['Compromisso']['id'] ));
+                }
+                $this->Compromisso->saveAll($this->data['Compromissos'][$key],array('atomic'=>false));
+            }
+            if( empty ($this->Compromisso->getDataSource()->error) ) {
+                $this->Compromisso->commit();
+                $this->Session->del('situacao');
+                if($this->isWindow()) {
+                    Configure::write('debug',0);
+                    if($this->checkSessionMetodo()) {
+                        $this->set('objeto',array('true'));
+                    }
+                    $this->render('window','window','/pages/window');
+                    $this->closeWindow();
+
+                }else {
+                    $this->Session->setFlash(__('Agenda salva com sucesso!', true), 'default', array('tipo' => 'S'), 'mensagem');
+                    $this->redirect(array('action'=>'index'));
+                }
+            } else {
+                $this->Acontecimento->rollback();
+                $this->voltaDados();
+                $error = 'Agenda não pôde ser salvo. Tente novamente.';
+                $this->Session->setFlash(__($error, true), 'default', array('tipo' => 'E'), 'mensagem');
+            }
+        } else {
+            $this->voltaDados();
+        }
+
+    }
+
+
+    // Metodo par Salvar
+    private function Save() {
+
+        $this->checkPermissaoEscrita($this->data['Acontecimento']['agenda_id']);
+
+        $this->trataDados();
+        $this->processarDocumento();
+
+        //Verifica a existencia de choques de horarios antes de salvar
+        $contemchoque = $this->validaChoqueHorarioRepeticao();
+        if($this->is_confirmado() && !$contemchoque ) {
+            $contemchoque = $this->validaChoqueHorario();
+        }
+
+        if(!$contemchoque) {
+            $this->Compromisso->begin();
+
+            if($this->is_confirmado()) {
+                $this->limpaReagendamento();
+            }
+
+            if ( isset($this->data['Municipio']) && isset($this->data['Municipio']['Municipio']) && empty($this->data['Municipio']['Municipio'])) {
+                unset($this->data['Municipio']);
+            }
+
+            if ( isset($this->data['Categoria']) && isset($this->data['Categoria']['Categoria']) && empty($this->data['Categoria']['Categoria'])) {
+                unset($this->data['Categoria']);
+            }
+
+            $this->data['Acontecimento']['assunto'] = trim($this->data['Acontecimento']['assunto']);
+            $this->data['Acontecimento']['compromisso'] = true ;
+
+            $this->Acontecimento->saveAll($this->data,array('atomic'=>false));
+
+            foreach($this->data['Compromissos'] as $key => $value) {
+                if(empty($this->data['Compromissos'][$key]['acontecimento_id'])) {
+                    $this->data['Compromissos'][$key]['Compromisso']['acontecimento_id'] = $this->Acontecimento->id;
+                }
+                if( !empty($this->data['Compromissos'][$key]['Compromisso']['id']) ) {
+                    $this->Compromisso->Participante->deleteAll(array('compromisso_id' => $this->data['Compromissos'][$key]['Compromisso']['id'] ));
+                }
+                $this->Compromisso->saveAll($this->data['Compromissos'][$key],array('atomic'=>false));
+            }
+
+            if( empty ($this->Compromisso->getDataSource()->error) ) {
+                $this->Compromisso->commit();
+
+                $this->Session->del('situacao');
+
+                if($this->isWindow()) {
+                    Configure::write('debug',0);
+                    if($this->checkSessionMetodo()) {
+                        $this->set('objeto',array('true'));
+                    }
+                    $this->render('window','window','/pages/window');
+                    $this->closeWindow();
+
+                }else {
+                    $this->Session->setFlash(__('Agenda salva com sucesso!', true), 'default', array('tipo' => 'S'), 'mensagem');
+                    $this->redirect(array('action'=>'index'));
+                }
+
+            } else {
+                $this->Acontecimento->rollback();
+                $this->voltaDados();
+                $error = 'Agenda não pôde ser salvo. Tente novamente.';
+                $this->Session->setFlash(__($error, true), 'default', array('tipo' => 'E'), 'mensagem');
+            }
+        }else {
+            $this->voltaDados();
+        }
+
+    }
+
+    private function checaModificacaoAcontecimento( ) {
+        $contain = array( 'Categoria','Municipio', 'Documento');
+        $acontecimento = $this->Acontecimento->find('first',array('conditions'=>array('Acontecimento.id'=>$this->data['Acontecimento']['id']), 'contain'=>$contain ));
+
+        $keys = array('tipo_local_id','descricao_local', 'endereco_local', 'municipio_local_id',
+                'pais_local_id', 'assunto', 'descricao', 'descricao_agenda', 'observacao', 'privado',
+                'protocolo', 'data_hora_inicio', 'data_hora_fim');
+        foreach ( $keys as $key ) {
+            if(isset($this->data['Acontecimento'][$key] ) && isset ($acontecimento['Acontecimento'][$key] ) ) {
+                if ( $this->data['Acontecimento'][$key] != $acontecimento['Acontecimento'][$key] ) {
+                    return true;
+                }
+            }
+        }
+
+        $contemModificacao = false;
+        if(!empty($this->data['Municipio']['Municipio']) && !empty($acontecimento['Municipio'])) {
+            $contemModificacao = $this->checaModificacaoArray($this->data['Municipio']['Municipio'], $acontecimento['Municipio']);
+        } else if (!empty($this->data['Municipio']['Municipio']) ^ !empty($acontecimento['Municipio'])) {
+            $contemModificacao = true;
+        }
+        if( $contemModificacao )
+            return true;
+
+        if(!empty($this->data['Categoria']['Categoria']) && !empty($acontecimento['Categoria'])) {
+            $contemModificacao = $this->checaModificacaoArray($this->data['Categoria']['Categoria'], $acontecimento['Categoria']);
+        } else if (!empty($this->data['Categoria']['Categoria']) ^ !empty($acontecimento['Categoria'])) {
+            $contemModificacao = true;
+        }
+        if( $contemModificacao )
+            return true;
+
+        if(!empty($this->data['Documento']) && !empty($acontecimento['Documento'])) {
+            $contemModificacao = $this->checaModificacaoArray($this->data['Documento'], $acontecimento['Documento']);
+        } else if (!empty($this->data['Documento']) ^ !empty($acontecimento['Documento'])) {
+            $contemModificacao = true;
+        }
+        if( $contemModificacao )
+            return true;
+
+        return false;
+    }
+
+    private function checaModificacaoArray($atual, $original, $key='id') {
+        if( count($atual) == count($original)) {
+            foreach ($atual as $a) {
+                $contem = false;
+                foreach ($original as $o) {
+                    $value = (is_array($a)?$a[$key]:$a);
+                    if( $value ==$o[$key]) {
+                        $contem = true;
+                        break;
+                    }
+                }
+                if(!$contem)
+                    return true;
+            }
+            return false;
+        }
+        return true;
+    }
+
+
+    function atualiza_documentos() {
+
+        // Verifica se a acao foi iniciada pelo cron dispatcher (security)
+        if ( !defined('CRON_DISPATCHER')) {
+            $this->redirect('/');
+        } else {
+            //Apaga arquivos não referenciados
+            $files_db = array();
+            $files_db_aux = $this->Documento->find('all', array('fields'=>array('DISTINCT hash', 'nome_arquivo')) );
+            foreach ( $files_db_aux as $value ){
+                $files_db[$value['Documento']['hash']] = $value['Documento']['nome_arquivo'];
+            }
+
+            $files_dir = 'files/';
+            $dh = opendir($files_dir);
+            while(($file = @readdir($dh)) !==false ) {
+                if($file != "." && $file != "..") {
+                    if( !array_key_exists( $file, $files_db )) {
+                        @unlink($files_dir.$file);
+                    }
+                }
+            }
+            @closedir($dh);
+        }
+        exit();
+    }
+
+
+    private function trataDados() {
+
+        /** ORGANIZACAO DOS DADOS COMUNS A TODAS AS FORMAS DE CADASTRO DE COMPROMISSO **/
+        if(empty($this->data['Acontecimento']['tipo_local_id'])) {
+            $this->data['Acontecimento']['tipo_local_id'] = null;
+        }
+        $hoje = getdate();
+        $usuario = $this->Session->read("Usuario");
+        $this->data['Acontecimento']['usuario_atualizacao_id'] = $usuario['user_id'];
+        $this->data['Acontecimento']['compromisso'] = 1;
+        $this->data['Acontecimento']['data_atualizacao'] = $hoje['mon'].'/'.$hoje['mday'].'/'.$hoje['year'].' '.$hoje['hours'].':'.$hoje['minutes'];
+        //formata as datas de solicitação
+        if (isset($this->data['Solicitacao'])) {
+            foreach ($this->data['Solicitacao'] as $chave => $valor) {
+                if(!empty($this->data['Solicitacao'][$chave]['data_solicitacao']))
+                    $this->data['Solicitacao'][$chave]['data_solicitacao'] = $this->Acontecimento->dateFormate($this->data['Solicitacao'][$chave]['data_solicitacao']);
+                else unset($this->data['Solicitacao'][$chave]['data_solicitacao']);
+            }
+        }
+        //formata as datas de Participação
+        if (isset($this->data['Participante'])) {
+            foreach ($this->data['Participante'] as $chave => $valor) {
+                if(!empty($this->data['Participante'][$chave]['data_envio_convite']))
+                    $this->data['Participante'][$chave]['data_envio_convite'] = $this->Acontecimento->dateFormate($this->data['Participante'][$chave]['data_envio_convite']);
+                else unset($this->data['Participante'][$chave]['data_envio_convite']);
+
+                if(!empty($this->data['Participante'][$chave]['data_resposta_convite']))
+                    $this->data['Participante'][$chave]['data_resposta_convite'] = $this->Acontecimento->dateFormate($this->data['Participante'][$chave]['data_resposta_convite']);
+                else unset($this->data['Participante'][$chave]['data_resposta_convite']);
+            }
+        }
+        // Tratando Datas //
+        $this->trataDataHora('Compromisso'  , 'data_hora_programada_inicio', 'data_hora_programada_inicio_hora');
+        $this->trataDataHora('Compromisso'  , 'data_hora_programada_fim', 'data_hora_programada_fim_hora');
+        $this->trataDataHora('Compromisso'  , 'data_hora_realizada_inicio', 'data_hora_realizada_inicio_hora');
+        $this->trataDataHora('Compromisso'  , 'data_hora_realizada_final' , 'data_hora_realizada_final_hora');
+        $this->trataDataHora('Acontecimento', 'data_hora_inicio', 'data_hora_inicio_hora');
+        $this->trataDataHora('Acontecimento', 'data_hora_fim'   , 'data_hora_fim_hora');
+        $this->trataDataHora('Acontecimento', 'data_entrada' );
+        $this->trataDataHora('Repeticao', 'data_final' );
+
+        /** ORGANIZACAO DOS DADOS REFERENTE A CADASTRO A PARTIR DE UMA SOLICITACAO **/
+        if(empty( $this->data['Acontecimento']['id'])) {
+            $this->data['Acontecimento']['origem_compromisso'] = true;
+        }
+
+
+
+        $this->data['Compromissos'][0]['Compromisso'] = $this->data['Compromisso'];
+        unset($this->data['Compromisso']);
+        $this->trataDadosParticipantes();
+        $this->trataDadosHistoricoSituacao();
+
+        if(!empty($this->data['Repeticao']['tipo_repeticao']) ) {
+            switch ($this->data['Repeticao']['tipo_repeticao']) {
+                case 1:
+                    $this->data['Repeticao']['intervalo'] = $this->data['Controle']['day'];
+                    $this->dia();
+                    break;
+                case 2:
+                    $this->data['Repeticao']['intervalo'] = $this->data['Controle']['weeks'];
+                    $this->semanal();
+                    break;
+                case 3:
+                    $this->data['Repeticao']['intervalo'] = $this->data['Controle']['months'];
+                    $this->mensalDiaMes();
+                    break;
+                case 4:
+                    $this->data['Repeticao']['intervalo'] = $this->data['Controle']['months'];
+                    $this->mensalDiaSemana();
+                    break;
+                case 5:
+                    $this->data['Repeticao']['intervalo'] = $this->data['Controle']['year'];
+                    $this->ano();
+                    break;
+                case 6:
+                    $this->diaAlternado();
+                    break;
+                default:
+                    unset($this->data['Repeticao']);
+                    break;
+            }
+
+        } else {
+            unset($this->data['Repeticao']);
+        }
+
+    }
+
+    private function trataDataHora($indexModel, $indexData, $indexHora = null) {
+        if(!empty($this->data[$indexModel][$indexData])) {
+            $this->data[$indexModel][$indexData] = $this->Compromisso->dateFormate($this->data[$indexModel][$indexData]);
+            if($indexHora != null)
+                $this->data[$indexModel][$indexData] .= ' '.$this->data[$indexModel][$indexHora];
+        }else if( isset ($this->data[$indexModel][$indexData]) ) {
+            $this->data[$indexModel][$indexData] = null;
+        }
+    }
+
+    private function voltaDados() {
+        $this->data['Compromisso'] = $this->data['Compromissos'][0]['Compromisso'];
+        $this->data['HistoricoSituacao'] = $this->data['Compromissos'][0]['HistoricoSituacao'];
+        if(!empty($this->data['Compromissos'][0]['Participante']))
+            $this->data['Participante'] = $this->data['Compromissos'][0]['Participante'];
+        unset($this->data['Compromissos']);
+        $this->voltaDatas();
+    }
+
+    private function voltaDatas() {
+        $this->voltaDataHora('Compromisso'  , 'data_hora_programada_inicio', 'data_hora_programada_inicio_hora');
+        $this->voltaDataHora('Compromisso'  , 'data_hora_programada_fim', 'data_hora_programada_fim_hora');
+        $this->voltaDataHora('Compromisso'  , 'data_hora_realizada_inicio', 'data_hora_realizada_inicio_hora');
+        $this->voltaDataHora('Compromisso'  , 'data_hora_realizada_final', 'data_hora_realizada_final_hora');
+        $this->voltaDataHora('Acontecimento', 'data_hora_inicio', 'data_hora_inicio_hora');
+        $this->voltaDataHora('Acontecimento', 'data_hora_fim', 'data_hora_fim_hora');
+        $this->voltaDataHora('Acontecimento', 'data_entrada');
+        $this->voltaDataHora('Repeticao', 'data_final' );
+    }
+
+    private function voltaDataHora($indexModel, $indexData, $indexHora = null ) {
+        if(!empty($this->data[$indexModel][$indexData])) {
+            $dataHora = explode(' ', $this->data[$indexModel][$indexData]);
+            if( !empty( $dataHora[1] ) && $indexData != null ) {
+                $this->data[$indexModel][$indexHora] = $dataHora[1];
+            }
+            $this->data[$indexModel][$indexData] = $this->Acontecimento->dateFormate($dataHora[0]);
+        }else {
+            unset($this->data[$indexModel][$indexData]);
+        }
+    }
+
+    /* Solicitação */
+    private function serializeSolicitacao() {
+        if(!empty($this->data['Acontecimento']['id'])) {
+            $ids = array();
+            if(!empty($this->data['Solicitacao'])) {
+                foreach ($this->data['Solicitacao'] as $solicitacao) {
+                    if(!empty($solicitacao['id'])) {
+                        $ids[] = $solicitacao['id'];
+                    }
+                }
+            }
+            if(count($ids)) {
+                $this->Acontecimento->Solicitacao->deleteAll(array('Solicitacao.acontecimento_id' => $this->data['Acontecimento']['id'],"NOT" => array("Solicitacao.id"=> $ids)));
+            }else {
+                $this->Acontecimento->Solicitacao->deleteAll(array('Solicitacao.acontecimento_id' => $this->data['Acontecimento']['id']));
+            }
+        }
+    }
+
+    private function trataDadosParticipantes() {
+        if(!empty( $this->data['Participante'])) {
+            if(!empty($this->data['Compromissos'][0]['Compromisso']['id'])) {
+                $compromisso = $this->data['Compromissos'][0]['Compromisso']['id'];
+                foreach($this->data['Participante'] as $key => $value) {
+                    if(empty($this->data['Compromissos'][$key]['compromisso_id'])) {
+                        $this->data['Participante'][$key]['compromisso_id'] = $compromisso;
+                    }
+                }
+            }
+            $this->data['Compromissos'][0]['Participante'] = $this->data['Participante'];
+            unset($this->data['Participante']);
+        }
+    }
+
+
+    /*  Participantes *  Serializa e Salva */
+    private function saveParticipante() {
+        $this->serializeParticipante();
+        $participantes = array();
+        $retorno = true;
+        $compromisso = !empty($this->data['Compromisso'][0]['id'])? $this->data['Compromisso'][0]['id'] : $this->Compromisso->id;
+        if(!empty( $this->data['Participante'])) {
+            $participantes = $this->data['Participante'];
+            foreach($participantes as $key => $value) {
+                if(empty($participantes[$key]['compromisso_id'])) {
+                    $participantes[$key]['compromisso_id'] = $compromisso;
+                }
+            }
+
+            $retorno = $this->Compromisso->Participante->saveAll($participantes,array('atomic'=>false));
+        }
+        return $retorno;
+    }
+
+    private function serializeParticipante() {
+        if(!empty($this->data['Compromisso'][0]['id'])) {
+            $ids = array();
+            if(!empty($this->data['Participante'])) {
+                foreach ($this->data['Participante'] as $participante) {
+                    if(!empty($participante['id'])) {
+                        $ids[] = $participante['id'];
+                    }
+                }
+            }
+            if(count($ids)) {
+                $this->Compromisso->Participante->deleteAll(array('Participante.compromisso_id' => $this->data['Compromisso'][0]['id'],"NOT" => array("Participante.id"=> $ids)));
+            }else {
+                $this->Compromisso->Participante->deleteAll(array('Participante.compromisso_id' => $this->data['Compromisso'][0]['id']));
+            }
+        }
+    }
+
+    private function trataDadosHistoricoSituacao() {
+        if(!empty( $this->data['HistoricoSituacao'][0]['situacao_id'])) {
+
+            if($this->is_confirmado()) {
+                if(empty($this->data['HistoricoSituacao'][0]['observacao']))
+                    $this->data['HistoricoSituacao'][0]['observacao'] = '';
+                $this->data['HistoricoSituacao'][0]['observacao'] .= ' ' . $this->Compromisso->dateTimeFormate($this->data['Compromissos'][0]['data_hora_programada_inicio']) . ' a';
+                $this->data['HistoricoSituacao'][0]['observacao'] .= ' ' . $this->Compromisso->dateTimeFormate($this->data['Compromissos'][0]['data_hora_programada_fim']);
+            }
+
+            //Serializa o historico de situação
+            $this->data['HistoricoSituacao'][0]['atual'] = '1';
+            $this->data['HistoricoSituacao'][0]['usuario_id'] = $this->data['Acontecimento']['usuario_atualizacao_id'];
+            $this->data['HistoricoSituacao'][0]['data'] = $this->data['Acontecimento']['data_atualizacao'];
+
+            // Limpa parametros vindo da view atravez das opcoes
+            if($this->data['HistoricoSituacao'][0]['situacao_id'] == $this->parametros['SITUACAO_ENCAMINHADO']) {
+                unset($this->data['HistoricoSituacao'][0]['motivo_negacao_id']);
+            }
+            elseif($this->data['HistoricoSituacao'][0]['situacao_id'] == $this->parametros['SITUACAO_NAO_ATENDIDO']) {
+                unset($this->data['HistoricoSituacao'][0]['pessoa_encaminhada_id']);
+            }
+            else {
+                unset($this->data['HistoricoSituacao'][0]['motivo_negacao_id']);
+                unset($this->data['HistoricoSituacao'][0]['pessoa_encaminhada_id']);
+            }
+
+            $this->data['Compromissos'][0]['HistoricoSituacao'] = $this->data['HistoricoSituacao'];
+            unset($this->data['HistoricoSituacao']);
+        }
+    }
+
+    /*  Historico */
+    private function saveHistoricoSituacao() {
+
+        $retorno = true;
+        $compromisso = !empty($this->data['Compromisso'][0]['id'])? $this->data['Compromisso'][0]['id'] : $this->Compromisso->id;
+
+
+        if(!empty( $this->data['HistoricoSituacao'][0]['situacao_id'])) {
+
+            if($this->is_confirmado()) {
+                if(empty($this->data['HistoricoSituacao'][0]['observacao']))
+                    $this->data['HistoricoSituacao'][0]['observacao'] = '';
+                $this->data['HistoricoSituacao'][0]['observacao'] .= '  ' . $this->Compromisso->dateTimeFormate($this->data['Compromisso'][0]['data_hora_programada_inicio']) . ' a ';
+                $this->data['HistoricoSituacao'][0]['observacao'] .= '  ' . $this->Compromisso->dateTimeFormate($this->data['Compromisso'][0]['data_hora_programada_fim']);
+            }
+
+            $usuario = $this->Session->read("Usuario");
+            $hoje = getdate();
+
+            //Serializa o historico de situação
+            $this->data['HistoricoSituacao'][0]['atual'] = '1';
+            $this->data['HistoricoSituacao'][0]['usuario_id'] = $usuario['user_id'];
+            $this->data['HistoricoSituacao'][0]['data'] = $hoje['mon'].'/'.$hoje['mday'].'/'.$hoje['year'].' '.$hoje['hours'].':'.$hoje['minutes'];
+
+            // Limpa parametros vindo da view atravez das opcoes
+            if($this->data['HistoricoSituacao'][0]['situacao_id'] == $this->parametros['SITUACAO_ENCAMINHADO']) {
+                unset($this->data['HistoricoSituacao'][0]['motivo_negacao_id']);
+            }
+            elseif($this->data['HistoricoSituacao'][0]['situacao_id'] == $this->parametros['SITUACAO_NAO_ATENDIDO']) {
+                unset($this->data['HistoricoSituacao'][0]['pessoa_encaminhada_id']);
+            }
+            else {
+                unset($this->data['HistoricoSituacao'][0]['motivo_negacao_id']);
+                unset($this->data['HistoricoSituacao'][0]['pessoa_encaminhada_id']);
+            }
+
+            $this->data['HistoricoSituacao'][0]['compromisso_id'] = $compromisso;
+            $retorno = $this->Compromisso->HistoricoSituacao->saveAll($this->data['HistoricoSituacao'], array('atomic'=>false));
+
+        }
+        return $retorno;
+    }
+
+    private function processarDocumento() {
+
+        if(!file_exists('files/'))
+            mkdir('files/',0777);
+
+        if(!empty($this->data['Documento'])) {
+            foreach ($this->data['Documento'] as $key => $value) {
+                if(!empty($value['arquivo'])) {
+
+                    debug($value['arquivo']);
+
+                    $this->data['Documento'][$key]['nome_arquivo'] = $value['arquivo']['name'];
+
+                    $hash = md5_file($value['arquivo']['tmp_name']);
+                    $this->data['Documento'][$key]['hash'] = $hash;
+                    $this->Upload->setUpload($value['arquivo'], 'files/');
+
+                }
+            }
+        }
+    }
+
+
+    private function validaChoqueHorarioRepeticao() {
+        $choque = false;
+        if(isset ($this->data['Compromissos'])) {
+            $array = $this->data['Compromissos'];
+            $arrayKeys = array_keys($array);
+            $arrayLength = sizeof($this->data['Compromissos']);
+
+            for($i=0;$i<$arrayLength ;$i++) {
+                for($j=$i+1;$j<$arrayLength;$j++) {
+                    $choque = ( $array[$arrayKeys[$i]]['Compromisso']['data_hora_programada_inicio'] > $array[$arrayKeys[$j]]['Compromisso']['data_hora_programada_inicio']
+                                    && $array[$arrayKeys[$i]]['Compromisso']['data_hora_programada_inicio'] <= $array[$arrayKeys[$j]]['Compromisso']['data_hora_programada_fim'] )
+                            ||
+                            ( $array[$arrayKeys[$i]]['Compromisso']['data_hora_programada_fim'] > $array[$arrayKeys[$j]]['Compromisso']['data_hora_programada_inicio']
+                                    && $array[$arrayKeys[$i]]['Compromisso']['data_hora_programada_fim'] <= $array[$arrayKeys[$j]]['Compromisso']['data_hora_programada_fim'] ) ;
+                    if($choque) break;
+                }
+                if($choque) break;
+            }
+        }
+        if($choque)
+            $this->Session->setFlash(__("Choque de horário na repetição! <br/>Periodo de compromisso maior que intervalo de repetição." , true), 'default', array('tipo' => 'E'), 'mensagem');
+        return $choque;
+    }
+
+    private function validaChoqueHorario() {
+        // Dados Agenda //
+        $this->Acontecimento->Agenda->recursive = 0;
+        $agenda = $this->Acontecimento->Agenda->read(null, $this->data['Acontecimento']['agenda_id']);
+        $idProprietario = $agenda['PessoaFisica']['id'];
+
+        $choque = false;
+        foreach ($this->data['Compromissos'] as $value) {
+            $dataInicio = $value['Compromisso']['data_hora_programada_inicio'];
+            $dataFim = $value['Compromisso']['data_hora_programada_fim'];
+            if(empty($value['Compromisso']['id']))
+                $choque = $this->validaChoqueHorarioCompromisso ($idProprietario, $dataInicio, $dataFim) ;
+            else
+                $choque = $this->validaChoqueHorarioCompromisso ($idProprietario, $dataInicio, $dataFim, $value['Compromisso']['id']) ;
+            $choque = $this->validaChoqueHorarioDeslocamento($idProprietario, $dataInicio, $dataFim) || $choque;
+            if($choque)
+                break;
+        }
+        $this->set('conflitos',$choque);
+        return $choque;
+    }
+
+    private function validaChoqueHorarioCompromisso($idProprietario, $dataInicio, $dataFim, $excecao = null) {
+
+        $conditions = array(
+                'pessoa_fisica_id'=>$idProprietario,
+                'situacao_id '=>$this->parametros['SITUACAO_CONFIRMADO'],
+                'OR' => array(
+                        array('AND' => array(
+                                        array('VwCompromisso.data_hora_programada_inicio >' => $dataInicio),
+                                        array('VwCompromisso.data_hora_programada_inicio <' => $dataFim),
+                                )),
+                        array('AND' => array(
+                                        array('VwCompromisso.data_hora_programada_fim >' => $dataInicio),
+                                        array('VwCompromisso.data_hora_programada_fim <=' => $dataFim),
+                                ))
+                )
+        );
+
+        if($excecao != null) {
+            $conditions['compromisso_id !='] = $excecao;
+        }
+        $conflitoCompromissos = $this->VwCompromisso->find('all',
+                array('order' => array('VwCompromisso.data_hora_programada_inicio'),'conditions' => $conditions,
+                'fields' => array('DISTINCT nome','nome','assunto','data_hora_programada_inicio',
+                        'data_hora_programada_fim'))
+        );
+
+        if($conflitoCompromissos) {
+            $this->set('conflitoCompromissos',$conflitoCompromissos);
+            return true;
+        }
+        return false;
+    }
+
+    private function validaChoqueHorarioDeslocamento($idProprietario, $dataInicio, $dataFim) {
+
+        // Conflito de Deslocamento
+        $conditions = array(
+                'pessoa_fisica_id'=>$idProprietario,
+                'confirmado '=> 1,
+                'OR' => array(
+                        array('AND' => array(
+                                        array('VwDeslocamento.data_hora_inicio >' => $dataInicio),
+                                        array('VwDeslocamento.data_hora_inicio <' => $dataFim),
+                                )),
+                        array('AND' => array(
+                                        array('VwDeslocamento.data_hora_fim >' => $dataInicio),
+                                        array('VwDeslocamento.data_hora_fim <=' => $dataFim),
+                                ))
+                )
+        );
+        $conflitoDeslocamento = $this->VwDeslocamento->find('all',
+                array('order' => array('VwDeslocamento.data_hora_inicio'),'conditions' => $conditions,
+                'fields' => array('DISTINCT origem_descricao','origem_descricao','destino_descricao',
+                        'data_hora_inicio', 'data_hora_fim'))
+        );
+        if($conflitoDeslocamento) {
+            $this->set('conflitosDeslocamento',$conflitoDeslocamento);
+            return true;
+        }
+        return false;
+    }
+
+
+    function agenda() {
+
+        $this->layout = 'window';
+        $this->carregaDadosSessao('SolicitacaoAgenda');
+
+        $condicao = $this->carregaCondicoesAgenda();
+        $this->paginate['fields'] = array('DISTINCT ON (id) id', 'id', 'tiposolicitacao', 'protocolo', 'solicitado',
+                'data_hora_inicio', 'data_hora_fim', 'local', 'assunto', 'situacao', 'origem', 'tipo_acontecimento_id');
+
+        $registros = $this->paginate('VwSolicitacao', $condicao);
+        $this->set('acontecimentos', $registros);
+
+        $this->carregaOpcoesFiltroAgenda();
+
+    }
+
+    public function atendido($id = '',$compromissoid = '') {
+        $historicos = $this->Compromisso->HistoricoSituacao->find('all', array('conditions' => array('HistoricoSituacao.compromisso_id' => $compromissoid), 'order' => array('HistoricoSituacao.data DESC')));
+        $historioAtual = $historicos[0];
+
+        if($historioAtual['HistoricoSituacao']['situacao_id'] == $this->parametros['SITUACAO_ENCAMINHADO']) {
+            $compromisso['Compromisso']['representado'] = true;
+        }else {
+            $compromisso['Compromisso']['representado'] = false;
+        }
+        $compromisso['Compromisso']['id'] = $compromissoid;
+
+        $usuario = $this->Session->read("Usuario");
+        $hoje = getdate();
+
+        //Serializa o historico de situação
+        $compromisso['HistoricoSituacao'][0]['atual'] = '1';
+        $compromisso['HistoricoSituacao'][0]['usuario_id'] = $usuario['user_id'];
+        $compromisso['HistoricoSituacao'][0]['data'] = $hoje['mon'].'/'.$hoje['mday'].'/'.$hoje['year'].' '.$hoje['hours'].':'.$hoje['minutes'];
+
+        // Limpa parametros vindo da view atravez das opcoes
+        $compromisso['HistoricoSituacao'][0]['situacao_id'] = $this->parametros['SITUACAO_ATENDIDO'];
+        $compromisso['HistoricoSituacao'][0]['compromisso_id'] = $compromissoid;
+
+        $this->Compromisso->begin();
+        if($this->Compromisso->saveAll($compromisso, array('atomic'=>false))) {
+            $this->Acontecimento->commit();
+            $this->Session->setFlash(__('Agenda salva com sucesso!', true), 'default', array('tipo' => 'S'), 'mensagem');
+            $this->redirect(array('action'=>'index'));
+        }
+
+        $this->Acontecimento->rollback();
+        $db_error = $this->Compromisso->getError();
+        if ($db_error)
+            $error = $db_error;
+        else
+            $error = 'Agenda não pôde ser salva. Tente novamente.';
+        $this->Session->setFlash(__($error, true), 'default', array('tipo' => 'E'), 'mensagem');
+        $this->redirect(array('action'=>'edit',$id,$compromissoid));
+    }
+
+
+    function reabrir($compromissoid) {
+        $usuario = $this->Session->read("Usuario");
+        $hoje = getdate();
+
+        //Serializa o historico de situação
+        $compromisso['Compromisso']['id'] = $compromissoid;
+        $compromisso['HistoricoSituacao'][0]['atual'] = '1';
+        $compromisso['HistoricoSituacao'][0]['usuario_id'] = $usuario['user_id'];
+        $compromisso['HistoricoSituacao'][0]['data'] = $hoje['mon'].'/'.$hoje['mday'].'/'.$hoje['year'].' '.$hoje['hours'].':'.$hoje['minutes'];
+
+        // Limpa parametros vindo da view atravez das opcoes
+        $compromisso['HistoricoSituacao'][0]['situacao_id'] = $this->parametros['SITUACAO_A_AGENDAR'];
+        $compromisso['HistoricoSituacao'][0]['compromisso_id'] = $compromissoid;
+        $compromisso['HistoricoSituacao'][0]['observacao'] = 'Reaberto';
+
+        if($this->Compromisso->saveAll($compromisso, array('atomic'=>false))) {
+            $this->Session->setFlash(__('Agenda salva com sucesso!', true), 'default', array('tipo' => 'S'), 'mensagem');
+            $this->redirect(array('action'=>'index'));
+
+
+        }else {
+            $db_error = $this->Compromisso->getError();
+            if ($db_error)
+                $error = $db_error;
+            else
+                $error = 'Agenda não pôde ser salva. Tente novamente.';
+            $this->Session->setFlash(__($error, true), 'default', array('tipo' => 'E'), 'mensagem');
+            $this->redirect(array('action'=>'view',$compromissoid));
+        }
+    }
+
+
+    function mostrar_pleitos($solicitacao_id) {
+        $this->layout='window';
+        $pleito = $this->VwAgendaPleito->find('first', array( 'fields'=>array('DISTINCT solicitacao_id','resumo_solicitacao', 'situacao_solicitacao','resumo_documento'),
+                'conditions'=>array('solicitacao_id'=>$solicitacao_id)
+        ));
+        $solicitantes = $this->VwAgendaPleito->find('all', array( 'fields'=>array('DISTINCT solicitacao_id','nome_solicitante', 'cargo_solicitante'),
+                'conditions'=>array('solicitacao_id'=>$solicitacao_id)
+        ));
+        $municipios = $this->VwAgendaPleito->find('all', array( 'fields'=>array('DISTINCT solicitacao_id','nome_municipio_beneficiado'),
+                'conditions'=>array('solicitacao_id'=>$solicitacao_id)
+        ));
+        $movimentacoes = $this->VwAgendaPleito->find('all', array( 'fields'=>array('DISTINCT solicitacao_id','situacao_movimentacao', 'data_movimentacao','origem', 'destino', 'data_retorno', 'despacho'),
+                'conditions'=>array('solicitacao_id'=>$solicitacao_id)
+        ));
+        $this->set(compact('movimentacoes','pleito','municipios','solicitantes'));
+    }
+
+
+
+    /** METODOS REFERENTES A REPETICAO DE COMPROMISSOS **/
+    private function ano() {
+        $dataI = $this->data['Compromissos'][0]['Compromisso']['data_hora_programada_inicio'];
+        $dataF = $this->data['Compromissos'][0]['Compromisso']['data_hora_programada_fim'];
+        $dataFinalRepeticao = $this->data['Repeticao']['data_final'].' 23:59';
+        $quantAnos = DateUtil::DateDiff($dataFinalRepeticao,$dataI,DATEUNIT::YEAR);
+        $quantLoop = floor($quantAnos / $this->data['Repeticao']['intervalo']);
+
+        for($i = 1; $i <= $quantLoop;$i++) {
+            $dataI = DateUtil::IntervalToDateTime($dataI,$this->data['Repeticao']['intervalo'],DATEUNIT::YEAR);
+            $dataF = DateUtil::IntervalToDateTime($dataF,$this->data['Repeticao']['intervalo'],DATEUNIT::YEAR);
+            if($dataF > $dataFinalRepeticao)
+                break;
+
+            $this->data['Compromissos'][$i] = $this->data['Compromissos'][0];
+            $this->data['Compromissos'][$i]['Compromisso']['data_hora_programada_inicio'] = $dataI;
+            $this->data['Compromissos'][$i]['Compromisso']['data_hora_programada_fim'] = $dataF;
+            unset( $this->data['Compromissos'][$i]['Compromisso']['id'] );
+        }
+    }
+
+    private function dia() {
+        $dataI = $this->data['Compromissos'][0]['Compromisso']['data_hora_programada_inicio'];
+        $dataF = $this->data['Compromissos'][0]['Compromisso']['data_hora_programada_fim'];
+        $dataFinalRepeticao = $this->data['Repeticao']['data_final'].' 23:59';
+        $dias = DateUtil::DateDiff($dataFinalRepeticao,$dataF,DATEUNIT::DAY);
+        $quantLoop = floor($dias / $this->data['Repeticao']['intervalo']);
+
+        for($i = $this->data['Repeticao']['intervalo']; $i <= $dias;$i = $i + $this->data['Repeticao']['intervalo']) {
+            $dataI = DateUtil::IntervalToDateTime($dataI,$this->data['Repeticao']['intervalo'],DATEUNIT::DAY);
+            $dataF = DateUtil::IntervalToDateTime($dataF,$this->data['Repeticao']['intervalo'],DATEUNIT::DAY);
+
+            if($dataF > $dataFinalRepeticao)
+                break;
+
+            $this->data['Compromissos'][$i] = $this->data['Compromissos'][0];
+            $this->data['Compromissos'][$i]['Compromisso']['data_hora_programada_inicio'] = $dataI;
+            $this->data['Compromissos'][$i]['Compromisso']['data_hora_programada_fim'] = $dataF;
+            unset( $this->data['Compromissos'][$i]['Compromisso']['id'] );
+        }
+    }
+
+    private function diaAlternado() {
+        $i = 0;
+        foreach ( $this->data['Repeticao']['Compromissos'] as $value) {
+            if( !empty ($value['hora_programada_inicio']) && !empty ($value['hora_programada_fim'])) {
+
+                $value['data_programada'] = $this->Acontecimento->dateFormate($value['data_programada']);
+
+                $this->data['Compromissos'][$i] = $this->data['Compromissos'][0];
+                $this->data['Compromissos'][$i]['Compromisso']['data_hora_programada_inicio'] = $value['data_programada'].' '.$value['hora_programada_inicio'];
+                $this->data['Compromissos'][$i]['Compromisso']['data_hora_programada_fim'] = $value['data_programada'].' '.$value['hora_programada_fim'];
+
+                if($i!=0) {
+                    unset( $this->data['Compromissos'][$i]['Compromisso']['id'] );
+                }
+
+                $i++;
+            }
+        }
+
+    }
+
+
+
+    private function mensalDiaMes() {
+        $dataI = $this->data['Compromissos'][0]['Compromisso']['data_hora_programada_inicio'];
+        $dataF = $this->data['Compromissos'][0]['Compromisso']['data_hora_programada_fim'];
+        $horaI = $this->data['Compromissos'][0]['Compromisso']['data_hora_programada_inicio_hora'];
+        $numMinutosDifencaDataIDataF = DateUtil::DateTimeDiff($dataF,$dataI,DATEUNIT::MINUTE);
+
+        $dataFinalRepeticao = $this->data['Repeticao']['data_final'].' 23:59';
+        $meses = DateUtil::DateDiff($dataFinalRepeticao,$dataF,DATEUNIT::MONTH);
+        $quantLoop = floor($meses / $this->data['Repeticao']['intervalo']);
+
+        $diaI = date("d",strtotime($dataI));
+        $mesI = date("m",strtotime($dataI));
+        $anoI = date("Y",strtotime($dataI));
+
+        for($i = $this->data['Repeticao']['intervalo']; $i <= $meses;$i = $i + $this->data['Repeticao']['intervalo']) {
+
+            $mesI += $this->data['Repeticao']['intervalo'];
+            if($mesI>12) {
+                $anoI++;
+                $mesI = $mesI % 12 ;
+            }
+            $diaILimite = date("t",strtotime($anoI.'-'.$mesI.'-01'));
+            $diaILimite = ( $diaILimite < $diaI ? $diaILimite : $diaI);
+
+            $dataI =  DateUtil::DateTimeFromStr($anoI.'-'.$mesI.'-'.$diaILimite.' '.$horaI , DATEFORMAT::YMD);
+            $dataF = DateUtil::DateTimeFromTimestamp(strtotime("+$numMinutosDifencaDataIDataF minute", DateUtil::TimeStampFromStr($dataI)));
+
+            if($dataF > $dataFinalRepeticao)
+                break;
+
+            $this->data['Compromissos'][$i] = $this->data['Compromissos'][0];
+            $this->data['Compromissos'][$i]['Compromisso']['data_hora_programada_inicio'] = $dataI;
+            $this->data['Compromissos'][$i]['Compromisso']['data_hora_programada_fim'] = $dataF;
+            unset( $this->data['Compromissos'][$i]['Compromisso']['id'] );
+        }
+    }
+
+    private function mensalDiaSemana() {
+        $dataI = $this->data['Compromissos'][0]['Compromisso']['data_hora_programada_inicio'];
+        $dataF = $this->data['Compromissos'][0]['Compromisso']['data_hora_programada_fim'];
+        $horaI = $this->data['Compromissos'][0]['Compromisso']['data_hora_programada_inicio_hora'];
+        $numMinutosDifencaDataIDataF = DateUtil::DateTimeDiff($dataF,$dataI,DATEUNIT::MINUTE);
+        $dataFinalRepeticao = $this->data['Repeticao']['data_final'].' 23:59';
+
+        $dateFormat  = DATEFORMAT::YMD;
+        $primeiroDiadaSemanaMes = DateUtil::getStartDateOfWeek($dataI);
+        $diaDaSemana = DateUtil::numericWeekDay($dataI);
+        //$primeiroDiaMes = date("Y-m-01", DateUtil::TimeStampFromStr($dataI,$dateFormat));
+        $ultimoDiadoMes = date("Y-m-t", DateUtil::TimeStampFromStr($dataI,$dateFormat));
+
+        // Diferença de dias do Data Inicial para Data Final
+        $diasMes = DateUtil::DateDiff($ultimoDiadoMes,$primeiroDiadaSemanaMes,DATEUNIT::DAY) +  1;
+        $quantSemanaMes = ceil($diasMes / 7);
+        // Varrer cada semana para saber em que semana esta a data
+        $dataStarWeek = $primeiroDiadaSemanaMes;
+        $dataFimWeek = DateUtil::DateFromTimestamp(strtotime("+6 day", DateUtil::TimeStampFromStr($primeiroDiadaSemanaMes, $dateFormat)));
+
+        $semanaOneInicio = $dataStarWeek;
+        for ($i = 1; $i <= $quantSemanaMes; $i++) {
+            if($dataI >= $dataStarWeek && $dataI <= $dataFimWeek) {
+                $posicaoSemana = $i;
+                // Verifica se na primeira Semana existe a dia semana selecionado //
+                $dayWeek = DateUtil::DateFromTimestamp(strtotime("+$diaDaSemana day", DateUtil::TimeStampFromStr($semanaOneInicio)));
+                if(DateUtil::Month($dayWeek) != DateUtil::Month($dataI)) {
+                    $posicaoSemana -= 1;
+                }
+                break;
+            }
+            $dataStarWeek = DateUtil::DateFromTimestamp(strtotime("+1 day", DateUtil::TimeStampFromStr($dataFimWeek, $dateFormat)));
+            $dataFimWeek = DateUtil::DateFromTimestamp(strtotime("+7 day", DateUtil::TimeStampFromStr($dataFimWeek, $dateFormat)));
+        }
+
+        // Loop quantidade de meses e montar array
+        $quantMeses = DateUtil::DateDiff($dataFinalRepeticao,$dataI,DATEUNIT::MONTH);
+        $quantLoop = ceil($quantMeses / $this->data['Repeticao']['intervalo']);
+
+        for($i = 1; $i <= $quantLoop;$i++) {
+            $posicaoSemanaDinamico = $posicaoSemana;
+            $primeiroDiaMesInicial = date("Y-m-01",DateUtil::TimeStampFromStr($dataI,DATEFORMAT::YMD));
+            $dataI = DateUtil::IntervalToDate($primeiroDiaMesInicial,$this->data['Repeticao']['intervalo'],DATEUNIT::MONTH);
+            $ultimoDia = date("Y-m-t", DateUtil::TimeStampFromStr($dataI,$dateFormat));
+            $primeiroDiadaSemanaMes = DateUtil::getStartDateOfWeek($dataI);
+            $diasMesLoop = DateUtil::DateDiff($ultimoDia,$primeiroDiadaSemanaMes,DATEUNIT::DAY) +  1;
+            $quantSemana = ceil($diasMesLoop / 7);
+            $mes = DateUtil::Month($dataI);
+
+            $dayWeek = DateUtil::DateFromTimestamp(strtotime("+$diaDaSemana day", DateUtil::TimeStampFromStr($primeiroDiadaSemanaMes)));
+            if(DateUtil::Month($dayWeek) == $mes) {
+                $posicaoSemanaDinamico -= 1;
+            }
+
+            if($posicaoSemana > $quantSemana) {
+                $quantSemana = $quantSemana - 1;
+                $Week = DateUtil::DateFromTimestamp(strtotime("+$quantSemana week", DateUtil::TimeStampFromStr($dayWeek)));
+            }else {
+                $Week = DateUtil::DateFromTimestamp(strtotime("+$posicaoSemanaDinamico week", DateUtil::TimeStampFromStr($dayWeek)));
+            }
+
+            $mesAtual = date("m", DateUtil::TimeStampFromStr($dataI,$dateFormat));
+            $mesdiaMes = date("m", DateUtil::TimeStampFromStr($Week,$dateFormat));
+
+            if($mesAtual != $mesdiaMes && $mesAtual < $mesdiaMes && $mesAtual == '01') {
+                $Week = DateUtil::DateFromTimestamp(strtotime("+7 day", DateUtil::TimeStampFromStr($Week)));
+            }elseif($mesAtual > $mesdiaMes && $mesAtual == '12') {
+                $Week = DateUtil::DateFromTimestamp(strtotime("-7 day", DateUtil::TimeStampFromStr($Week)));
+            }
+            elseif($mesAtual != $mesdiaMes && $mesAtual > $mesdiaMes) {
+                $Week = DateUtil::DateFromTimestamp(strtotime("+7 day", DateUtil::TimeStampFromStr($Week)));
+            }else if($mesAtual != $mesdiaMes && $mesAtual < $mesdiaMes && $mesAtual != '01') {
+                $Week = DateUtil::DateFromTimestamp(strtotime("-7 day", DateUtil::TimeStampFromStr($Week)));
+            }
+
+            if($Week > $dataFinalRepeticao)
+                break;
+
+            $dataI = DateUtil::DateTimeFromStr($Week.' '.$horaI, $dateFormat);
+            $dataI = DateUtil::DateTimeFromTimestamp(strtotime("+$numMinutosDifencaDataIDataF minute", DateUtil::TimeStampFromStr($dataI)));
+            $this->data['Compromissos'][$i] = $this->data['Compromissos'][0];
+            $this->data['Compromissos'][$i]['Compromisso']['data_hora_programada_inicio'] = $dataI;
+            $this->data['Compromissos'][$i]['Compromisso']['data_hora_programada_fim'] = $dataF;
+            unset( $this->data['Compromissos'][$i]['Compromisso']['id'] );
+
+        }
+
+    }
+
+    private function semanal() {
+        $dataI = $this->data['Compromissos'][0]['Compromisso']['data_hora_programada_inicio'];
+        $dataF = $this->data['Compromissos'][0]['Compromisso']['data_hora_programada_fim'];
+        $horaI = $this->data['Compromissos'][0]['Compromisso']['data_hora_programada_inicio_hora'];
+        $numMinutosDifencaDataIDataF = DateUtil::DateTimeDiff($dataF,$dataI,DATEUNIT::MINUTE);
+        $dataFinalRepeticao = $this->data['Repeticao']['data_final'].' 23:59';
+        $quantWeeks = DateUtil::DateDiff($dataFinalRepeticao,$dataI,DATEUNIT::WEEK);
+
+        $quantLoop = floor($quantWeeks / $this->data['Repeticao']['intervalo']);
+        $controle = 1;
+        for($i = 1; $i <= $quantLoop;$i++) {
+            $dataI = DateUtil::IntervalToDate($dataI,$this->data['Repeticao']['intervalo'],DATEUNIT::WEEK );
+            $primeiroDiaSemana = DateUtil::getStartDateOfWeek($dataI,0,false);
+
+            if($dataI > $dataFinalRepeticao)
+                break;
+
+            foreach($this->data['Controle']['weekday'] as $semana) {
+
+                $diaSemana = DateUtil::DateFromTimestamp(strtotime("+$semana day", DateUtil::TimeStampFromStr($primeiroDiaSemana)));
+                $diaSemana = $diaSemana.' '.$horaI;
+                $this->data['Compromissos'][$controle] = $this->data['Compromissos'][0];
+                $this->data['Compromissos'][$controle]['Compromisso']['data_hora_programada_inicio'] = $diaSemana;
+                $this->data['Compromissos'][$controle]['Compromisso']['data_hora_programada_fim'] = DateUtil::DateTimeFromTimestamp(strtotime("+$numMinutosDifencaDataIDataF minute", DateUtil::TimeStampFromStr($diaSemana)));
+                unset( $this->data['Compromissos'][$i]['Compromisso']['id'] );
+                $controle++;
+            }
+
+        }
+
+        $semanas = array_flip($this->data['Controle']['weekday']);
+        $semanasString = '';
+        for($i = 0;$i <=6; $i++) {
+            if(array_key_exists($i,$semanas))
+                $semanasString .='1';
+            else
+                $semanasString .='0';
+        }
+        $this->data['Repeticao']['dias_semana'] = $semanasString;
+    }
+
+
+
+    /** METODOS GERADOS A PARTIR DE REFATORACAO **/
+
+    private function carregaDadosSessao($index) {
+        if (!isset($this->data[$index]) && $this->Session->check($index))
+            $this->data[$index] = $this->Session->read($index);
+        else
+            $this->Session->Write($index, $this->data[$index]);
+    }
+
+    private function carregaCondicoes($index, &$condicao) {
+        if (isset($this->data[$index]['protocolo']) && $this->data[$index]['protocolo'] !== '') {
+            $condicao['protocolo ILIKE'] = '%' . $this->data[$index]['protocolo'] .'%';
+        }
+        if (isset($this->data[$index]['tipo_acontecimento_id']) && $this->data[$index]['tipo_acontecimento_id'] !== '') {
+            $condicao['tipo_acontecimento_id'] = $this->data[$index]['tipo_acontecimento_id'];
+        }
+        if (isset($this->data[$index]['tipo_local_id']) && $this->data[$index]['tipo_local_id'] !== '') {
+            $condicao['tipo_local_id'] = $this->data[$index]['tipo_local_id'];
+        }
+        if (isset($this->data[$index]['assunto']) && $this->data[$index]['assunto'] !== '') {
+            $condicao['assunto ILIKE'] = '%' . $this->data[$index]['assunto'] .'%';
+        }
+        if (isset($this->data[$index]['categoria_id']) && $this->data[$index]['categoria_id'] !== '') {
+            $condicao['categoria_id'] = $this->data[$index]['categoria_id'];
+        }
+        if (isset($this->data[$index]['encaminhado']) && $this->data[$index]['encaminhado'] !== '') {
+            $condicao['encaminhado ILIKE'] = '%' . $this->data[$index]['encaminhado'] .'%';
+        }
+        if (isset($this->data[$index]['solicitado']) && $this->data[$index]['solicitado'] !== '') {
+            $condicao['solicitado ILIKE'] = '%' . $this->data[$index]['solicitado'] .'%';
+        }
+        if (isset($this->data[$index]['participante']) && $this->data[$index]['participante'] !== '') {
+            $condicao['participante ILIKE'] = '%' . $this->data[$index]['participante'] .'%';
+        }
+        if (isset($this->data[$index]['origem_id']) && $this->data[$index]['origem_id'] !== '') {
+            $condicao['origem_id'] = $this->data[$index]['origem_id'];
+        }
+    }
+
+    private function carregaCondicoesAgenda() {
+        $condicao = array();
+        $this->carregaCondicoes('Compromisso', $condicao);
+        if (isset($this->data['SolicitacaoAgenda']['data_hora_inicio']) && $this->data['SolicitacaoAgenda']['data_hora_inicio'] !== '') {
+            $condicao['data_hora_inicio >='] = $this->Acontecimento->dateFormate($this->data['SolicitacaoAgenda']['data_hora_inicio']);
+        }
+        if (isset($this->data['SolicitacaoAgenda']['data_hora_fim']) && $this->data['SolicitacaoAgenda']['data_hora_fim'] !== '') {
+            $condicao['date(data_hora_inicio) <='] = $this->Acontecimento->dateFormate($this->data['SolicitacaoAgenda']['data_hora_fim']);
+        }
+        if (!isset($this->data['SolicitacaoAgenda']['pesquisa'])) {
+            $condicao['id'] = '-1';
+        }
+        // Se não existir filtro de agenda, só retorna as solicitações das agendas que o usuário tem permissão
+        if (!isset($condicao['agenda_id'])) {
+            $agendas = $this->carregaAgendasEscrita();
+            if( !empty($agendas)) {
+                $agenda_id = array();
+                foreach ($agendas AS $chave => $valor) {
+                    $agenda_id[] = $chave;
+                }
+                $condicao['agenda_id'] = $agenda_id;
+            } else {
+                $condicao['agenda_id'] = '-1';
+            }
+        }
+        $condicao['situacao_id'] = $this->parametros['SITUACAO_A_AGENDAR'];
+        $condicao['origem_compromisso'] = 'false';
+        $condicao['registro_excluido'] = 'false';
+        return $condicao;
+    }
+
+    private function carregaCondicoesIndex() {
+        $condicao = array();
+        if (isset($this->data['Controle']['tipo']) && $this->data['Controle']['tipo'] == 's') {
+            $condicao['OR'] = array(
+                    'assunto ILIKE' => '%' . $this->data['Compromisso']['palavrachave'] .'%',
+                    'encaminhado ILIKE' => '%' . $this->data['Compromisso']['palavrachave'] .'%',
+                    'solicitado ILIKE' => '%' . $this->data['Compromisso']['palavrachave'] .'%',
+                    'descricao ILIKE' => '%' . $this->data['Compromisso']['palavrachave'] .'%',
+                    'participante ILIKE' => '%' . $this->data['Compromisso']['palavrachave'] .'%');
+        } else {
+            $this->carregaCondicoes('Compromisso', $condicao);
+
+            if (isset($this->data['Compromisso']['situacao_id']) && $this->data['Compromisso']['situacao_id'] !== '') {
+                $condicao['situacao_id'] = $this->data['Compromisso']['situacao_id'];
+            }
+            if (isset($this->data['Compromisso']['descricao']) && $this->data['Compromisso']['descricao'] !== '') {
+                $condicao['descricao ILIKE'] = '%' . $this->data['Compromisso']['descricao'] .'%';
+            }
+            if (isset($this->data['Compromisso']['tipo_deslocamento_id']) && $this->data['Compromisso']['tipo_deslocamento_id'] !== '') {
+                $condicao['tipo_deslocamento_id'] = $this->data['Compromisso']['tipo_deslocamento_id'];
+            }
+            
+        }
+
+
+        if (isset($this->data['Compromisso']['data_hora_programada_inicio']) && $this->data['Compromisso']['data_hora_programada_inicio'] !== '') {
+            $condicao['date(data_hora_programada_inicio) >='] = $this->Acontecimento->dateFormate($this->data['Compromisso']['data_hora_programada_inicio']);
+        }
+        if (isset($this->data['Compromisso']['data_hora_programada_fim']) && $this->data['Compromisso']['data_hora_programada_fim'] !== '') {
+            $condicao['date(data_hora_programada_fim) <='] = $this->Acontecimento->dateFormate($this->data['Compromisso']['data_hora_programada_fim']);
+        }
+        if (isset($this->data['Compromisso']['data_entrada_inicio']) && $this->data['Compromisso']['data_entrada_inicio'] !== '') {
+            $condicao['date(data_entrada) >='] = $this->Acontecimento->dateFormate($this->data['Compromisso']['data_entrada_inicio']);
+        }
+        if (isset($this->data['Compromisso']['data_entrada_fim']) && $this->data['Compromisso']['data_entrada_fim'] !== '') {
+            $condicao['date(data_entrada) <='] = $this->Acontecimento->dateFormate($this->data['Compromisso']['data_entrada_fim']);
+        }
+
+        if (!empty($this->data['Compromisso']['agenda_id'])) {
+            $condicao['agenda_id'] = $this->data['Compromisso']['agenda_id'];
+        } else {
+            $agendas = $this->carregaAgendas();
+            if (isset($agendas) && !empty($agendas)) {
+                $agenda_id = array();
+                foreach ($agendas AS $chave => $valor) {
+                    $agenda_id[] = $chave;
+                }
+                $condicao['agenda_id'] = $agenda_id;
+            }
+        }
+        if (isset($this->data['Compromisso']['registro_excluido']) && $this->data['Compromisso']['registro_excluido'] == '1') {
+            $condicao['registro_excluido'] = 'false';
+        } elseif (isset($this->data['Compromisso']['registro_excluido']) && $this->data['Compromisso']['registro_excluido'] == '3') {
+            $condicao['registro_excluido'] = 'true';
+        }
+        if (!isset($this->data['Compromisso']['pesquisa'])) {
+            $condicao['id'] = '-1';
+        }
+        //Condições obrigatórias
+        $condicao['compromisso'] = 'true';
+        return $condicao;
+    }
+
+    private function carregaOpcoesFiltroIndex() {
+        $agendas = $this->carregaAgendas();
+        $this->adicionarElemento($agendas ,'Todos');
+        $tipoDeslocamentos = $this->Compromisso->TipoDeslocamento->find('list', array('order'=>array('TipoDeslocamento.descricao ASC')));
+        $this->adicionarElemento($tipoDeslocamentos,'Todos');
+        $this->set(compact('agendas','tipoDeslocamentos'));
+
+        $this->carregaOpcoesFiltro();
+    }
+
+    private function carregaOpcoesFiltroAgenda() {
+        $this->carregaOpcoesFiltro();
+    }
+
+    private function carregaOpcoesFiltro() {
+        $categorias = $this->Acontecimento->Categoria->find('list', array('order'=>array('Categoria.descricao ASC')));
+        $this->adicionarElemento($categorias,'Todos');
+        $tipoAcontecimentos = $this->Acontecimento->TipoAcontecimento->find('list', array('order'=>array('TipoAcontecimento.descricao ASC')));
+        $this->adicionarElemento($tipoAcontecimentos,'Todos');
+        $tipoLocais = $this->Acontecimento->TipoLocal->find('list', array('order'=>array('TipoLocal.descricao ASC')));
+        $this->adicionarElemento($tipoLocais,'Todos');
+        $situacoes = $this->Situacao->find('list', array('order'=>array('Situacao.descricao ASC')));
+        $this->adicionarElemento($situacoes,'Todos');
+        $sistemas = $this->Acontecimento->SistemaExterno->find('list', array('order'=>array('SistemaExterno.nome ASC')));
+        $this->adicionarElemento($sistemas,'Todos');
+        $excluidos = array('1' => 'Não exibir', '2' => 'Exibir', '3' => 'Somente Excluídos');
+
+        $this->set(compact('categorias', 'tipoAcontecimentos', 'tipoLocais', 'situacoes', 'sistemas','excluidos'));
+    }
+
+    private function is_agendado() {
+        if(!empty($this->data['Compromissos'][0]['HistoricoSituacao'][0]['situacao_id']) && ($this->data['Compromissos'][0]['HistoricoSituacao'][0]['situacao_id'] == $this->parametros['SITUACAO_AGENDADO']))
+            return true;
+        return false;
+    }
+
+    private function is_confirmado() {
+        if(!empty($this->data['Compromissos'][0]['HistoricoSituacao'][0]['situacao_id']) && ($this->data['Compromissos'][0]['HistoricoSituacao'][0]['situacao_id'] == $this->parametros['SITUACAO_CONFIRMADO']))
+            return true;
+        return false;
+    }
+
+    /* Dados para Inicio de Tela */
+    private function carregaDadosFormulario( ) {
+
+        // Todos Territorios //
+        $this->Territorio->displayField = 'descricao';
+        $territorios = $this->Territorio->find('list', array('conditions' => array('Territorio.estado_id' => $this->parametros['ESTADO_PADRAO']), 'order'=>array('Territorio.descricao ASC')));
+        $this->adicionarElemento($territorios, 'Todos');
+
+        // Estados //
+        $estados = $this->Estado->find('list');
+
+        // Tipo Acontecimentos //
+        $tipoAcontecimentos = array();
+        $tipoAcontecimentos = $this->Acontecimento->TipoAcontecimento->find('list', array('order'=>array('TipoAcontecimento.descricao ASC')));
+        $this->adicionarElemento( $tipoAcontecimentos,'Selecione');
+
+        // Tipo Deslocamento //
+        $tipoDeslocamentos = $this->Compromisso->TipoDeslocamento->find('list', array('order'=>array('TipoDeslocamento.descricao ASC')));
+        $this->adicionarElemento($tipoDeslocamentos,'Selecione');
+
+        // Tipo Locais //
+        $tipoLocais = $this->Acontecimento->TipoLocal->find('list', array('order'=>array('TipoLocal.descricao ASC')));
+        $this->adicionarElemento( $tipoLocais,'Selecione');
+
+        // Meio Solicitação
+        $meioSolicitacoes = $this->MeioSolicitacao->find('list', array('order'=>array('MeioSolicitacao.descricao ASC')));
+        $this->adicionarElemento( $meioSolicitacoes,'Selecione');
+
+        //Usado em Local
+        $paisesLocal = $this->Pais->find('list');
+        $this->adicionarElemento($paisesLocal, 'Selecione');
+        if(empty($this->data['Acontecimento']['pais_local_id'])) {
+            $this->data['Acontecimento']['pais_local_id'] = $this->parametros['PAIS_PADRAO'];
+        }
+
+        $this->data['Controle']['estado_id'] =  $this->parametros['ESTADO_PADRAO'];
+        $estadosLocal = $this->Estado->find('list', array('conditions' => array('Estado.pais_id' => $this->data['Acontecimento']['pais_local_id'])));
+        $this->adicionarElemento($estadosLocal, 'Selecione');
+
+
+        if(empty($this->data['Acontecimento']['municipio_local_id'])) {
+            $this->data['Acontecimento']['municipio_local_id'] = $this->parametros['CIDADE_PADRAO'];
+        }
+        $municipio = $this->Municipio->read(null, $this->data['Acontecimento']['municipio_local_id']);
+        
+        if(array_key_exists( $municipio['Municipio']['estado_id'], $estadosLocal) ){
+            $this->data['Controle']['estado_id'] = 	$municipio['Municipio']['estado_id'];
+            $municipiosLocal = $this->Municipio->find('list', array('conditions' => array('Municipio.estado_id' => $this->data['Controle']['estado_id']),'order'=>array('Municipio.nome ASC')));
+        } else {
+            $municipiosLocal = array();
+        }
+
+        // Processa Categorias , primeiro if processa vindo de um form. 2 processa vindo de um agendamento
+        $minhasCategorias = array();
+        $compareCategorias = array();
+        if (isset($this->data['Categoria']['Categoria']) && is_array($this->data['Categoria']['Categoria'])) {
+
+            foreach($this->data['Categoria']['Categoria'] as $cat) {
+                $compareCategorias[] = $cat;
+            }
+
+            $categorias = $this->Acontecimento->Categoria->find('list',array('conditions'=>array( "NOT" => array("Categoria.id"=>$compareCategorias)), 'order'=>array('Categoria.descricao ASC')));
+            $minhasCategorias = $this->Acontecimento->Categoria->find('list',array('conditions'=>array("Categoria.id"=>$compareCategorias), 'order'=>array('Categoria.descricao ASC')));
+
+        }elseif(!empty($this->data['Categoria']) && !isset($this->data['Categoria']['Categoria']) ) {
+            foreach($this->data['Categoria'] as $cat) {
+                $compareCategorias[] = $cat['id'];
+                $minhasCategorias[$cat['id']] = $cat['descricao'];
+            }
+            $categorias = $this->Acontecimento->Categoria->find('list',array('conditions'=>array( "NOT" => array("Categoria.id"=>$compareCategorias)), 'order'=>array('Categoria.descricao ASC')));
+            $minhasCategorias = $this->Acontecimento->Categoria->find('list',array('conditions'=>array("Categoria.id"=>$compareCategorias), 'order'=>array('Categoria.descricao ASC')));
+        }else {
+            $categorias = $this->Acontecimento->Categoria->find('list',array('order'=>array('Categoria.descricao ASC')));
+        }
+
+        // Processa Municipios //
+        $meusMunicipios = array();
+        $compareMunicipios = array();
+        if (isset($this->data['Municipio']['Municipio']) && is_array($this->data['Municipio']['Municipio'])) {
+            foreach($this->data['Municipio']['Municipio'] as $muni) {
+                $compareMunicipios[] = $muni;
+            }
+
+            $municipios = $this->Municipio->find('list', array('conditions' => array('Municipio.estado_id' => $this->parametros['ESTADO_PADRAO'], 'NOT' => array('Municipio.id' => $compareMunicipios)), 'order' => 'Municipio.nome ASC'));
+            $meusMunicipios = $this->Municipio->find('list', array('conditions' => array('Municipio.estado_id' => $this->parametros['ESTADO_PADRAO'], 'Municipio.id' => $compareMunicipios), 'order' => 'Municipio.nome ASC'));
+
+        }elseif(!empty($this->data['Municipio']) && !isset($this->data['Municipio']['Municipio'])) {
+
+            foreach($this->data['Municipio'] as $muni) {
+                $compareMunicipios[]= $muni['id'];
+            }
+            $municipios = $this->Municipio->find('list', array('conditions' => array('Municipio.estado_id' => $this->parametros['ESTADO_PADRAO'], 'NOT' => array('Municipio.id' => $compareMunicipios)), 'order' => 'Municipio.nome ASC'));
+            $meusMunicipios = $this->Municipio->find('list', array('conditions' => array('Municipio.estado_id' => $this->parametros['ESTADO_PADRAO'], 'Municipio.id' => $compareMunicipios), 'order' => 'Municipio.nome ASC'));
+
+        }else {
+            $municipios = $this->Municipio->find('list', array('conditions' => array('Municipio.estado_id' => $this->parametros['ESTADO_PADRAO']), 'order' => 'Municipio.nome ASC'));
+        }
+
+        // Processa Solicitação //
+        $solicitacoes = array();
+        if (!empty($this->data['Solicitacao']) && count($this->data['Solicitacao'])) {
+            foreach($this->data['Solicitacao'] as $key => $value) {
+                if(!empty($value['solicitante_pessoa_fisica_id']))
+                    $this->data['Solicitacao'][$key]['HistoricoFuncional']['PessoaFisica']['Pessoa']['nome'] = $value['solicitante'];
+                else
+                    $this->data['Solicitacao'][$key]['Organizacao']['Pessoa']['nome'] = $value['solicitante'];
+                $this->data['Solicitacao'][$key]['Encaminhante']['nome'] = $value['encaminhado'];
+                $this->data['Solicitacao'][$key]['Solicitacao'] = $value;
+
+            }
+            $solicitacoes = $this->data['Solicitacao'];
+        }
+        elseif(!empty($this->data['Acontecimento']['id'])) {
+            $this->Solicitacao->recursive = 3;
+            $solicitacoes = $this->Solicitacao->find('all',array('conditions'=>array('Solicitacao.acontecimento_id'=>$this->data['Acontecimento']['id'])));
+        }
+
+        // Processa Participante //
+        $participantes = array();
+        if ( !empty($this->data['Participante']) ) {
+            $participante  = array();
+            foreach($this->data['Participante'] as $key => $value) {
+                $participante['HistoricoFuncional']['PessoaFisica']['Pessoa']['nome'] = $value['nome'];
+                $participante['Participante'] = $value;
+                $participantes[]  = $participante;
+            }
+        } elseif ( !empty($this->data['Compromisso']['id']) ) {
+            $contain = array( 'HistoricoFuncional'=>array('PessoaFisica'=>array('Pessoa')));
+            $participantes = $this->Compromisso->Participante->find('all', array( 'conditions'=>array('Participante.compromisso_id'=>$this->data['Compromisso']['id']), 'contain'=>$contain ) );
+        }
+
+        if(!empty($this->data['Acontecimento']['repeticao_id'])) {
+
+            $this->Acontecimento->Repeticao->recursive = -1;
+            $repeticao = $this->Acontecimento->Repeticao->find('first', array('conditions'=>array('Repeticao.id'=>$this->data['Acontecimento']['repeticao_id'])) );
+            $this->data['Repeticao'] = $repeticao['Repeticao'];
+
+            $this->carregaTipoRepeticao();
+
+            $this->Compromisso->recursive = -1;
+            $compromissos = $this->Compromisso->find('all', array('conditions'=>array('Compromisso.acontecimento_id'=>$this->data['Acontecimento']['id'], 'Compromisso.registro_excluido'=>'false'), 'order'=>array('data_hora_programada_inicio') ) );
+
+            foreach ( $compromissos as $value ) {
+                $this->data['Repeticao']['Compromisso'][] = $value['Compromisso'];
+            }
+
+        }
+
+        if(!empty($this->data['Acontecimento']['id'])) {
+            $pleitos = $this->VwAgendaPleito->find('all', array( 'fields'=>array('DISTINCT id_solicitacao_siag', 'solicitacao_id', 'situacao_solicitacao','resumo_solicitacao'),
+                    'conditions'=>array('id_solicitacao_siag'=>$this->data['Acontecimento']['id'])
+            ));
+            $this->set('pleitos', $pleitos);
+        }
+
+        $agendas = array();
+        if($this->params['action'] == 'view') {
+            $agendas  = $this->carregaAgendas();
+        }else {
+            $agendas  = $this->carregaAgendasEscrita();
+        }
+        $this->adicionarElemento($agendas, 'Selecione');
+
+        $this->carregaProximasSituacoes();
+
+        $this->set('tipoRepeticao',array(''=>'Nenhuma',1=>'Diária',2=>'Semanal',3=>'Mensal(dia do mês)',4=>'Mensal(dia da semana)',5=>'Anual'));
+        $this->set(compact('agendas','participantes','solicitacoes','municipios'));
+        $this->set(compact('meusMunicipios','minhasCategorias','categorias'));
+        $this->set(compact('paisesLocal', 'estadosLocal', 'municipiosLocal','estados','todosMunicipios'));
+        $this->set(compact('territorios','tipoAcontecimentos','tipoDeslocamentos','tipoLocais','meioSolicitacoes'));
+
+    }
+
+    private function carregaProximasSituacoes() {
+
+        if(!empty($this->data['Compromisso']['id'])) {
+            // Preenchimentos so se tiver uma ID
+            $nextSituacoes = array();
+            // Pega Situação Atual
+            $this->Compromisso->HistoricoSituacao->unbindModel( array('belongsTo' => array('PessoaFisica','Compromisso','MotivoNegacao','Usuario' )));
+            $historicos = $this->Compromisso->HistoricoSituacao->find('all', array('conditions' => array('HistoricoSituacao.compromisso_id' => $this->data['Compromisso']['id']), 'order' => array('HistoricoSituacao.data DESC')));
+            $historioAtual = $historicos[0];
+
+            if($historioAtual['Situacao']['situacao_final']) {
+                $this->set('situacao_final', true);
+            } else {
+                // Pega proxima situação apartir da situação atual
+                $nextSituacoes = $this->getSituacoes($historioAtual['HistoricoSituacao']['situacao_id']);
+                $this->set('situacao_final', false);
+            }
+
+            $this->set(compact('historicos'));
+        } else {
+            $nextSituacoes = $this->Situacao->find('list', array('conditions' => array('Situacao.situacao_inicial_compromisso' => 'TRUE'), 'order' => array('Situacao.descricao ASC')));
+        }
+
+        if(count($nextSituacoes) > 1) {
+            $this->adicionarElemento($nextSituacoes, 'Selecione');
+        }
+
+        // Pega Motivos de Negação . para caso selecione negar em Situação
+        $motivoNegacao = $this->MotivoNegacao->find('list');
+        $this->adicionarElemento($motivoNegacao, 'Selecione');
+
+        $this->set(compact('motivoNegacao','nextSituacoes'));
+
+    }
+
+    private function carregaTipoRepeticao() {
+        if(!empty($this->data['Acontecimento']['Repeticao'])) {
+            $this->data['Repeticao'] = $this->data['Acontecimento']['Repeticao'];
+            unset($this->data['Acontecimento']['Repeticao']);
+        }
+        if(!empty($this->data['Repeticao']['tipo_repeticao'])) {
+            switch ($this->data['Repeticao']['tipo_repeticao']) {
+                case 1:	$tipoRepeticao  = 'Diária';
+                    $tipoIntervalo  = 'Dia(s)';
+                    break;
+                case 2:	$tipoRepeticao  = 'Semanal';
+                    $tipoIntervalo  = 'Semana(s)';
+                    break;
+                case 3: $tipoRepeticao  = 'Mensal(dia do mês)';
+                    $tipoIntervalo  = 'Mês(s)';
+                    break;
+                case 4: $tipoRepeticao  = 'Mesal(dia da semana)';
+                    $tipoIntervalo  = 'Mês(s)';
+                    break;
+                case 5: $tipoRepeticao  = 'Anual';
+                    $tipoIntervalo  = 'Ano(s)';
+                    break;
+                case 6: $tipoRepeticao  = 'Diária (horários alternados)';
+                    $tipoIntervalo  = '';
+                    break;
+            }
+            $this->data['Repeticao']['tipoIntervalo'] = $tipoIntervalo;
+            $this->data['Repeticao']['nomeTipoRepeticao'] = $tipoRepeticao;
+        }
+    }
+
+}
+?>

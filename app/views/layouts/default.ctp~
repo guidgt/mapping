@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    <head>
+        <meta content="text/html; charset=UTF-8" http-equiv="content-type">		
+        
+        
+        <!--title>Build in Cake 1.2</title-->
+        <title>Mapeamento Sistematico</title>
+
+        <link rel="stylesheet" href="<?php echo $this->webroot; ?>css/default.css" type="text/css" />
+        <script type="text/javascript" src="<?php echo $this->webroot; ?>js/jquery-1.4.2.min.js"></script>
+
+        <link type="text/css" href="<?php echo $this->webroot; ?>js/jquery.ui/css/redmond/jquery-ui-1.8.13.custom.css" rel="stylesheet" />
+        <script type="text/javascript" src="<?php echo $this->webroot; ?>js/jquery.ui/jquery-ui-1.8.13.custom.min.js"></script>
+
+        <script type="text/javascript" src="<?php echo $this->webroot; ?>js/jquery.fg-menu/fg.menu.js"></script>
+        <link type="text/css" href="<?php echo $this->webroot; ?>js/jquery.fg-menu/fg.menu.css" media="screen" rel="stylesheet" />
+
+        <script type="text/javascript" src="<?php echo $this->webroot; ?>js/jquery.rte.js"></script>
+        
+        <script src="<?php echo $this->webroot; ?>js/jquery.contextmenu/jquery.contextmenu.r2.js" type="text/javascript"></script>
+        <script src="<?php echo $this->webroot; ?>js/data.tables-1.7.2/media/js/jquery.dataTables.js" type="text/javascript"></script>
+        <link rel="stylesheet" href="<?php echo $this->webroot; ?>js/data.tables-1.7.2/media/css/demo_table.css" type="text/css" />
+        <link rel="stylesheet" href="<?php echo $this->webroot; ?>js/data.tables-1.7.2/media/css/demo_table_jui.css" type="text/css" />
+        <link rel="stylesheet" href="<?php echo $this->webroot; ?>js/data.tables-1.7.2/media/css/demo_page.css" type="text/css" />
+
+        <!-- Data Table -->
+        <link rel="stylesheet" href="<?php echo $this->webroot; ?>js/jquery.tablesorter/themes/blue/style.css" type="text/css" media="print, projection, screen" />
+        <script type="text/javascript" src="<?php echo $this->webroot; ?>js/jquery.tablesorter/jquery.tablesorter.js"></script>
+
+
+        <style type="text/css" >
+            .frameBody{font-family:sans-serif;font-size:12px;margin:0;width:100%;height:100%}
+            .frameBody p{border:1px #bbb solid;padding:2px}
+            .rte-zone{width:450px;margin:0;padding:0;height:100px;border:1px #999 solid;clear:both}
+            .rte-toolbar{overflow:hidden}
+            .rte-toolbar a,.rte-toolbar a img{border:0}
+            .rte-toolbar p{float:left;margin:0;padding-right:5px}
+        </style>
+
+    </head>
+
+    <body>
+
+        <!--table cellspacing="0" cellspacing="0" width="100%">
+            <tr>
+                <td style="background:url(<?php echo $this->webroot; ?>img/bg.jpg);height:70px"><img style="margin-left:10px;margin-top:8px;" src="<?php echo $this->webroot; ?>img/sbake.png"></td>
+            </tr>
+        </table-->
+
+        <script type="text/javascript">
+            $(function(){
+
+                $('#menubar > a').each(function(){
+                    firstnivel = $(this).attr("id");
+                    if(firstnivel)
+                        $('#'+firstnivel).menu({
+                            content: $('#'+firstnivel).next().html(),
+                            flyOut: true
+                        });
+                })
+
+                $('.right textarea').addClass('rte-zone');
+                $('.right textarea').rte("<?php echo $this->webroot; ?>css/rte.css", "<?php echo $this->webroot; ?>img/rte/");
+
+            });
+        </script>
+
+       	<div class="menubar" id="menubar">
+            <?php
+            if(isset($menu_acoes)){
+                $grupo = null;
+                $index = 10;
+                foreach ($menu_acoes as $key => $val) {
+                    if( !empty($val['label']) ){
+                        if($val['grupo']!=$grupo){
+                            if($grupo!=null)
+                                echo '</ul></div>';
+                            $grupo = $val['grupo'];
+                            echo '<a href="#" id="menu'.$index.'" class="menubutton">'.$grupo.'</a><div class="hidden"><ul>';
+                            $index++;
+                        }
+                        echo '<li><a onclick="location.href=\''.$this->webroot.$key.'\'" href="#">'.$val['label'].'</a></li>';
+                    }
+                }
+                if($grupo!=null)
+                    echo '</ul></div>';
+                echo '<a href="'.$this->webroot.'usuarios/logout" class="menubutton">Logout</a>';
+            }
+            ?>
+        </div>
+
+        <?php if ($session->check('Message.flash') && count($jquery->validationErrors) == 0) {
+        ?>
+            <script>
+                window.onload = function(){
+                    setInterval("document.getElementById('msginfo').style.display='none'", 5000);
+                }
+            </script>
+            <div id="msginfo" style="z-index:10000;position:absolute;top:100px;right:35%;left:35%" class="ui-widget">
+                <div class="ui-state-highlight ui-corner-all" style="margin-top: 20px; padding: 0 .7em;">
+                    <br>
+                    <span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span>
+                <? $session->flash(); ?>
+                <br>
+            </div>
+        </div>
+        <?php } ?>
+
+            <div style="padding:8px">
+            <?php echo $content_for_layout; ?>
+            <?php echo $cakeDebug ?>
+        </div>
+    </body>
+</html>

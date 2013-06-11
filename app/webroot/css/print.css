@@ -1,0 +1,35 @@
+/* 
+    Document   : print
+    Created on : Jul 14, 2010, 11:47:51 AM
+    Author     : daniloviana
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* 
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+
+button{
+    display: none;
+}
+
+a{
+    color: #000;
+}
+
+body{
+    margin: 0px;
+    font-size: 6pt;
+}
+
+tr{
+    height: auto;
+}
+
+.labelRelatorio{
+    font-size: 12px;
+    font-weight: bold;
+    margin-left: 5px;
+}
